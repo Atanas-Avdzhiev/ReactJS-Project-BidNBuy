@@ -18,3 +18,14 @@ To start the client, navigate to the `client` folder in the terminal and run "np
 
 ## Starting the Server
 To start the server, navigate to the `server` folder in the terminal and run "node server.js".
+
+Default credentials, with pre-populated data:
+
+email: "nasko@abv.bg"
+password: 123456
+
+email: "pesho@abv.bg"
+password: 123456
+
+email: "ivan@abv.bg"
+password: 123456

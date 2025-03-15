@@ -39,8 +39,8 @@ export default function Header() {
                         <li><Link className={styles.navLink}>Auctions</Link></li>
                         {showAuctionDropdown && (
                             <div className={styles.dropdownMenu}>
-                                <Link to="/auctions/catalog" className={styles.dropdownItem}>Open Auctions</Link>
-                                <Link to="/auctions/closed" className={styles.dropdownItem}>Closed Auctions</Link>
+                                <Link to="/auctions/catalog?page=1" className={styles.dropdownItem}>Open Auctions</Link>
+                                <Link to="/auctions/closed?page=1" className={styles.dropdownItem}>Closed Auctions</Link>
                             </div>
                         )}
                     </div>

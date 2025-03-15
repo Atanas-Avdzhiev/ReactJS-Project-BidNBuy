@@ -62,16 +62,16 @@ export function useGetLatestAuctions() {
     return auctions;
 }
 
-export async function useGetOpenAuctions() {
+export async function useGetOpenAuctions(recordsToSkip, recordsPerPage) {
 
-    const auctions = await auctionsAPI.getOpenAuctions();
+    const auctions = await auctionsAPI.getOpenAuctions(recordsToSkip, recordsPerPage);
 
     return auctions;
 }
 
-export async function useGetClosedAuctions() {
+export async function useGetClosedAuctions(recordsToSkip, recordsPerPage) {
 
-    const auctions = await auctionsAPI.getClosedAuctions();
+    const auctions = await auctionsAPI.getClosedAuctions(recordsToSkip, recordsPerPage);
 
     return auctions;
 }

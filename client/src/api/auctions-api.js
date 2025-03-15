@@ -18,9 +18,9 @@ const getOwnerAuctions = (ownerId) => requester('GET', `${BASE_URL}/?where=_owne
 
 const getWonAuctions = (email) => requester('GET', `${BASE_URL}/?where=bidOwner%3D%22${email}%22&sortBy=_createdOn%20desc`);
 
-const getOpenAuctions = () => requester('GET', `${BASE_URL}/?where=closed%3D%22false%22&sortBy=_createdOn%20desc`);
+const getOpenAuctions = (recordsToSkip, recordsPerPage) => requester('GET', `${BASE_URL}/?where=closed%3D%22false%22&sortBy=_createdOn%20desc&offset=${recordsToSkip}&pageSize=${recordsPerPage}`);
 
-const getClosedAuctions = () => requester('GET', `${BASE_URL}/?where=closed%3D%22true%22&sortBy=_createdOn%20desc`);
+const getClosedAuctions = (recordsToSkip, recordsPerPage) => requester('GET', `${BASE_URL}/?where=closed%3D%22true%22&sortBy=_createdOn%20desc&offset=${recordsToSkip}&pageSize=${recordsPerPage}`);
 
 const getLatestAuctions = () => requester('GET', `${BASE_URL}?sortBy=_createdOn%20desc&pageSize=5`);
 
