@@ -58,11 +58,13 @@ export default function CatalogAuction() {
                 : <h3 className={styles.noArticles}>Sorry, theres no auctions right now!</h3>
             }
 
-            <div className={styles.paginationContainer}>
-                <button disabled={+page === 1} onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+            {auctions.length > 0 && (
+                <div className={styles.paginationContainer}>
+                    <button disabled={+page === 1} onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
 
-                <button onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
-            </div>
+                    <button disabled={auctions.length < 10} onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                </div>
+            )}
 
         </section>
     );

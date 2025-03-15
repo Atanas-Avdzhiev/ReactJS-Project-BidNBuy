@@ -1661,7 +1661,20 @@
                 "closed": "false",
                 "_createdOn": 1741811073653,
                 "_id": "o567hijk-89lm-01no-23pq-45rstuvwxyz1"
-            }
+            },
+            "f3d7e2a4-b7c8-4f9b-9a56-ec5c89d7b0cd": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "auctionName": "2021 Patek Philippe Nautilus 5711/1A",
+                "category": "Luxury Watch",
+                "price": 350000,
+                "imageUrl": "https://gandgtimepieces.com/cdn/shop/products/image_ed0f2aa9-d577-4e4b-b381-e2a3658360de.jpg?v=1679497154",
+                "description": "A highly sought-after luxury watch with a stainless steel case, featuring a blue dial, date function, and powered by an automatic movement.",
+                "bidPrice": 400000,
+                "closed": "true",
+                "_createdOn": 1741811073654,
+                "_id": "f3d7e2a4-b7c8-4f9b-9a56-ec5c89d7b0cd",
+                "bidOwner": "nasko@abv.bg"
+            },
         },
         comments: {
 
