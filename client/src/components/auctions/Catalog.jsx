@@ -50,12 +50,6 @@ export default function CatalogAuction() {
                 : <h1>Closed Auctions</h1>
             }
 
-            <div className={styles.paginationContainer}>
-                <button onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
-
-                <button onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
-            </div>
-
             {auctions.length > 0
                 ?
                 <div className={styles.allAuctionsContainer}>
@@ -63,6 +57,12 @@ export default function CatalogAuction() {
                 </div>
                 : <h3 className={styles.noArticles}>Sorry, theres no auctions right now!</h3>
             }
+
+            <div className={styles.paginationContainer}>
+                <button disabled={+page === 1} onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+
+                <button onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+            </div>
 
         </section>
     );

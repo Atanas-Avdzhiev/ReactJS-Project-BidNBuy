@@ -94,6 +94,7 @@
   justify-content: center;
   gap: 2em;
   flex-wrap: wrap;
+  margin-bottom: 3em;
 }
 
 .imageWrap {
