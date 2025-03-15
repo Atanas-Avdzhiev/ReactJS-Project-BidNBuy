@@ -476,9 +476,16 @@
             '<': (prop, value) => record => record[prop] < JSON.parse(value),
             '>=': (prop, value) => record => record[prop] >= JSON.parse(value),
             '>': (prop, value) => record => record[prop] > JSON.parse(value),
-            '=': (prop, value) => record => record[prop] == JSON.parse(value),
+            '=': (prop, value) => record => {
+                if (record[prop] === undefined) return false;
+                if (record[prop] === null) return false;
+                if (typeof record[prop] === 'number') {
+                    return record[prop] == JSON.parse(value);
+                }
+                return record[prop].toLowerCase().includes(JSON.parse(value).toLowerCase());
+            },
             ' like ': (prop, value) => record => record[prop].toLowerCase().includes(JSON.parse(value).toLowerCase()),
-            ' in ': (prop, value) => record => JSON.parse(`[${/\((.+?)\)/.exec(value)[1]}]`).includes(record[prop]),
+            ' in ': (prop, value) => record => JSON.parse(`[${/\((.+?)\)/.exec(value)[1]}]`).includes(record[prop])
         };
         const pattern = new RegExp(`^(.+?)(${Object.keys(operators).join('|')})(.+?)$`, 'i');
 
