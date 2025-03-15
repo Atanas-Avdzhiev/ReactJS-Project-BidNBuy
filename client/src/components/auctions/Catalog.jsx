@@ -62,7 +62,13 @@ export default function CatalogAuction() {
                 <div className={styles.paginationContainer}>
                     <button disabled={+page === 1} onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
 
-                    <button disabled={auctions.length < 10} onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                    {page > 1 && <button onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={styles.pageCircle}>{+page - 1}</button>}
+
+                    <button className={styles.pageCircleCurrent}>{+page}</button>
+
+                    {auctions.length === recordsPerPage && <button onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={styles.pageCircle}>{+page + 1}</button>}
+
+                    <button disabled={auctions.length < recordsPerPage} onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>
             )}
 

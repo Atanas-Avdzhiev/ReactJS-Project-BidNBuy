@@ -84,7 +84,7 @@ export default function Profile() {
                                         <img src={auction.imageUrl} alt={auction.auctionName} />
                                     </div>
                                     <h6>{auction.auctionName}</h6>
-                                    <h2>Winning bid: {auction.bidPrice}$</h2>
+                                    <h2>Winning bid: <strong>{auction.bidPrice}$</strong></h2>
                                 </div>
                             )
 
