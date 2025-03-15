@@ -1,0 +1,88 @@
+.editPage {
+  background-color: #f4f7fa;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.editPage .container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2em;
+}
+
+.editPage h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6A4E23;
+  text-align: center;
+}
+
+.editPage label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.editPage input,
+.editPage textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+}
+
+.editPage input[type="text"],
+.editPage input[type="number"] {
+  height: 40px;
+}
+
+.editPage textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.editPage input:focus,
+.editPage textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.editPage .btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #e98f08;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.editPage .btn:hover {
+  background-color: #d47f00;
+}
+
+.editPage .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.4);
+}
+
+.authError {
+  color: red;
+  font-size: 1em;
+  margin-bottom: 15px;
+  text-align: center;
+}

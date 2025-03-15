@@ -1,0 +1,106 @@
+.registerPage {
+  background-color: #f4f7fa;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.registerPage .container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registerPage .brandLogo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.registerPage h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.registerPage label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.registerPage input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.registerPage input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.authError {
+  color: red;
+  font-size: 1em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.registerPage .btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #e98f08;
+  ;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.registerPage .btn:hover {
+  background-color: #d47f00;
+  ;
+}
+
+.registerPage .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.4);
+}
+
+.registerPage .field span {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.registerPage .field a {
+  color: #e98f08;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.registerPage .field a:hover {
+  text-decoration: underline;
+}

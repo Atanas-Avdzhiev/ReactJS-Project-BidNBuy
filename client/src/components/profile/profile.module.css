@@ -1,0 +1,126 @@
+.profileContainer {
+    max-width: 1100px;
+    margin: 6em auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.infoSection {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.auctionsSection {
+    margin-top: 20px;
+}
+
+.auctionList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+.auctionItem {
+    padding: 10px;
+    margin: 5px 0;
+    background: #e0e0e0;
+    border-radius: 5px;
+}
+
+.auction {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    cursor: pointer;
+    width: calc(33.33% - 20px);
+}
+
+.auction:hover {
+    transform: translateY(-5px);
+}
+
+.imageWrap {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.auction img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.auction h6 {
+    font-size: min(1.5rem, 5vw);
+    font-weight: 500;
+    color: #333;
+    margin: 0.5em auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.auction h2 {
+    font-size: min(1.25rem, 5vw);
+    font-weight: 400;
+    color: #777;
+    margin: 0.5em auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.toggleContainer {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #e98f08;
+    margin: auto;
+    width: 18em;
+}
+
+.toggleButton {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.active {
+    background-color: #e98f08;
+    color: white;
+}
+
+.inactive {
+    background-color: white;
+    color: #e98f08;
+}
