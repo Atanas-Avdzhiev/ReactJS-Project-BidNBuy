@@ -13,7 +13,7 @@ export default function CatalogAuction() {
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
     const page = params.get('page');
-    const recordsPerPage = 10;
+    const recordsPerPage = 10; // change this number if you want to change the number of auctions per page
     const recordsToSkip = (+page - 1) * recordsPerPage;
 
     useEffect(() => {

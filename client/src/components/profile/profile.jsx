@@ -19,8 +19,7 @@ export default function Profile() {
             try {
                 setIsLoading(true);
                 const ownerAuctions = await auctionsAPI.getOwnerAuctions(userId);
-                let auctionsWon = await auctionsAPI.getWonAuctions(email);
-                auctionsWon = auctionsWon.filter(auction => auction.closed === 'true' ? auction : '');
+                const auctionsWon = await auctionsAPI.getWonAuctions(email);
                 setOwnerAuctions(ownerAuctions);
                 setAuctionsWon(auctionsWon);
                 setIsLoading(false);
