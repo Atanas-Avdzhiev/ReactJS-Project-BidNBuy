@@ -15,6 +15,7 @@ import Profile from './components/profile/profile'
 import PrivateRoute from './components/guards/PrivateRoute'
 import PublicRoute from './components/guards/PublicRoute'
 import PrivateRouteEditAuction from './components/guards/PrivateRouteEditAuction'
+import SearchAuctions from './components/auctions/Search'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/auctions/:auctionId/details' element={<DetailsAuction />} />
         <Route path='/auctions/catalog' element={<CatalogAuction />} />
         <Route path='/auctions/closed' element={<CatalogAuction />} />
+        <Route path='/auctions/search' element={<SearchAuctions />} />
 
         <Route element={<PublicRoute />}>
           <Route path='/login' element={<Login />} />

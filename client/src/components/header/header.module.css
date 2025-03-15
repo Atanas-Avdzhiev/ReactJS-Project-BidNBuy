@@ -101,6 +101,7 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, top 0.3s ease-in-out;
+    gap: 0.25em;
 }
 
 .guest:hover .dropdownMenu {
@@ -120,10 +121,6 @@
     align-items: center;
     width: max-content;
     white-space: nowrap;
-}
-
-.dropdownItem:nth-child(1) {
-    margin-bottom: 0.5em;
 }
 
 .dropdownItem::after {
