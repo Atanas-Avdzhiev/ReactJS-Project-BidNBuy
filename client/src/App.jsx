@@ -11,7 +11,7 @@ import Home from "./components/home/Home"
 import Login from "./components/login/Login"
 import Register from "./components/register/Register"
 import Logout from './components/logout/Logout'
-import Profile from './components/profile/profile'
+import Profile from './components/profile/Profile'
 import PrivateRoute from './components/guards/PrivateRoute'
 import PublicRoute from './components/guards/PublicRoute'
 import PrivateRouteEditAuction from './components/guards/PrivateRouteEditAuction'
