@@ -10,6 +10,8 @@ BidNBuy is a web application where users can create auctions, bid on ongoing auc
 - **Commenting**: Users can comment on active auctions they are interested in, but they cannot comment on their own auctions.
 - **Profile Management**: Users have profiles where they can manage their own auctions, view the auctions they've won, and track their activities.
 - **Auction Editing and Deleting**: Auction creators can edit or delete their own auctions, only if they are not closed!
+- **Pagination**: Catalog and Search pages has pagination. Changing the variable "recordsPerPage" in Catalog.jsx or Search.jsx determines how many auctions will be shown per page!
+- **Search**: Users can search for auctions by Auction Name, Category, Min Start Price, Max Start Price and Status. Search is case insensitive and by partial match, except for min/max start price.
 
 # Project Setup
 
