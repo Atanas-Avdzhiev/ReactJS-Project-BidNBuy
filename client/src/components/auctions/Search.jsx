@@ -134,7 +134,23 @@ export default function SearchAuctions() {
             {auctions.length > 0
                 ?
                 <div className={styles.allAuctionsContainer}>
-                    {auctions.map(auction => <Auction key={auction._id} {...auction} />)}
+                    {auctions.map(auction => {
+                        return (
+                            <div key={auction._id} onClick={() => navigate(`/auctions/${_id}/details`)} className={styles.auction}>
+                                <div className={styles.imageWrap}>
+                                    <img src={auction.imageUrl} alt={auction.auctionName} />
+                                </div>
+                                <h6>{auction.auctionName}</h6>
+                                <h2>{auction.category}</h2>
+                                {(auction.closed === 'false' && auction.bidPrice >= auction.price)
+                                    ? <p className={styles.highestBid}>Highest bid: <strong>{auction.bidPrice}$</strong></p>
+                                    : auction.closed === 'true'
+                                        ? <p className={styles.highestBid}>Winning big: <strong>{auction.bidPrice}$</strong></p>
+                                        : <p className={styles.highestBid}>No bids yet</p>
+                                }
+                            </div>
+                        )
+                    })}
                 </div>
                 :
                 <div className={styles.noAuctionsWrapper}>
