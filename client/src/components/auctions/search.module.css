@@ -89,6 +89,63 @@
     color: #777;
 }
 
+.paginationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 3em;
+}
+
+.paginationBtn {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: auto 1em;
+}
+
+.paginationBtn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.pageCircle {
+    padding: 10px 15px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pageCircle:hover {
+    background-color: white;
+    border: 2px solid black;
+}
+
+.paginationBtn.prev,
+.paginationBtn.next {
+    font-weight: bold;
+}
+
+.pageCircleCurrent {
+    padding: 10px 15px;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pageCircleCurrent:hover {
+    background-color: white;
+    border: 4px solid black;
+}
+
 @media (max-width: 1024px) {
     .searchForm {
         flex-wrap: wrap;
