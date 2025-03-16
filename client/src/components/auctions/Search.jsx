@@ -135,7 +135,7 @@ export default function SearchAuctions() {
                 <div className={styles.allAuctionsContainer}>
                     {auctions.map(auction => {
                         return (
-                            <div key={auction._id} onClick={() => navigate(`/auctions/${_id}/details`)} className={styles.auction}>
+                            <div key={auction._id} onClick={() => navigate(`/auctions/${auction._id}/details`)} className={styles.auction}>
                                 <div className={styles.imageWrap}>
                                     <img src={auction.imageUrl} alt={auction.auctionName} />
                                 </div>
