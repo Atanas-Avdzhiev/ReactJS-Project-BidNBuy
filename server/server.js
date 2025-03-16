@@ -1634,7 +1634,7 @@
                 "_id": "l234efgh-56ij-78kl-90mn-12opqrstuvwx"
             },
             "m345fghi-67jk-89lm-01no-23pqrstuvwxy": {
-                "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "auctionName": "Superyacht 150ft",
                 "category": "Boat",
                 "price": 25000000,
@@ -1646,7 +1646,7 @@
                 "_id": "m345fghi-67jk-89lm-01no-23pqrstuvwxy"
             },
             "n456ghij-78kl-90mn-12op-34qrstuvwxyz": {
-                "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
                 "auctionName": "Bugatti Chiron Super Sport",
                 "category": "Vehicle",
                 "price": 3500000,
@@ -1658,16 +1658,17 @@
                 "_id": "n456ghij-78kl-90mn-12op-34qrstuvwxyz"
             },
             "o567hijk-89lm-01no-23pq-45rstuvwxyz1": {
-                "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
                 "auctionName": "Dubai Skyline Penthouse",
                 "category": "Real Estate",
                 "price": 5000000,
                 "imageUrl": "https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/13/tZFOu3tj-The-Penthouse_1.jpg",
                 "description": "A 1200 sqm penthouse with panoramic views of the Dubai skyline, featuring a private infinity pool, smart home technology, and a personal gym.",
-                "bidPrice": 0,
-                "closed": "false",
+                "bidPrice": 5000000,
+                "closed": "true",
                 "_createdOn": 1741811073653,
-                "_id": "o567hijk-89lm-01no-23pq-45rstuvwxyz1"
+                "_id": "o567hijk-89lm-01no-23pq-45rstuvwxyz1",
+                "bidOwner": "nasko@abv.bg"
             },
             "f3d7e2a4-b7c8-4f9b-9a56-ec5c89d7b0cd": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",

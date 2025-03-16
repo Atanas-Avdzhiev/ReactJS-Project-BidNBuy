@@ -12,14 +12,14 @@ export default function CatalogAuction() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
-    const page = params.get('page');
+    const page = Number(params.get('page'));
     const recordsPerPage = 10; // change this number if you want to change the number of auctions per page
-    const recordsToSkip = (+page - 1) * recordsPerPage;
+    const recordsToSkip = (page - 1) * recordsPerPage;
 
     useEffect(() => {
         (async () => {
             try {
-                if (+page <= 0) {
+                if (page <= 0) {
                     return navigate(`${location.pathname}?page=1`);
                 }
                 let auctions = [];
@@ -60,15 +60,15 @@ export default function CatalogAuction() {
 
             {auctions.length > 0 && (
                 <div className={styles.paginationContainer}>
-                    <button disabled={+page === 1} onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+                    <button disabled={page === 1} onClick={() => navigate(`${location.pathname}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
 
-                    {page > 1 && <button onClick={() => navigate(`${location.pathname}?page=${+page - 1}`)} className={styles.pageCircle}>{+page - 1}</button>}
+                    {page > 1 && <button onClick={() => navigate(`${location.pathname}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
 
-                    <button className={styles.pageCircleCurrent}>{+page}</button>
+                    <button className={styles.pageCircleCurrent}>{page}</button>
 
-                    {auctions.length === recordsPerPage && <button onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={styles.pageCircle}>{+page + 1}</button>}
+                    {auctions.length === recordsPerPage && <button onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
 
-                    <button disabled={auctions.length < recordsPerPage} onClick={() => navigate(`${location.pathname}?page=${+page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                    <button disabled={auctions.length < recordsPerPage} onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>
             )}
 

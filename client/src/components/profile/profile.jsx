@@ -2,32 +2,43 @@ import { useContext, useEffect, useState } from 'react';
 import styles from './profile.module.css';
 import { auctionsAPI } from '../../api/auctions-api';
 import { AuthContext } from '../../contexts/authContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 
 export default function Profile() {
     const { email, userId, createdOn } = useContext(AuthContext);
-    const [ownerAuctions, setOwnerAuctions] = useState([]);
-    const [auctionsWon, setAuctionsWon] = useState([]);
+    const [auctions, setAuctions] = useState([]);
     const [selected, setSelected] = useState("my");
     const [isLoading, setIsLoading] = useState(false);
-
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const params = new URLSearchParams(location.search);
+    const page = Number(params.get('page'));
+    const recordsPerPage = 6; // change this number if you want to change the number of auctions per page
+    const recordsToSkip = (page - 1) * recordsPerPage;
 
     useEffect(() => {
         (async () => {
             try {
+                if (page <= 0) {
+                    return navigate('/profile?page=1');
+                }
+
                 setIsLoading(true);
-                const ownerAuctions = await auctionsAPI.getOwnerAuctions(userId);
-                const auctionsWon = await auctionsAPI.getWonAuctions(email);
-                setOwnerAuctions(ownerAuctions);
-                setAuctionsWon(auctionsWon);
+                if (selected === 'my') {
+                    const ownerAuctions = await auctionsAPI.getOwnerAuctions(userId, recordsToSkip, recordsPerPage);
+                    setAuctions(ownerAuctions);
+                } else if (selected === 'won') {
+                    const auctionsWon = await auctionsAPI.getWonAuctions(email, recordsToSkip, recordsPerPage);
+                    setAuctions(auctionsWon);
+                }
                 setIsLoading(false);
             } catch (err) {
                 console.log(err.message);
             }
         })()
-    }, []);
+    }, [selected, location.search]);
 
     return (
         <div className={styles.profileContainer}>
@@ -40,10 +51,16 @@ export default function Profile() {
             <div className={styles.toggleContainer}>
                 <button
                     className={`${styles.toggleButton} ${selected === "my" ? styles.active : styles.inactive}`}
-                    onClick={() => setSelected("my")}>My Auctions</button>
+                    onClick={() => {
+                        setSelected("my")
+                        navigate('/profile?page=1');
+                    }}>My Auctions</button>
                 <button
                     className={`${styles.toggleButton} ${selected === "won" ? styles.active : styles.inactive}`}
-                    onClick={() => setSelected("won")}>Won Auctions</button>
+                    onClick={() => {
+                        setSelected("won")
+                        navigate('/profile?page=1');
+                    }}>Won Auctions</button>
             </div>
 
             {isLoading && <LoadingSpinner />}
@@ -52,9 +69,9 @@ export default function Profile() {
 
                 <div className={styles.auctionsSection}>
                     <h2>My Auctions</h2>
-                    {ownerAuctions.length > 0 ? (
+                    {auctions.length > 0 ? (
                         <div className={styles.auctionList}>
-                            {ownerAuctions.map((auction) => (
+                            {auctions.map((auction) => (
                                 <div key={auction._id} onClick={() => navigate(`/auctions/${auction._id}/details`)} className={styles.auction}>
                                     <div className={styles.imageWrap}>
                                         <img src={auction.imageUrl} alt={auction.auctionName} />
@@ -64,9 +81,7 @@ export default function Profile() {
                                 </div>
                             ))}
                         </div>
-                    ) : (
-                        <p>No auctions created.</p>
-                    )}
+                    ) : (page === 1 && <p>No auctions created.</p>)}
                 </div>
 
             )}
@@ -75,9 +90,9 @@ export default function Profile() {
 
                 <div className={styles.auctionsSection}>
                     <h2>Won Auctions</h2>
-                    {auctionsWon.length > 0 ? (
+                    {auctions.length > 0 ? (
                         <div className={styles.auctionList}>
-                            {auctionsWon.map((auction) => (
+                            {auctions.map((auction) => (
                                 <div key={auction._id} onClick={() => navigate(`/auctions/${auction._id}/details`)} className={styles.auction}>
                                     <div className={styles.imageWrap}>
                                         <img src={auction.imageUrl} alt={auction.auctionName} />
@@ -89,11 +104,23 @@ export default function Profile() {
 
                             )}
                         </div>
-                    ) : (
-                        <p>No auctions won.</p>
-                    )}
+                    ) : (page === 1 && <p>No auctions won.</p>)}
                 </div>
 
+            )}
+
+            {auctions.length > 0 && (
+                <div className={styles.paginationContainer}>
+                    <button disabled={page === 1} onClick={() => navigate(`/profile?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+
+                    {page > 1 && <button onClick={() => navigate(`/profile?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
+
+                    <button className={styles.pageCircleCurrent}>{page}</button>
+
+                    {auctions.length === recordsPerPage && <button onClick={() => navigate(`/profile?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+
+                    <button disabled={auctions.length < recordsPerPage} onClick={() => navigate(`/profile?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                </div>
             )}
 
         </div>
