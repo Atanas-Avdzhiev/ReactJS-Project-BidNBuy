@@ -91,7 +91,7 @@ export async function useGetSearchedAuctions(filter) {
         })
         .join(" AND ");
 
-    const query = queryParts ? `?where=${encodeURIComponent(queryParts)}` : "";
+    const query = queryParts ? `where=${encodeURIComponent(queryParts)}` : "";
     const fixedQuery = query
         .replace(/%2522/g, "%22")
         .replace(/%2520/g, "%20")
@@ -99,7 +99,7 @@ export async function useGetSearchedAuctions(filter) {
         .replace(/%253D/g, "%3D")
         .replace(/%253C/g, "%3C");
 
-    const auctions = await auctionsAPI.getSearchedAuctions(`/${fixedQuery}`);
+    const auctions = await auctionsAPI.getSearchedAuctions(fixedQuery);
 
     return auctions;
 }

@@ -24,7 +24,7 @@ const getClosedAuctions = (recordsToSkip, recordsPerPage) => requester('GET', `$
 
 const getLatestAuctions = () => requester('GET', `${BASE_URL}?sortBy=_createdOn%20desc&pageSize=5`);
 
-const getSearchedAuctions = (query) => requester('GET', `${BASE_URL}${query}?sortBy=_createdOn%20desc`);
+const getSearchedAuctions = (query) => requester('GET', `${BASE_URL}/?${query ? `${query}&` : ''}sortBy=_createdOn%20desc`);
 
 export const auctionsAPI = {
     getAll,
