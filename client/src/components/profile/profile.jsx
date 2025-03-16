@@ -10,6 +10,7 @@ export default function Profile() {
     const [auctions, setAuctions] = useState([]);
     const [selected, setSelected] = useState("my");
     const [isLoading, setIsLoading] = useState(false);
+    const [nextPage, setNextPage] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -26,13 +27,30 @@ export default function Profile() {
                 }
 
                 setIsLoading(true);
+
                 if (selected === 'my') {
-                    const ownerAuctions = await auctionsAPI.getOwnerAuctions(userId, recordsToSkip, recordsPerPage);
+                    const ownerAuctions = await auctionsAPI.getOwnerAuctions(userId, recordsToSkip, recordsPerPage + 1);
+
+                    if (ownerAuctions.length === recordsPerPage + 1) {
+                        setNextPage(true);
+                        ownerAuctions.pop();
+                    } else {
+                        setNextPage(false);
+                    }
                     setAuctions(ownerAuctions);
-                } else if (selected === 'won') {
-                    const auctionsWon = await auctionsAPI.getWonAuctions(email, recordsToSkip, recordsPerPage);
+                }
+                else if (selected === 'won') {
+                    const auctionsWon = await auctionsAPI.getWonAuctions(email, recordsToSkip, recordsPerPage + 1);
+
+                    if (auctionsWon.length === recordsPerPage + 1) {
+                        setNextPage(true);
+                        auctionsWon.pop();
+                    } else {
+                        setNextPage(false);
+                    }
                     setAuctions(auctionsWon);
                 }
+
                 setIsLoading(false);
             } catch (err) {
                 console.log(err.message);
@@ -117,9 +135,9 @@ export default function Profile() {
 
                     <button className={styles.pageCircleCurrent}>{page}</button>
 
-                    {auctions.length === recordsPerPage && <button onClick={() => navigate(`/profile?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+                    {nextPage && <button onClick={() => navigate(`/profile?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
 
-                    <button disabled={auctions.length < recordsPerPage} onClick={() => navigate(`/profile?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                    <button disabled={!nextPage} onClick={() => navigate(`/profile?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>
             )}
 

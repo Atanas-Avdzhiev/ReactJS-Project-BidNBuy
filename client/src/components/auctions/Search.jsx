@@ -9,8 +9,8 @@ export default function SearchAuctions() {
 
     const [auctions, setAuctions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [nextPage, setNextPage] = useState(false);
     const navigate = useNavigate();
-
     const [searchParams, setSearchParams] = useSearchParams();
 
     const auctionName = searchParams.get('auctionName') || '';
@@ -36,7 +36,13 @@ export default function SearchAuctions() {
                 }
 
                 setIsLoading(true);
-                const auctions = await useGetSearchedAuctions({ auctionName, category, minPrice, maxPrice, closed }, recordsToSkip, recordsPerPage);
+                const auctions = await useGetSearchedAuctions({ auctionName, category, minPrice, maxPrice, closed }, recordsToSkip, recordsPerPage + 1);
+                if (auctions.length === recordsPerPage + 1) {
+                    setNextPage(true);
+                    auctions.pop();
+                } else {
+                    setNextPage(false);
+                }
                 setAuctions(auctions);
                 setIsLoading(false);
             } catch (err) {
@@ -169,11 +175,11 @@ export default function SearchAuctions() {
 
                     <button className={styles.pageCircleCurrent}>{+page}</button>
 
-                    {auctions.length === recordsPerPage && <button
+                    {nextPage && <button
                         onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page + 1).toString() })}
                         className={styles.pageCircle}>{+page + 1}</button>}
 
-                    <button disabled={auctions.length < recordsPerPage}
+                    <button disabled={!nextPage}
                         onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page + 1).toString() })}
                         className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>

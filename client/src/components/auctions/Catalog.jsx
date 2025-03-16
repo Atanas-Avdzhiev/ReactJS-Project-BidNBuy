@@ -10,6 +10,7 @@ export default function CatalogAuction() {
     const location = useLocation();
     const [auctions, setAuctions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [nextPage, setNextPage] = useState(false);
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
     const page = Number(params.get('page'));
@@ -25,9 +26,15 @@ export default function CatalogAuction() {
                 let auctions = [];
                 setIsLoading(true);
                 if (location.pathname === '/auctions/catalog') {
-                    auctions = await useGetOpenAuctions(recordsToSkip, recordsPerPage);
+                    auctions = await useGetOpenAuctions(recordsToSkip, recordsPerPage + 1);
                 } else if (location.pathname === '/auctions/closed') {
-                    auctions = await useGetClosedAuctions(recordsToSkip, recordsPerPage);
+                    auctions = await useGetClosedAuctions(recordsToSkip, recordsPerPage + 1);
+                }
+                if (auctions.length === recordsPerPage + 1) {
+                    setNextPage(true);
+                    auctions.pop();
+                } else {
+                    setNextPage(false);
                 }
                 setAuctions(auctions);
                 setIsLoading(false);
@@ -66,9 +73,9 @@ export default function CatalogAuction() {
 
                     <button className={styles.pageCircleCurrent}>{page}</button>
 
-                    {auctions.length === recordsPerPage && <button onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+                    {nextPage && <button onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
 
-                    <button disabled={auctions.length < recordsPerPage} onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                    <button disabled={!nextPage} onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>
             )}
 
