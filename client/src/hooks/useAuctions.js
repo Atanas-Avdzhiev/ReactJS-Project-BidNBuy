@@ -77,7 +77,7 @@ export async function useGetClosedAuctions(recordsToSkip, recordsPerPage) {
 }
 
 export async function useGetSearchedAuctions(filter) {
-    
+
     const queryParts = Object.entries(filter)
         .filter(([_, value]) => value.trim() !== "")
         .map(([key, value]) => {
@@ -99,7 +99,7 @@ export async function useGetSearchedAuctions(filter) {
         .replace(/%253D/g, "%3D")
         .replace(/%253C/g, "%3C");
 
-    const auctions = await auctionsAPI.getSearchedAuctions(fixedQuery);
+    const auctions = await auctionsAPI.getSearchedAuctions(`/${fixedQuery}`);
 
     return auctions;
 }
