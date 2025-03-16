@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEditAuction, useGetOneAuction } from "../../hooks/useAuctions";
 import { useForm } from "../../hooks/useForm";
 import styles from "./edit.module.css";
+import validateCreateEditAuctions from "../../utils/validation";
 
 export default function EditAuction() {
     const { auctionId } = useParams();
@@ -25,29 +26,9 @@ export default function EditAuction() {
 
     const editHandler = async (values) => {
 
-        const imageRegex = /^https?:\/\/.+/;
+        const validate = validateCreateEditAuctions(values);
 
-        if (values.auctionName.length < 2 || values.auctionName.length > 30) {
-            return setError('Auction Name must be between 2 and 30 characters long!');
-        }
-        if (values.category.length < 2 || values.category.length > 20) {
-            return setError('Category must be between 2 and 20 characters long!');
-        }
-        if (+values.price < 1) {
-            return setError('Start Price must be minimum 1!');
-        }
-        if (+values.price > 999999999999) {
-            return setError('Start Price is too high!');
-        }
-        if (!imageRegex.test(values.imageUrl)) {
-            return setError('Please upload a valid image starting with https://');
-        }
-        if (values.description.length < 10) {
-            return setError('Description must be at least 10 characters long!');
-        }
-        if (values.description.length > 3000) {
-            return setError('Description is too long!');
-        }
+        if (validate !== true) return setError(validate);
 
         try {
             if (auction.bidPrice < values.price) {

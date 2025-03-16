@@ -3,6 +3,7 @@ import { useForm } from "../../hooks/useForm";
 import { useCreateAuction } from "../../hooks/useAuctions";
 import styles from './create.module.css';
 import { useState } from 'react';
+import validateCreateEditAuctions from '../../utils/validation';
 
 export default function CreateAuction() {
 
@@ -20,29 +21,10 @@ export default function CreateAuction() {
     const createAuction = useCreateAuction();
 
     const createHandler = async (values) => {
-        const imageRegex = /^https?:\/\/.+/;
 
-        if (values.auctionName.length < 2 || values.auctionName.length > 30) {
-            return setError('Auction Name must be between 2 and 30 characters long!');
-        }
-        if (values.category.length < 2 || values.category.length > 20) {
-            return setError('Category must be between 2 and 20 characters long!');
-        }
-        if (+values.price < 1) {
-            return setError('Start Price must be minimum 1!');
-        }
-        if (+values.price > 999999999999) {
-            return setError('Start Price is too high!');
-        }
-        if (!imageRegex.test(values.imageUrl)) {
-            return setError('Please upload a valid image starting with https://');
-        }
-        if (values.description.length < 10) {
-            return setError('Description must be at least 10 characters long!');
-        }
-        if (values.description.length > 3000) {
-            return setError('Description is too long!');
-        }
+        const validate = validateCreateEditAuctions(values);
+
+        if (validate !== true) return setError(validate);
 
         try {
             values.price = +values.price;
