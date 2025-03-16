@@ -12,15 +12,19 @@ export default function SearchAuctions() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
-    const auctionName = params.get('auctionName');
-    const category = params.get('category');
-    const minPrice = params.get('minPrice');
-    const maxPrice = params.get('maxPrice');
-    const closed = params.get('closed');
+    let auctionName = params.get('auctionName');
+    let category = params.get('category');
+    let minPrice = params.get('minPrice');
+    let maxPrice = params.get('maxPrice');
+    let closed = params.get('closed');
 
     useEffect(() => {
         (async () => {
             try {
+                if (params.size === 0) {
+                    return navigate('/auctions/search?auctionName=&category=&minPrice=&maxPrice=&closed=');
+                }
+
                 setIsLoading(true);
                 const auctions = await useGetSearchedAuctions({ auctionName, category, minPrice, maxPrice, closed });
                 setAuctions(auctions);

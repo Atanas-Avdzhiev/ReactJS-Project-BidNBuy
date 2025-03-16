@@ -36,12 +36,12 @@ export default function Header() {
                         onMouseEnter={() => setShowAuctionDropdown(true)}
                         onMouseLeave={() => setShowAuctionDropdown(false)}
                     >
-                        <li><Link className={styles.navLink}>Auctions</Link></li>
+                        <li><Link to="#" onClick={(e) => e.preventDefault()} className={styles.navLink}>Auctions</Link></li>
                         {showAuctionDropdown && (
                             <div className={styles.dropdownMenu}>
-                                <Link to="/auctions/catalog?page=1" className={styles.dropdownItem}>Open Auctions</Link>
-                                <Link to="/auctions/closed?page=1" className={styles.dropdownItem}>Closed Auctions</Link>
-                                <Link to="/auctions/search?auctionName=&category=&minPrice=&maxPrice=&closed=" className={styles.dropdownItem}>Search Auctions</Link>
+                                <Link to="/auctions/catalog" className={styles.dropdownItem}>Open Auctions</Link>
+                                <Link to="/auctions/closed" className={styles.dropdownItem}>Closed Auctions</Link>
+                                <Link to="/auctions/search" className={styles.dropdownItem}>Search Auctions</Link>
                             </div>
                         )}
                     </div>
