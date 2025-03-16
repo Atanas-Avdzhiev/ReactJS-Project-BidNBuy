@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRegister } from "../../hooks/useAuth";
 import { useForm } from "../../hooks/useForm";
 import styles from './register.module.css';
+import { validateRegisterForm } from "../../utils/validation";
 
 export default function Register() {
     const [error, setError] = useState('');
@@ -13,19 +14,8 @@ export default function Register() {
 
     const registerHandler = async ({ email, password, rePassword }) => {
 
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        if (!emailRegex.test(email)) {
-            return setError('Invalid email format!');
-        }
-
-        if (password.length < 6) {
-            return setError('Password must be at least 6 characters long!');
-        }
-
-        if (password !== rePassword) {
-            return setError('Passwords do not match!');
-        }
+        const validate = validateRegisterForm({ email, password, rePassword });
+        if (validate !== true) return setError(validate);
 
         try {
             await register(email, password);

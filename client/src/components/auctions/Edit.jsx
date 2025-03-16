@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEditAuction, useGetOneAuction } from "../../hooks/useAuctions";
 import { useForm } from "../../hooks/useForm";
 import styles from "./edit.module.css";
-import validateCreateEditAuctions from "../../utils/validation";
+import { validateCreateEditAuctions } from "../../utils/validation";
 
 export default function EditAuction() {
     const { auctionId } = useParams();
@@ -27,7 +27,6 @@ export default function EditAuction() {
     const editHandler = async (values) => {
 
         const validate = validateCreateEditAuctions(values);
-
         if (validate !== true) return setError(validate);
 
         try {

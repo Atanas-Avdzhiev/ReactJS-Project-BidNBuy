@@ -1,4 +1,4 @@
-export default function validateCreateEditAuctions(values) {
+export const validateCreateEditAuctions = (values) => {
     const imageRegex = /^https?:\/\/.+/;
 
     if (values.auctionName.length < 2 || values.auctionName.length > 30) {
@@ -21,6 +21,51 @@ export default function validateCreateEditAuctions(values) {
     }
     if (values.description.length > 3000) {
         return 'Description is too long!';
+    }
+
+    return true;
+}
+
+export const validateRegisterForm = ({ email, password, rePassword }) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+        return 'Invalid email format!';
+    }
+
+    if (password.length < 6) {
+        return 'Password must be at least 6 characters long!';
+    }
+
+    if (password !== rePassword) {
+        return 'Passwords do not match!';
+    }
+
+    return true;
+}
+
+export const validateBidPrice = (bidPrice, auction) => {
+
+    if (+bidPrice <= +auction.bidPrice || +bidPrice <= 0) {
+        return 'The bid price must be higher than the current highest bid!';
+    }
+    if (+bidPrice < +auction.price) {
+        return 'The bid price must be greater than or equal to the starting price!';
+    }
+    if (+bidPrice > 999999999999) {
+        return 'The bid price is too high!';
+    }
+
+    return true;
+}
+
+export const validateComment = (values) => {
+
+    if (values.comment.length < 1) {
+        return 'Comment must be at least 1 character long!';
+    }
+    if (values.comment.length > 300) {
+        return 'Comment is too long!';
     }
 
     return true;

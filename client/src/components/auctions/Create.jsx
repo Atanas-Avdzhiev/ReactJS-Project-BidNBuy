@@ -3,7 +3,7 @@ import { useForm } from "../../hooks/useForm";
 import { useCreateAuction } from "../../hooks/useAuctions";
 import styles from './create.module.css';
 import { useState } from 'react';
-import validateCreateEditAuctions from '../../utils/validation';
+import { validateCreateEditAuctions } from '../../utils/validation';
 
 export default function CreateAuction() {
 
@@ -23,7 +23,6 @@ export default function CreateAuction() {
     const createHandler = async (values) => {
 
         const validate = validateCreateEditAuctions(values);
-
         if (validate !== true) return setError(validate);
 
         try {

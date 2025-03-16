@@ -8,6 +8,7 @@ import { useForm } from "../../hooks/useForm";
 import { commentsAPI } from "../../api/comments-api";
 import ConfirmationDialog from "../confirmation-dialog/ConfirmationDialog";
 import styles from './details.module.css';
+import { validateBidPrice, validateComment } from "../../utils/validation";
 
 export default function DetailsAuction() {
     const { auctionId } = useParams();
@@ -37,12 +38,9 @@ export default function DetailsAuction() {
 
     const createHandler = async (values) => {
 
-        if (values.comment.length < 1) {
-            return setCommentError('Comment must be at least 1 character long!');
-        }
-        if (values.comment.length > 300) {
-            return setCommentError('Comment is too long!');
-        }
+        const validate = validateComment(values);
+        if (validate !== true) return setCommentError(validate);
+
         setCommentError('');
         try {
             values.auctionId = auctionId;
@@ -76,24 +74,16 @@ export default function DetailsAuction() {
     const bidSubmitHandler = (e) => {
         e.preventDefault();
 
-        const bidPrice = +bidValue.bidPrice;
+        const validate = validateBidPrice(bidValue.bidPrice, auction);
+        if (validate !== true) return setError(validate);
 
-        if (bidPrice <= +auction.bidPrice || bidPrice <= 0) {
-            return setError('The bid price must be higher than the current highest bid!');
-        }
-        if (bidPrice < +auction.price) {
-            return setError('The bid price must be greater than or equal to the starting price!');
-        }
-        if (bidPrice > 999999999999) {
-            return setError('The bid price is too high!');
-        }
         setError('');
         setIsPlaceBid(true);
     }
 
     const closeHandler = async () => {
         try {
-            await auctionsAPI.bid(auction._id, { closed: 'true', timestampClosed: Date.now() });
+            await auctionsAPI.bid(auction._id, { closed: 'true' });
             navigate('/auctions/closed');
         } catch (err) {
             console.log(err.message);
