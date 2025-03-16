@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     z-index: 10;
-    margin-top: 7.5em;
+    margin-top: 7em;
 }
 
 .searchForm {
@@ -16,10 +16,10 @@
     align-items: center;
     gap: 15px;
     justify-content: center;
+    margin-bottom: 3em;
 }
 
-.input,
-.select {
+.input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -29,9 +29,19 @@
     min-width: 150px;
 }
 
+.select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.3s ease-in-out;
+    flex: 1;
+    min-width: 50px;
+}
+
 .input:focus,
 .select:focus {
-    border-color: #007bff;
+    border-color: #e98f08;
     outline: none;
 }
 
@@ -49,6 +59,34 @@
 
 .searchButton:hover {
     background: #d47f00;
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputDiv label {
+    margin-bottom: 0.25em;
+}
+
+.allAuctionsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap;
+    margin-bottom: 3em;
+}
+
+.noAuctionsWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.noArticles {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #777;
 }
 
 @media (max-width: 1024px) {

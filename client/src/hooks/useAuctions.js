@@ -75,3 +75,31 @@ export async function useGetClosedAuctions(recordsToSkip, recordsPerPage) {
 
     return auctions;
 }
+
+export async function useGetSearchedAuctions(filter) {
+    
+    const queryParts = Object.entries(filter)
+        .filter(([_, value]) => value.trim() !== "")
+        .map(([key, value]) => {
+            if (key === 'minPrice') {
+                return `price%20%3E%3D%20${encodeURIComponent(value)}`;
+            }
+            if (key === 'maxPrice') {
+                return `price%20%3C%3D%20${encodeURIComponent(value)}`;
+            }
+            return `${key}=%22${encodeURIComponent(value)}%22`;
+        })
+        .join(" AND ");
+
+    const query = queryParts ? `?where=${encodeURIComponent(queryParts)}` : "";
+    const fixedQuery = query
+        .replace(/%2522/g, "%22")
+        .replace(/%2520/g, "%20")
+        .replace(/%253E/g, "%3E")
+        .replace(/%253D/g, "%3D")
+        .replace(/%253C/g, "%3C");
+
+    const auctions = await auctionsAPI.getSearchedAuctions(fixedQuery);
+
+    return auctions;
+}

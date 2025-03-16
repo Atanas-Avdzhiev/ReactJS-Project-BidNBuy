@@ -41,7 +41,7 @@ export default function Header() {
                             <div className={styles.dropdownMenu}>
                                 <Link to="/auctions/catalog?page=1" className={styles.dropdownItem}>Open Auctions</Link>
                                 <Link to="/auctions/closed?page=1" className={styles.dropdownItem}>Closed Auctions</Link>
-                                <Link to="/auctions/search" className={styles.dropdownItem}>Search Auctions</Link>
+                                <Link to="/auctions/search?auctionName=&category=&minPrice=&maxPrice=&closed=" className={styles.dropdownItem}>Search Auctions</Link>
                             </div>
                         )}
                     </div>
