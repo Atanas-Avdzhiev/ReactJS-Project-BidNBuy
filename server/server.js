@@ -1343,13 +1343,13 @@
             "35c62d76-8152-4626-8712-eeb96381bea8": {
                 email: "pesho@abv.bg",
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-                _createdOn: 1741772745003,
+                _createdOn: 1741772743003,
                 _id: "35c62d76-8152-4626-8712-eeb96381bea8"
             },
             "847ec027-f659-4086-8032-5173e2f9c93a": {
                 email: "ivan@abv.bg",
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
-                _createdOn: 1741772745003,
+                _createdOn: 1741772744003,
                 _id: "847ec027-f659-4086-8032-5173e2f9c93a"
             },
             "db303ad2-22cd-4d3d-b67b-8298bcf0192c": {
@@ -1357,6 +1357,42 @@
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
                 _createdOn: 1741772745003,
                 _id: "db303ad2-22cd-4d3d-b67b-8298bcf0192c"
+            },
+            "de6a5267-e526-4b03-8a8b-7b040c75322b": {
+                email: "martin@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                _createdOn: 1741772746003,
+                _id: "de6a5267-e526-4b03-8a8b-7b040c75322b"
+            },
+            "b4ffb951-968e-42a7-8c52-f5aaae2da92b": {
+                email: "dimitar@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                _createdOn: 1741772747003,
+                _id: "b4ffb951-968e-42a7-8c52-f5aaae2da92b"
+            },
+            "02d57981-5c3f-4ea2-a0d3-cdb245697168": {
+                email: "georgi@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                _createdOn: 1741772748003,
+                _id: "02d57981-5c3f-4ea2-a0d3-cdb245697168"
+            },
+            "d70878f0-f13f-43eb-b90c-c3ca59274d21": {
+                email: "ivaylo@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                _createdOn: 1741772749003,
+                _id: "d70878f0-f13f-43eb-b90c-c3ca59274d21"
+            },
+            "55869fb9-74cb-4ac0-b418-070d33c5d70e": {
+                email: "maria@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                _createdOn: 1741772750003,
+                _id: "55869fb9-74cb-4ac0-b418-070d33c5d70e"
+            },
+            "060975b2-a849-4086-ba4c-03075a72a4ce": {
+                email: "elena@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                _createdOn: 1741772751003,
+                _id: "060975b2-a849-4086-ba4c-03075a72a4ce"
             }
         },
         sessions: {
@@ -1685,7 +1721,70 @@
             },
         },
         comments: {
-
+            "05e48a8e-03e8-424a-afaa-cb29e279442c": {
+                "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
+                "comment": "Great yacht! Unfortunately, the price is too high for me. If the price ever goes down, I might consider bidding on it.",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "nasko@abv.bg",
+                "_createdOn": 1742223963000,
+                "_id": "05e48a8e-03e8-424a-afaa-cb29e279442c"
+            },
+            "9d152eaf-19a2-4d8b-b4b6-0c785837ceca": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "comment": "This yacht is absolutely stunning! The 150ft length gives it such an imposing presence, and the luxury cabins look so comfortable. Can't imagine how amazing it must feel to relax in that jacuzzi with a view of the ocean.",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "ivan@abv.bg",
+                "_createdOn": 1742223964000,
+                "_id": "9d152eaf-19a2-4d8b-b4b6-0c785837ceca"
+            },
+            "8ff14d1f-3770-42e7-b4c9-f407bcecc4a3": {
+                "_ownerId": "de6a5267-e526-4b03-8a8b-7b040c75322b",
+                "comment": "I’ve never seen a yacht with a helipad before – that’s next level. The entertainment system looks incredible too; this would be the perfect getaway for anyone who loves luxury. Too bad it’s outside my budget!",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "martin@abv.bg",
+                "_createdOn": 1742223965000,
+                "_id": "8ff14d1f-3770-42e7-b4c9-f407bcecc4a3"
+            },
+            "52d0ff7b-4fe5-4425-b92f-cc46631a8903": {
+                "_ownerId": "b4ffb951-968e-42a7-8c52-f5aaae2da92b",
+                "comment": "The combination of size and features is unreal. A jacuzzi, helipad, and entertainment system? This yacht is perfect for anyone who loves luxury and adventure. I’m interested, but the price is a bit too high for me right now.",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "dimitar@abv.bg",
+                "_createdOn": 1742223966000,
+                "_id": "52d0ff7b-4fe5-4425-b92f-cc46631a8903"
+            },
+            "2a3ab644-d678-40e8-ba44-b97d0626b6c1": {
+                "_ownerId": "02d57981-5c3f-4ea2-a0d3-cdb245697168",
+                "comment": "Wow, 150ft and 6 luxury cabins? I can’t even imagine the kind of space this yacht offers. The entertainment system alone makes this sound like a floating paradise. If only I had the funds!",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "georgi@abv.bg",
+                "_createdOn": 1742223967000,
+                "_id": "2a3ab644-d678-40e8-ba44-b97d0626b6c1"
+            },
+            "0168b464-c72c-44a3-ba35-5c186517bd09": {
+                "_ownerId": "d70878f0-f13f-43eb-b90c-c3ca59274d21",
+                "comment": "If you’ve ever dreamed of living in the lap of luxury on the water, this yacht seems like the ultimate choice. The helipad makes it even more impressive. Just wondering about the maintenance costs, though...",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "ivaylo@abv.bg",
+                "_createdOn": 1742223968000,
+                "_id": "0168b464-c72c-44a3-ba35-5c186517bd09"
+            },
+            "05180496-86a1-4ef5-9a2c-aa393b109783": {
+                "_ownerId": "55869fb9-74cb-4ac0-b418-070d33c5d70e",
+                "comment": "A jacuzzi and a helipad – this is the epitome of luxury. I’ve been following yacht auctions for years, and this one definitely stands out. The entertainment system seems perfect for hosting unforgettable parties. If the price ever drops, I might consider it.",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "maria@abv.bg",
+                "_createdOn": 1742223969000,
+                "_id": "05180496-86a1-4ef5-9a2c-aa393b109783"
+            },
+            "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90": {
+                "_ownerId": "060975b2-a849-4086-ba4c-03075a72a4ce",
+                "comment": "This yacht is a dream! 150ft of luxury, with features that cater to every need – from the state-of-the-art entertainment system to the jacuzzi. It would be the ultimate vacation home, but I’ll have to pass on this one due to the price.",
+                "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "elena@abv.bg",
+                "_createdOn": 1742223970000,
+                "_id": "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90"
+            }
         }
     };
     var rules$1 = {
