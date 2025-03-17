@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom'
-
 import { AuthContextProvider } from './contexts/authContext'
 
 import CatalogAuction from "./components/auctions/Catalog"
