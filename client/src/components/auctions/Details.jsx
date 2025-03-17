@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetOneAuction } from "../../hooks/useAuctions";
 import { AuthContext } from '../../contexts/authContext'
@@ -15,6 +15,7 @@ export default function DetailsAuction() {
     const [auction, setAuction] = useGetOneAuction(auctionId);
     const [commentsToLoad, setCommentsToLoad] = useState(3);
     const [comments, isMoreComments] = useGetAllComments(auctionId, commentsToLoad);
+    const [userAddedComment, setUserAddedComment] = useState(false);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [isCloseAuctionDialogOpen, setisCloseAuctionDialogOpen] = useState(false);
     const [isPlaceBid, setIsPlaceBid] = useState(false);
@@ -26,6 +27,27 @@ export default function DetailsAuction() {
 
     const { isAuthenticated, userId, email } = useContext(AuthContext);
     const isOwner = userId === auction._ownerId;
+
+    useEffect(() => {
+        if (userAddedComment) {
+            const newestComment = document.getElementById("last-comment");
+
+            if (newestComment) {
+
+                newestComment.scrollIntoView({ behavior: "smooth", block: "center" });
+
+                setTimeout(() => {
+                    newestComment.classList.add(styles.highlight);
+
+                    setTimeout(() => {
+                        newestComment.classList.remove(styles.highlight);
+                    }, 3000); // This time should match the popEffect animation duration
+                }, 500); // Time after which the animation will take effect after the comment is sent
+            }
+
+            setUserAddedComment(false);
+        }
+    }, [comments]);
 
     async function deleteHandler() {
         try {
@@ -49,6 +71,7 @@ export default function DetailsAuction() {
             const newComment = await commentsAPI.create(values);
             //setComments(prevComments => [newComment, ...prevComments]);
             setCommentsToLoad(prevComments => prevComments + 1);
+            setUserAddedComment(true);
             resetForm();
         } catch (err) {
             console.log(err.message);
@@ -178,8 +201,8 @@ export default function DetailsAuction() {
                             <>
                                 <h2 className={styles.commentsTitle}>Comments:</h2>
                                 <ul className={styles.commentsUl}>
-                                    {comments.map(comment => (
-                                        <li key={comment._id} className={styles.comment}>
+                                    {comments.map((comment, i) => (
+                                        <li key={comment._id} className={styles.comment} id={i === 0 ? "last-comment" : ''}>
                                             {comment._ownerId === userId && auction.closed === 'false' && (
                                                 <button onClick={() => setIsDeleteCommentDialogOpen(comment._id)} className={styles.deleteComment} >Delete</button>
                                             )}

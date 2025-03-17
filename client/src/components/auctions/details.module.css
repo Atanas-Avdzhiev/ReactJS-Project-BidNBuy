@@ -333,3 +333,21 @@
   margin-top: 4em;
   position: relative;
 }
+
+@keyframes popEffect {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.highlight {
+  animation: popEffect 3s ease-out;
+}
