@@ -46,7 +46,10 @@ export const validateRegisterForm = ({ email, password, rePassword }) => {
 
 export const validateBidPrice = (bidPrice, auction) => {
 
-    if (+bidPrice <= +auction.bidPrice || +bidPrice <= 0) {
+    if (+bidPrice <= 0) {
+        return 'The bid price must be positive number!';
+    }
+    if (+bidPrice <= +auction.bidPrice) {
         return 'The bid price must be higher than the current highest bid!';
     }
     if (+bidPrice < +auction.price) {

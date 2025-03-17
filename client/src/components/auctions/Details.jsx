@@ -206,7 +206,7 @@ export default function DetailsAuction() {
                                             {comment._ownerId === userId && auction.closed === 'false' && (
                                                 <button onClick={() => setIsDeleteCommentDialogOpen(comment._id)} className={styles.deleteComment} >Delete</button>
                                             )}
-                                            <p className={styles.commentText}>{comment.owner}: {comment.comment}</p>
+                                            <p className={styles.commentText}><div className={styles.commentTextOwner}>{comment.owner}:</div> {comment.comment}</p>
                                             <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
                                         </li>
                                     ))}
