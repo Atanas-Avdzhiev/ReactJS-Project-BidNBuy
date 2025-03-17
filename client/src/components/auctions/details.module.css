@@ -314,3 +314,22 @@
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.loadMoreComments {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: rgb(255, 166, 0);
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.loadMoreComments:hover {
+  text-decoration: underline;
+  color: rgb(218, 141, 0);
+}
+
+.loadMoreCommentsWrapper {
+  margin-top: 4em;
+  position: relative;
+}

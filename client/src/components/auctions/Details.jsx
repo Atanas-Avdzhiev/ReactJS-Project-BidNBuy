@@ -13,7 +13,8 @@ import { validateBidPrice, validateComment } from "../../utils/validation";
 export default function DetailsAuction() {
     const { auctionId } = useParams();
     const [auction, setAuction] = useGetOneAuction(auctionId);
-    const [comments, setComments] = useGetAllComments(auctionId);
+    const [commentsToLoad, setCommentsToLoad] = useState(3);
+    const [comments, isMoreComments] = useGetAllComments(auctionId, commentsToLoad);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [isCloseAuctionDialogOpen, setisCloseAuctionDialogOpen] = useState(false);
     const [isPlaceBid, setIsPlaceBid] = useState(false);
@@ -46,7 +47,8 @@ export default function DetailsAuction() {
             values.auctionId = auctionId;
             values.owner = email;
             const newComment = await commentsAPI.create(values);
-            setComments(prevComments => [...prevComments, newComment]);
+            //setComments(prevComments => [newComment, ...prevComments]);
+            setCommentsToLoad(prevComments => prevComments + 1);
             resetForm();
         } catch (err) {
             console.log(err.message);
@@ -94,7 +96,8 @@ export default function DetailsAuction() {
         try {
             const commentId = isDeleteCommentDialogOpen;
             await commentsAPI.del(commentId);
-            setComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
+            //setComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
+            setCommentsToLoad(prevComments => prevComments - 1);
         } catch (err) {
             console.log(err.message);
         }
@@ -191,6 +194,12 @@ export default function DetailsAuction() {
                         )}
                     </div>
 
+                    {isMoreComments && (
+                        <div className={styles.loadMoreCommentsWrapper}>
+                            <p onClick={() => setCommentsToLoad(prevComments => prevComments + 3)} className={styles.loadMoreComments}>Load older comments</p>
+                        </div>
+                    )}
+
                     {isAuthenticated && !isOwner && auction.closed === 'false' && (
                         <article className={styles.createComment}>
                             <label className={styles.addNewCommentTitle}>Add new comment:</label>
@@ -200,6 +209,12 @@ export default function DetailsAuction() {
                                     name="comment"
                                     value={values.comment}
                                     onChange={changeHandler}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" && !e.shiftKey) {
+                                            e.preventDefault();
+                                            submitHandler(e);
+                                        }
+                                    }}
                                 ></textarea>
 
                                 {commentError && (
