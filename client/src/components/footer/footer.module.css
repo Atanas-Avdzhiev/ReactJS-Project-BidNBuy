@@ -1,0 +1,58 @@
+.footer {
+    background-color: #242424;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 5em;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fbb034;
+    cursor: pointer;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: #fbb034;
+}
+
+.social {
+    display: flex;
+    gap: 15px;
+}
+
+.social a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.social a:hover {
+    color: #fbb034;
+}
+
+.copy {
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0.7;
+}

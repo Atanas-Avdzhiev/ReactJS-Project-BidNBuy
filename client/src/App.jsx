@@ -15,6 +15,7 @@ import PrivateRoute from './components/guards/PrivateRoute'
 import PublicRoute from './components/guards/PublicRoute'
 import PrivateRouteEditAuction from './components/guards/PrivateRouteEditAuction'
 import SearchAuctions from './components/auctions/Search'
+import Footer from './components/footer/Footer'
 
 function App() {
 
@@ -46,6 +47,8 @@ function App() {
         </Route>
 
       </Routes>
+
+      <Footer />
 
     </AuthContextProvider>
   )
