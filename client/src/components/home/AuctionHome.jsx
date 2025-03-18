@@ -17,7 +17,7 @@ export default function AuctionHome({ _id, auctionName, category, imageUrl, bidP
             <h3>{auctionName}</h3>
             <h2>{category}</h2>
             {bidPrice >= price
-                ? <p className={styles.highestBid}>Highest bid: {bidPrice}$</p>
+                ? <p className={styles.highestBid}>Highest bid: <strong>{bidPrice}$</strong></p>
                 : <p className={styles.highestBid}>No bids yet</p>}
         </div>
     );
