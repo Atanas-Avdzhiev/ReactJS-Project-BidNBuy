@@ -16,6 +16,7 @@ import PublicRoute from './components/guards/PublicRoute'
 import PrivateRouteEditAuction from './components/guards/PrivateRouteEditAuction'
 import SearchAuctions from './components/auctions/Search'
 import Footer from './components/footer/Footer'
+import NotFoundPage from './components/404/404'
 
 function App() {
 
@@ -45,6 +46,8 @@ function App() {
         <Route element={<PrivateRouteEditAuction />}>
           <Route path='/auctions/:auctionId/edit' element={<EditAuction />} />
         </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
 
       </Routes>
 
