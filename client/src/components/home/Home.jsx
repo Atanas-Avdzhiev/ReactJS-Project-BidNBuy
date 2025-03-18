@@ -18,6 +18,25 @@ export default function Home() {
                 <div onClick={() => navigate('/auctions/catalog')} className={styles.explore}>Explore</div>
             </section>
 
+            <div className={styles.videoSection}>
+                <div className={styles.textLeft}>
+                    <h3>New to bidding?</h3>
+                    <p>We’ve prepared the best tips for bidding in online auctions! Watch the video to learn how you can get started and maximize your chances of winning incredible deals.</p>
+                </div>
+                <div className={styles.youtubeVideo}>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube-nocookie.com/embed/nljH3M5XIEo?si=5_xG-ucUdnhChg-T"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                    ></iframe>
+                </div>
+            </div>
+
             <div className={styles.homePage}>
                 <h1>Latest Auctions</h1>
                 <div className={styles.auctionsWrapper}>
