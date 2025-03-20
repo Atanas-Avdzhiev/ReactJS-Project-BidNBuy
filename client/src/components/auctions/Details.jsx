@@ -232,10 +232,7 @@ export default function DetailsAuction() {
                                                 <p className={styles.commentText}> {comment.comment}</p>
                                             </div>
 
-                                            <div className={styles.likesContainer}
-                                                onMouseEnter={() => setHoveredComment(comment.owner)}
-                                                onMouseLeave={() => setHoveredComment(comment.owner)}
-                                            >
+                                            <div className={styles.likesContainer}>
 
                                                 {hoveredComment === comment.owner && comment.likes.length > 0 && (
                                                     <div className={styles.likesDropdown}>
@@ -244,9 +241,11 @@ export default function DetailsAuction() {
                                                         ))}
                                                     </div>
                                                 )}
-
                                                 <p className={styles.likesText}>Likes: </p>
-                                                <span className={styles.likesNumber}>{comment?.likes?.length || 0}</span>
+                                                <span className={styles.likesNumber}
+                                                    onMouseEnter={() => setHoveredComment(comment.owner)}
+                                                    onMouseLeave={() => setHoveredComment(null)}
+                                                >{comment?.likes?.length || 0}</span>
 
                                                 {isAuthenticated && comment._ownerId !== userId && (
                                                     <button onClick={() => likeHandler(comment)} className={comment?.likes?.includes(email) ? styles.likeButton : styles.likeButtonFalse}><FaThumbsUp /></button>
