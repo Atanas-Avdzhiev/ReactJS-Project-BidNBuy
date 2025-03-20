@@ -8,8 +8,11 @@ const create = (commentData) => requester('POST', BASE_URL, commentData);
 
 const del = (commentId) => requester('DELETE', `${BASE_URL}/${commentId}`);
 
+const like = (commentId, commentData) => requester('PATCH', `${BASE_URL}/${commentId}`, commentData);
+
 export const commentsAPI = {
     getAll,
     create,
-    del
+    del,
+    like
 }

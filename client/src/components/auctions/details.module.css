@@ -360,10 +360,12 @@
     border-color: transparent;
     box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.6);
   }
+
   50% {
     border-color: #3498db;
     box-shadow: 0 0 8px 4px rgba(52, 152, 219, 0.6);
   }
+
   100% {
     border-color: #3498db;
     box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.6);
@@ -373,4 +375,48 @@
 .highlight {
   animation: popEffect 3s ease-out, borderAnimation 3s ease-out;
   border: solid 4px transparent;
+}
+
+.likeButton {
+  font-size: 18px;
+  color: #1DA7FC;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.likeButton:hover {
+  transform: scale(1.2);
+}
+
+.likeButtonFalse {
+  font-size: 18px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.likeButtonFalse:hover {
+  transform: scale(1.2);
+}
+
+.likesText {
+  margin-left: 0.5em;
+  color: #555;
+  font-size: 0.8em;
+}
+
+.likesNumber {
+  color: #1DA7FC;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
+.likesWrapper {
+  display: flex;
+  align-items: center;
 }

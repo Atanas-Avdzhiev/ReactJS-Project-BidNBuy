@@ -9,12 +9,13 @@ import { commentsAPI } from "../../api/comments-api";
 import ConfirmationDialog from "../confirmation-dialog/ConfirmationDialog";
 import styles from './details.module.css';
 import { validateBidPrice, validateComment } from "../../utils/validation";
+import { FaThumbsUp } from 'react-icons/fa';
 
 export default function DetailsAuction() {
     const { auctionId } = useParams();
     const [auction, setAuction] = useGetOneAuction(auctionId);
     const [commentsToLoad, setCommentsToLoad] = useState(3);
-    const [comments, isMoreComments] = useGetAllComments(auctionId, commentsToLoad);
+    const [comments, isMoreComments, setComments] = useGetAllComments(auctionId, commentsToLoad);
     const [userAddedComment, setUserAddedComment] = useState(false);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [isCloseAuctionDialogOpen, setisCloseAuctionDialogOpen] = useState(false);
@@ -59,7 +60,7 @@ export default function DetailsAuction() {
 
     }
 
-    const createHandler = async (values) => {
+    const createCommentHandler = async (values) => {
 
         const validate = validateComment(values);
         if (validate !== true) return setCommentError(validate);
@@ -68,6 +69,7 @@ export default function DetailsAuction() {
         try {
             values.auctionId = auctionId;
             values.owner = email;
+            values.likes = [];
             const newComment = await commentsAPI.create(values);
             //setComments(prevComments => [newComment, ...prevComments]);
             setCommentsToLoad(prevComments => prevComments + 1);
@@ -126,7 +128,24 @@ export default function DetailsAuction() {
         }
     }
 
-    const { values, changeHandler, submitHandler, resetForm } = useForm({ comment: '' }, createHandler);
+    const likeHandler = async (comment) => {
+        if (comment._ownerId === userId) return;
+        try {
+            if (!comment?.likes?.includes(userId)) {
+                comment.likes.push(userId);
+                const response = await commentsAPI.like(comment._id, { likes: comment.likes });
+                setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
+            } else if (comment?.likes?.includes(userId)) {
+                comment.likes = comment.likes.filter(like => like !== userId);
+                const response = await commentsAPI.like(comment._id, { likes: comment.likes });
+                setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
+            }
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    const { values, changeHandler, submitHandler, resetForm } = useForm({ comment: '' }, createCommentHandler);
 
     return (
         <>
@@ -207,6 +226,14 @@ export default function DetailsAuction() {
                                                 <button onClick={() => setIsDeleteCommentDialogOpen(comment._id)} className={styles.deleteComment} >Delete</button>
                                             )}
                                             <p className={styles.commentText}><span className={styles.commentTextOwner}>{comment.owner}:</span> {comment.comment}</p>
+                                            <div className={styles.likesWrapper}>
+                                                <p className={styles.likesText}>Likes: <span className={styles.likesNumber}>{comment?.likes?.length || 0}</span></p>
+                                                {isAuthenticated && comment._ownerId !== userId && (
+                                                    <div>
+                                                        <button onClick={() => likeHandler(comment)} className={comment?.likes?.includes(userId) ? styles.likeButton : styles.likeButtonFalse}><FaThumbsUp /></button>
+                                                    </div>
+                                                )}
+                                            </div>
                                             <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
                                         </li>
                                     ))}

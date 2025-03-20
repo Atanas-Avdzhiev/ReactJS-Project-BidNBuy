@@ -19,5 +19,5 @@ export function useGetAllComments(auctionId, commentsToLoad) {
         })()
     }, [commentsToLoad])
 
-    return [comments, isMoreComments];
+    return [comments, isMoreComments, setComments];
 }

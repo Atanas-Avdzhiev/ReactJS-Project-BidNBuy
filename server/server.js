@@ -1247,6 +1247,12 @@
                     return propRules.map(r => applyPropRule(action, r, user, data, newData));
                 }
 
+                if (request.method === 'PATCH' &&
+                    newData.hasOwnProperty('likes') &&
+                    Object.keys(newData).length === 1) {
+                    return propRules.map(r => applyPropRule(action, r, user, data, newData));
+                }
+
                 if (!rule && !isAdmin) {
                     throw new CredentialError$2();
                 }
@@ -1722,7 +1728,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "nasko@abv.bg",
                 "_createdOn": 1742223963000,
-                "_id": "05e48a8e-03e8-424a-afaa-cb29e279442c"
+                "_id": "05e48a8e-03e8-424a-afaa-cb29e279442c",
+                "likes": ["35c62d76-8152-4626-8712-eeb96381bea8", "847ec027-f659-4086-8032-5173e2f9c93a"]
             },
             "9d152eaf-19a2-4d8b-b4b6-0c785837ceca": {
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
@@ -1730,7 +1737,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "ivan@abv.bg",
                 "_createdOn": 1742223964000,
-                "_id": "9d152eaf-19a2-4d8b-b4b6-0c785837ceca"
+                "_id": "9d152eaf-19a2-4d8b-b4b6-0c785837ceca",
+                "likes": []
             },
             "8ff14d1f-3770-42e7-b4c9-f407bcecc4a3": {
                 "_ownerId": "de6a5267-e526-4b03-8a8b-7b040c75322b",
@@ -1738,7 +1746,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "martin@abv.bg",
                 "_createdOn": 1742223965000,
-                "_id": "8ff14d1f-3770-42e7-b4c9-f407bcecc4a3"
+                "_id": "8ff14d1f-3770-42e7-b4c9-f407bcecc4a3",
+                "likes": []
             },
             "52d0ff7b-4fe5-4425-b92f-cc46631a8903": {
                 "_ownerId": "b4ffb951-968e-42a7-8c52-f5aaae2da92b",
@@ -1746,7 +1755,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "dimitar@abv.bg",
                 "_createdOn": 1742223966000,
-                "_id": "52d0ff7b-4fe5-4425-b92f-cc46631a8903"
+                "_id": "52d0ff7b-4fe5-4425-b92f-cc46631a8903",
+                "likes": []
             },
             "2a3ab644-d678-40e8-ba44-b97d0626b6c1": {
                 "_ownerId": "02d57981-5c3f-4ea2-a0d3-cdb245697168",
@@ -1754,7 +1764,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "georgi@abv.bg",
                 "_createdOn": 1742223967000,
-                "_id": "2a3ab644-d678-40e8-ba44-b97d0626b6c1"
+                "_id": "2a3ab644-d678-40e8-ba44-b97d0626b6c1",
+                "likes": []
             },
             "0168b464-c72c-44a3-ba35-5c186517bd09": {
                 "_ownerId": "d70878f0-f13f-43eb-b90c-c3ca59274d21",
@@ -1762,7 +1773,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "ivaylo@abv.bg",
                 "_createdOn": 1742223968000,
-                "_id": "0168b464-c72c-44a3-ba35-5c186517bd09"
+                "_id": "0168b464-c72c-44a3-ba35-5c186517bd09",
+                "likes": []
             },
             "05180496-86a1-4ef5-9a2c-aa393b109783": {
                 "_ownerId": "55869fb9-74cb-4ac0-b418-070d33c5d70e",
@@ -1770,7 +1782,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "maria@abv.bg",
                 "_createdOn": 1742223969000,
-                "_id": "05180496-86a1-4ef5-9a2c-aa393b109783"
+                "_id": "05180496-86a1-4ef5-9a2c-aa393b109783",
+                "likes": ["060975b2-a849-4086-ba4c-03075a72a4ce", "d70878f0-f13f-43eb-b90c-c3ca59274d21", "02d57981-5c3f-4ea2-a0d3-cdb245697168"]
             },
             "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90": {
                 "_ownerId": "060975b2-a849-4086-ba4c-03075a72a4ce",
@@ -1778,7 +1791,8 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "elena@abv.bg",
                 "_createdOn": 1742223970000,
-                "_id": "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90"
+                "_id": "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90",
+                "likes": ["55869fb9-74cb-4ac0-b418-070d33c5d70e", "d70878f0-f13f-43eb-b90c-c3ca59274d21", "02d57981-5c3f-4ea2-a0d3-cdb245697168", "b4ffb951-968e-42a7-8c52-f5aaae2da92b", "de6a5267-e526-4b03-8a8b-7b040c75322b"]
             }
         }
     };
