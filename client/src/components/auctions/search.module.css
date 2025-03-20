@@ -81,6 +81,7 @@
 .noAuctionsWrapper {
     display: flex;
     justify-content: center;
+    padding: 12em;
 }
 
 .noArticles {

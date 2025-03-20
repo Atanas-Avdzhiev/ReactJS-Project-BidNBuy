@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import AuctionHome from "./AuctionHome";
@@ -8,9 +9,41 @@ export default function Home() {
     const auctions = useGetLatestAuctions();
     const navigate = useNavigate();
 
+    const [news, setNews] = useState([]);
+
+    useEffect(() => {
+        async function fetchNews() {
+            try {
+                const response = await fetch(
+                    "https://newsapi.org/v2/everything?q=\"auction\"&searchIn=title&sortBy=publishedAt&language=en&pageSize=10&domains=bbc.com,cnn.com,forbes.com,bloomberg.com,reuters.com,nytimes.com,wsj.com,guardian.com,sothebys.com,christies.com&apiKey=712955d977944dffbcf8372294aabaae"
+                );
+                const data = await response.json();
+                setNews(data.articles || []);
+            } catch (error) {
+                console.error("Failed to fetch news:", error);
+            }
+        }
+        fetchNews();
+    }, []);
+
     return (
         <>
             <section className={styles.welcomeWorld}>
+
+                <div className={styles.newsTickerContainer}>
+                    <span className={styles.newsHeading}>📰 Auction News:</span>
+                    <div className={styles.newsTicker}>
+                        <div className={styles.newsTickerContent}>
+                            {news.map((article, index) => (
+                                <a key={index} href={article.url} target="_blank" rel="noopener noreferrer" className={styles.newsItem}>
+                                    <img src={article.urlToImage} alt="News Thumbnail" className={styles.newsImage} />
+                                    <span className={styles.newsTitle}>{article.title}</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
                 <div className={styles.welcomeMessage}>
                     <h1>BidNBuy</h1>
                     <h2>Discover, bid, and win! Sell your items or score incredible deals at BidNBuy, the ultimate auction marketplace.</h2>
