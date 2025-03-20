@@ -1243,12 +1243,7 @@
                 if (request.method === 'PATCH' &&
                     newData.hasOwnProperty('bidPrice') &&
                     newData.hasOwnProperty('bidOwner') &&
-                    !newData.hasOwnProperty('auctionName') &&
-                    !newData.hasOwnProperty('category') &&
-                    !newData.hasOwnProperty('price') &&
-                    !newData.hasOwnProperty('imageUrl') &&
-                    !newData.hasOwnProperty('description') &&
-                    !newData.hasOwnProperty('closed')) {
+                    Object.keys(newData).length === 2) {
                     return propRules.map(r => applyPropRule(action, r, user, data, newData));
                 }
 
