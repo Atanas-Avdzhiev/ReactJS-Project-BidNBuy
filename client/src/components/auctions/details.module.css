@@ -112,12 +112,8 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   margin: 1em auto;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.comment:hover {
-  transform: scale(1.015);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: visible;
+  z-index: 10;
 }
 
 .commentsTitle {
@@ -129,11 +125,18 @@
   font-size: 1.2em;
 }
 
+.commentTextWrapper{
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0 0 1em;
+  gap: 0.5em;
+}
+
 .commentText {
   font-size: 1.2em;
   color: white;
-  margin-left: 0.5em;
-  margin-right: 8em;
+  margin: 0;
+  max-width: 110ch;
 }
 
 .no-comment {
@@ -143,6 +146,8 @@
 
 .commentsUl {
   list-style: none;
+  overflow: visible;
+  position: relative;
 }
 
 .addNewCommentTitle {
@@ -296,9 +301,7 @@
 
 .commentTextOwner {
   color: #6A4E23;
-  margin-bottom: 0.1em;
   font-size: 1.1em;
-  display: block;
 }
 
 .deleteComment {
@@ -383,7 +386,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 0.5em;
 }
 
 .likeButton:hover {
@@ -396,15 +398,21 @@
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 0.5em;
 }
 
 .likeButtonFalse:hover {
   transform: scale(1.2);
 }
 
+.likesContainer{
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-left: 0.5em;
+  position: relative;
+}
+
 .likesText {
-  margin-left: 0.5em;
   color: #555;
   font-size: 0.8em;
 }
@@ -413,10 +421,21 @@
   color: #1DA7FC;
   font-size: 1.25em;
   font-weight: bold;
-  margin-left: 0.5em;
+  cursor: pointer;
 }
 
-.likesWrapper {
-  display: flex;
-  align-items: center;
+.likesDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.likesEmail {
+  color: #444444;
 }

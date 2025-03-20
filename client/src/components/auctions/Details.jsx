@@ -25,6 +25,7 @@ export default function DetailsAuction() {
     const [error, setError] = useState('');
     const [commentError, setCommentError] = useState('');
     const [isDeleteCommentDialogOpen, setIsDeleteCommentDialogOpen] = useState(false);
+    const [hoveredComment, setHoveredComment] = useState(null);
 
     const { isAuthenticated, userId, email } = useContext(AuthContext);
     const isOwner = userId === auction._ownerId;
@@ -131,12 +132,12 @@ export default function DetailsAuction() {
     const likeHandler = async (comment) => {
         if (comment._ownerId === userId) return;
         try {
-            if (!comment?.likes?.includes(userId)) {
-                comment.likes.push(userId);
+            if (!comment?.likes?.includes(email)) {
+                comment.likes.push(email);
                 const response = await commentsAPI.like(comment._id, { likes: comment.likes });
                 setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
-            } else if (comment?.likes?.includes(userId)) {
-                comment.likes = comment.likes.filter(like => like !== userId);
+            } else if (comment?.likes?.includes(email)) {
+                comment.likes = comment.likes.filter(like => like !== email);
                 const response = await commentsAPI.like(comment._id, { likes: comment.likes });
                 setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
             }
@@ -215,7 +216,7 @@ export default function DetailsAuction() {
                         <p className={styles.text}>{auction.description}</p>
                     </div>
 
-                    <div className={styles.detailsComments}>
+                    <div>
                         {comments.length > 0 ? (
                             <>
                                 <h2 className={styles.commentsTitle}>Comments:</h2>
@@ -225,15 +226,33 @@ export default function DetailsAuction() {
                                             {comment._ownerId === userId && auction.closed === 'false' && (
                                                 <button onClick={() => setIsDeleteCommentDialogOpen(comment._id)} className={styles.deleteComment} >Delete</button>
                                             )}
-                                            <p className={styles.commentText}><span className={styles.commentTextOwner}>{comment.owner}:</span> {comment.comment}</p>
-                                            <div className={styles.likesWrapper}>
-                                                <p className={styles.likesText}>Likes: <span className={styles.likesNumber}>{comment?.likes?.length || 0}</span></p>
-                                                {isAuthenticated && comment._ownerId !== userId && (
-                                                    <div>
-                                                        <button onClick={() => likeHandler(comment)} className={comment?.likes?.includes(userId) ? styles.likeButton : styles.likeButtonFalse}><FaThumbsUp /></button>
+
+                                            <div className={styles.commentTextWrapper}>
+                                                <span className={styles.commentTextOwner}>{comment.owner}:</span>
+                                                <p className={styles.commentText}> {comment.comment}</p>
+                                            </div>
+
+                                            <div className={styles.likesContainer}
+                                                onMouseEnter={() => setHoveredComment(comment.owner)}
+                                                onMouseLeave={() => setHoveredComment(comment.owner)}
+                                            >
+
+                                                {hoveredComment === comment.owner && comment.likes.length > 0 && (
+                                                    <div className={styles.likesDropdown}>
+                                                        {comment.likes.map((owner, index) => (
+                                                            <p className={styles.likesEmail} key={index}>{owner}</p>
+                                                        ))}
                                                     </div>
                                                 )}
+
+                                                <p className={styles.likesText}>Likes: </p>
+                                                <span className={styles.likesNumber}>{comment?.likes?.length || 0}</span>
+
+                                                {isAuthenticated && comment._ownerId !== userId && (
+                                                    <button onClick={() => likeHandler(comment)} className={comment?.likes?.includes(email) ? styles.likeButton : styles.likeButtonFalse}><FaThumbsUp /></button>
+                                                )}
                                             </div>
+
                                             <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
                                         </li>
                                     ))}

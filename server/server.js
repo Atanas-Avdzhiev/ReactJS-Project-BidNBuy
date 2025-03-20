@@ -1729,7 +1729,7 @@
                 "owner": "nasko@abv.bg",
                 "_createdOn": 1742223963000,
                 "_id": "05e48a8e-03e8-424a-afaa-cb29e279442c",
-                "likes": ["35c62d76-8152-4626-8712-eeb96381bea8", "847ec027-f659-4086-8032-5173e2f9c93a"]
+                "likes": ["pesho@abv.bg", "ivan@abv.bg"]
             },
             "9d152eaf-19a2-4d8b-b4b6-0c785837ceca": {
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
@@ -1783,7 +1783,7 @@
                 "owner": "maria@abv.bg",
                 "_createdOn": 1742223969000,
                 "_id": "05180496-86a1-4ef5-9a2c-aa393b109783",
-                "likes": ["060975b2-a849-4086-ba4c-03075a72a4ce", "d70878f0-f13f-43eb-b90c-c3ca59274d21", "02d57981-5c3f-4ea2-a0d3-cdb245697168"]
+                "likes": ["elena@abv.bg", "ivaylo@abv.bg", "georgi@abv.bg"]
             },
             "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90": {
                 "_ownerId": "060975b2-a849-4086-ba4c-03075a72a4ce",
@@ -1792,7 +1792,7 @@
                 "owner": "elena@abv.bg",
                 "_createdOn": 1742223970000,
                 "_id": "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90",
-                "likes": ["55869fb9-74cb-4ac0-b418-070d33c5d70e", "d70878f0-f13f-43eb-b90c-c3ca59274d21", "02d57981-5c3f-4ea2-a0d3-cdb245697168", "b4ffb951-968e-42a7-8c52-f5aaae2da92b", "de6a5267-e526-4b03-8a8b-7b040c75322b"]
+                "likes": ["maria@abv.bg", "ivaylo@abv.bg", "georgi@abv.bg", "dimitar@abv.bg", "martin@abv.bg"]
             }
         }
     };
