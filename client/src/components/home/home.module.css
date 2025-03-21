@@ -21,7 +21,7 @@
   color: #8B5E3C;
   margin-top: 100px;
   font-style: italic;
-  margin-bottom: 10em;
+  margin-bottom: 8em;
 }
 
 .homePage {
@@ -138,7 +138,7 @@
   background-color: transparent;
   color: rgb(50, 30, 0);
   padding: 10px 20px;
-  font-size: 2rem;
+  font-size: 40px;
   border-radius: 8px;
   border: solid 3px rgb(50, 30, 0);
   max-width: 3.5em;
@@ -146,11 +146,10 @@
 }
 
 .explore:hover {
-  background-color: rgb(231, 152, 47);
-  color: rgb(255, 255, 255);
-  border-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0, 0.15);
   transform: translateY(-3px);
   cursor: pointer;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .auctionLink {
@@ -227,7 +226,7 @@
   background: transparent;
   padding: 10px;
   white-space: nowrap;
-  margin-top: 3em;
+  margin-top: 3.5em;
 }
 
 .newsHeading {

@@ -113,7 +113,6 @@
   margin: 1em auto;
   position: relative;
   overflow: visible;
-  z-index: 10;
 }
 
 .commentsTitle {
@@ -125,7 +124,7 @@
   font-size: 1.2em;
 }
 
-.commentTextWrapper{
+.commentTextWrapper {
   display: flex;
   flex-direction: column;
   padding: 1em 0 0 1em;
@@ -205,7 +204,7 @@
 }
 
 .detailsTextarea {
-  width: 100%;
+  width: calc(100% - 1.5em);
   height: 100px;
   font-size: 1rem;
   color: #333;
@@ -350,7 +349,7 @@
   }
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1.025);
   }
 
   100% {
@@ -376,8 +375,8 @@
 }
 
 .highlight {
-  animation: popEffect 3s ease-out, borderAnimation 3s ease-out;
-  border: solid 4px transparent;
+  animation: popEffect 1s ease-out, borderAnimation 1s ease-out;
+  border: solid 1px transparent;
 }
 
 .likeButton {
@@ -404,7 +403,7 @@
   transform: scale(1.2);
 }
 
-.likesContainer{
+.likesContainer {
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -415,27 +414,39 @@
 .likesText {
   color: #555;
   font-size: 0.8em;
+  margin: 0;
 }
 
 .likesNumber {
   color: #1DA7FC;
-  font-size: 1.25em;
+  font-size: 1.1em;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .likesDropdown {
   position: absolute;
-  top: 100%;
+  top: 90%;
   left: 0;
   background: #f9f9f9;
   border: 1px solid #ccc;
-  padding: 5px;
+  padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   z-index: 9999;
+  max-width: 30ch;
+  overflow: hidden;
 }
 
 .likesEmail {
   color: #444444;
+  margin: 0.5em 0;
+  font-size: 0.8em;
+}
+
+.likesNumberWrapper {
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: default;
 }

@@ -43,7 +43,7 @@ export default function DetailsAuction() {
 
                     setTimeout(() => {
                         newestComment.classList.remove(styles.highlight);
-                    }, 3000); // This time should match the popEffect animation duration
+                    }, 1000); // This time should match the popEffect animation duration
                 }, 500); // Time after which the animation will take effect after the comment is sent
             }
 
@@ -235,17 +235,22 @@ export default function DetailsAuction() {
                                             <div className={styles.likesContainer}>
 
                                                 {hoveredComment === comment.owner && comment.likes.length > 0 && (
-                                                    <div className={styles.likesDropdown}>
+                                                    <div className={styles.likesDropdown}
+                                                        onMouseEnter={() => setHoveredComment(comment.owner)}
+                                                        onMouseLeave={() => setHoveredComment(null)}
+                                                    >
                                                         {comment.likes.map((owner, index) => (
                                                             <p className={styles.likesEmail} key={index}>{owner}</p>
                                                         ))}
                                                     </div>
                                                 )}
-                                                <p className={styles.likesText}>Likes: </p>
-                                                <span className={styles.likesNumber}
+                                                <div className={styles.likesNumberWrapper}
                                                     onMouseEnter={() => setHoveredComment(comment.owner)}
                                                     onMouseLeave={() => setHoveredComment(null)}
-                                                >{comment?.likes?.length || 0}</span>
+                                                >
+                                                    <p className={styles.likesText}>Likes: </p>
+                                                    <span className={styles.likesNumber}>{comment?.likes?.length || 0}</span>
+                                                </div>
 
                                                 {isAuthenticated && comment._ownerId !== userId && (
                                                     <button onClick={() => likeHandler(comment)} className={comment?.likes?.includes(email) ? styles.likeButton : styles.likeButtonFalse}><FaThumbsUp /></button>
