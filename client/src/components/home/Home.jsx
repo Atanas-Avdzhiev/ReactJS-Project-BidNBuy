@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AuctionHome from "./AuctionHome";
 import { useGetLatestAuctions } from "../../hooks/useAuctions";
 import styles from './home.module.css';
+import { AUCTIONS_NEWS_URL } from "../../api/auctions-api";
 
 export default function Home() {
     const auctions = useGetLatestAuctions();
@@ -14,9 +15,7 @@ export default function Home() {
     useEffect(() => {
         async function fetchNews() {
             try {
-                const response = await fetch(
-                    "https://newsapi.org/v2/everything?q=\"auction\"&searchIn=title&sortBy=publishedAt&language=en&pageSize=10&domains=bbc.com,cnn.com,forbes.com,bloomberg.com,reuters.com,nytimes.com,wsj.com,guardian.com,sothebys.com,christies.com&apiKey=712955d977944dffbcf8372294aabaae"
-                );
+                const response = await fetch(AUCTIONS_NEWS_URL);
                 const data = await response.json();
                 setNews(data.articles || []);
             } catch (error) {

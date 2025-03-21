@@ -2,6 +2,8 @@ import requester from "./requester"
 
 const BASE_URL = 'http://localhost:3030/data/auctions'
 
+export const AUCTIONS_NEWS_URL = 'https://newsapi.org/v2/everything?q=\"auction\"&searchIn=title&sortBy=publishedAt&language=en&pageSize=10&domains=bbc.com,cnn.com,forbes.com,bloomberg.com,reuters.com,nytimes.com,wsj.com,guardian.com,sothebys.com,christies.com&apiKey=712955d977944dffbcf8372294aabaae';
+
 const getAll = () => requester('GET', `${BASE_URL}?sortBy=_createdOn%20desc`);
 
 const getOne = (auctionId) => requester('GET', `${BASE_URL}/${auctionId}`);
