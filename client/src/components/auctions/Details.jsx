@@ -306,7 +306,7 @@ export default function DetailsAuction() {
                                                     </div>
                                                 )}
 
-                                                <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
+                                                <p className={styles.commentDate}>{comment._updatedOn ? 'Edited ' + new Date(comment._updatedOn).toLocaleString() : new Date(comment._createdOn).toLocaleString()}</p>
                                             </div>
                                         </li>
                                     ))}
