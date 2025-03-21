@@ -441,6 +441,11 @@
   color: #444444;
   margin: 0.5em 0;
   font-size: 0.8em;
+  cursor: pointer;
+}
+
+.likesEmail:hover {
+  text-decoration: underline;
 }
 
 .likesNumberWrapper {

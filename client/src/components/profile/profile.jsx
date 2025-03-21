@@ -2,11 +2,18 @@ import { useContext, useEffect, useState } from 'react';
 import styles from './profile.module.css';
 import { auctionsAPI } from '../../api/auctions-api';
 import { AuthContext } from '../../contexts/authContext';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+import { getUser } from '../../api/auth-api';
 
 export default function Profile() {
-    const { email, userId, createdOn } = useContext(AuthContext);
+    const { codedEmail } = useParams();
+
+    const email = decodeURIComponent(codedEmail);
+
+    const [user, setUser] = useState({ email: '', _ownerId: '', _createdOn: '' });
+
+    const { email: myEmail } = useContext(AuthContext);
     const [auctions, setAuctions] = useState([]);
     const [selected, setSelected] = useState("my");
     const [isLoading, setIsLoading] = useState(false);
@@ -22,15 +29,18 @@ export default function Profile() {
     useEffect(() => {
         (async () => {
             try {
+                const user = await getUser(email);
+                setUser(user);
+
                 if (page <= 0) {
-                    return navigate('/profile?page=1');
+                    return navigate(`/profile/${encodeURIComponent(email)}?page=1`);
                 }
 
                 setIsLoading(true);
 
                 if (selected === 'my') {
-                    const ownerAuctions = await auctionsAPI.getOwnerAuctions(userId, recordsToSkip, recordsPerPage + 1);
-
+                    const ownerAuctions = await auctionsAPI.getOwnerAuctions(user._ownerId, recordsToSkip, recordsPerPage + 1);
+                    //console.log(user)
                     if (ownerAuctions.length === recordsPerPage + 1) {
                         setNextPage(true);
                         ownerAuctions.pop();
@@ -40,7 +50,7 @@ export default function Profile() {
                     setAuctions(ownerAuctions);
                 }
                 else if (selected === 'won') {
-                    const auctionsWon = await auctionsAPI.getWonAuctions(email, recordsToSkip, recordsPerPage + 1);
+                    const auctionsWon = await auctionsAPI.getWonAuctions(user.email, recordsToSkip, recordsPerPage + 1);
 
                     if (auctionsWon.length === recordsPerPage + 1) {
                         setNextPage(true);
@@ -62,8 +72,8 @@ export default function Profile() {
         <div className={styles.profileContainer}>
             <h1 className={styles.title}>Profile</h1>
             <div className={styles.infoSection}>
-                <p><strong>Email:</strong> {email}</p>
-                <p>Member since: {new Date(createdOn).toLocaleDateString()}</p>
+                <p><strong>Email:</strong> {user.email}</p>
+                <p>Member since: {new Date(user._createdOn).toLocaleDateString()}</p>
             </div>
 
             <div className={styles.toggleContainer}>
@@ -71,13 +81,13 @@ export default function Profile() {
                     className={`${styles.toggleButton} ${selected === "my" ? styles.active : styles.inactive}`}
                     onClick={() => {
                         setSelected("my")
-                        navigate('/profile?page=1');
-                    }}>My Auctions</button>
+                        navigate(`/profile/${encodeURIComponent(email)}?page=1`);
+                    }}>{myEmail === email ? 'My Auctions' : 'User Auctions'}</button>
                 <button
                     className={`${styles.toggleButton} ${selected === "won" ? styles.active : styles.inactive}`}
                     onClick={() => {
                         setSelected("won")
-                        navigate('/profile?page=1');
+                        navigate(`/profile/${encodeURIComponent(email)}?page=1`);
                     }}>Won Auctions</button>
             </div>
 
@@ -86,7 +96,7 @@ export default function Profile() {
             {selected === 'my' && (
 
                 <div className={styles.auctionsSection}>
-                    <h2>My Auctions</h2>
+                    <h2>{myEmail === email ? 'My Auctions' : 'User Auctions'}</h2>
                     {auctions.length > 0 ? (
                         <div className={styles.auctionList}>
                             {auctions.map((auction) => (
@@ -129,15 +139,15 @@ export default function Profile() {
 
             {auctions.length > 0 && (
                 <div className={styles.paginationContainer}>
-                    <button disabled={page === 1} onClick={() => navigate(`/profile?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+                    <button disabled={page === 1} onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
 
-                    {page > 1 && <button onClick={() => navigate(`/profile?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
+                    {page > 1 && <button onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
 
                     <button className={styles.pageCircleCurrent}>{page}</button>
 
-                    {nextPage && <button onClick={() => navigate(`/profile?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+                    {nextPage && <button onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
 
-                    <button disabled={!nextPage} onClick={() => navigate(`/profile?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                    <button disabled={!nextPage} onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>
             )}
 

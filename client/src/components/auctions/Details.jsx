@@ -240,7 +240,7 @@ export default function DetailsAuction() {
                                                         onMouseLeave={() => setHoveredComment(null)}
                                                     >
                                                         {comment.likes.map((owner, index) => (
-                                                            <p className={styles.likesEmail} key={index}>{owner}</p>
+                                                            <p onClick={() => navigate(`/profile/${encodeURIComponent(owner)}`)} className={styles.likesEmail} key={index}>{owner}</p>
                                                         ))}
                                                     </div>
                                                 )}

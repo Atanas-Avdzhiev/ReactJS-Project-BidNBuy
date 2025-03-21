@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/authContext';
 import styles from './header.module.css';
 
 export default function Header() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, email } = useContext(AuthContext);
     const [scrolled, setScrolled] = useState(false);
 
     const [showAuctionDropdown, setShowAuctionDropdown] = useState(false);
@@ -48,7 +48,7 @@ export default function Header() {
                     {isAuthenticated ? (
                         <div className={styles.user}>
                             <li><Link to="/auctions/create" className={styles.navLink}>Create Auction</Link></li>
-                            <li><Link to="/profile" className={styles.navLink}>Profile</Link></li>
+                            <li><Link to={`/profile/${encodeURIComponent(email)}`} className={styles.navLink}>Profile</Link></li>
                             <li><Link to="/logout" className={styles.navLink}>Logout</Link></li>
                         </div>
                     ) : (

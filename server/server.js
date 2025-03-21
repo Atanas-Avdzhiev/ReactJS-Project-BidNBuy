@@ -1400,6 +1400,62 @@
         }
     };
     var seedData = {
+        savedUsers: {
+            "8c41b4ed-8e52-49d4-a835-a8d019d7f8ca": {
+                email: "pesho@abv.bg",
+                _createdOn: 1741772743003,
+                _id: "8c41b4ed-8e52-49d4-a835-a8d019d7f8ca",
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8"
+            },
+            "7cb9e543-7b98-4ae6-90b4-a597bfc98408": {
+                email: "ivan@abv.bg",
+                _createdOn: 1741772744003,
+                _id: "7cb9e543-7b98-4ae6-90b4-a597bfc98408",
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a"
+            },
+            "127f2e7a-df35-4148-94b7-6755d35ba408": {
+                email: "nasko@abv.bg",
+                _createdOn: 1741772745003,
+                _id: "127f2e7a-df35-4148-94b7-6755d35ba408",
+                _ownerId: "db303ad2-22cd-4d3d-b67b-8298bcf0192c"
+            },
+            "25a80614-4954-48ad-bdd2-b0dddfe8bb5d": {
+                email: "martin@abv.bg",
+                _createdOn: 1741772746003,
+                _id: "25a80614-4954-48ad-bdd2-b0dddfe8bb5d",
+                _ownerId: "de6a5267-e526-4b03-8a8b-7b040c75322b"
+            },
+            "a6ed647b-f562-4ceb-b0ad-a4ecb526723e": {
+                email: "dimitar@abv.bg",
+                _createdOn: 1741772747003,
+                _id: "a6ed647b-f562-4ceb-b0ad-a4ecb526723e",
+                _ownerId: "b4ffb951-968e-42a7-8c52-f5aaae2da92b"
+            },
+            "2e46ab96-dda2-41b2-8fb3-248b031ae617": {
+                email: "georgi@abv.bg",
+                _createdOn: 1741772748003,
+                _id: "2e46ab96-dda2-41b2-8fb3-248b031ae617",
+                _ownerId: "02d57981-5c3f-4ea2-a0d3-cdb245697168"
+            },
+            "4fcded08-804d-4a5b-b453-3f6a0edcaaa9": {
+                email: "ivaylo@abv.bg",
+                _createdOn: 1741772749003,
+                _id: "4fcded08-804d-4a5b-b453-3f6a0edcaaa9",
+                _ownerId: "d70878f0-f13f-43eb-b90c-c3ca59274d21"
+            },
+            "f68b93b4-91dc-4c8f-951b-42df62802687": {
+                email: "maria@abv.bg",
+                _createdOn: 1741772750003,
+                _id: "f68b93b4-91dc-4c8f-951b-42df62802687",
+                _ownerId: "55869fb9-74cb-4ac0-b418-070d33c5d70e"
+            },
+            "48f03be7-01c3-4374-bad7-8db62e34776d": {
+                email: "elena@abv.bg",
+                _createdOn: 1741772751003,
+                _id: "48f03be7-01c3-4374-bad7-8db62e34776d",
+                _ownerId: "060975b2-a849-4086-ba4c-03075a72a4ce"
+            }
+        },
         auctions:
         {
             "0bc5128a-0a25-4f1d-ba6e-b4d0b44c17e5": {
@@ -1783,7 +1839,7 @@
                 "owner": "maria@abv.bg",
                 "_createdOn": 1742223969000,
                 "_id": "05180496-86a1-4ef5-9a2c-aa393b109783",
-                "likes": ["elena@abv.bg", "ivaylo@abv.bg", "georgi@abv.bg"]
+                "likes": ["nasko@abv.bg", "pesho@abv.bg", "elena@abv.bg", "ivaylo@abv.bg", "georgi@abv.bg"]
             },
             "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90": {
                 "_ownerId": "060975b2-a849-4086-ba4c-03075a72a4ce",
@@ -1792,7 +1848,7 @@
                 "owner": "elena@abv.bg",
                 "_createdOn": 1742223970000,
                 "_id": "d22fd1ca-0868-4c76-ac62-9ea5c0ac2b90",
-                "likes": ["maria@abv.bg", "ivaylo@abv.bg", "georgi@abv.bg", "dimitar@abv.bg", "martin@abv.bg"]
+                "likes": ["nasko@abv.bg", "pesho@abv.bg", "maria@abv.bg", "ivaylo@abv.bg", "georgi@abv.bg", "dimitar@abv.bg", "martin@abv.bg"]
             }
         }
     };
