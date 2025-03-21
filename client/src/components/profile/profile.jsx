@@ -33,7 +33,7 @@ export default function Profile() {
                 setUser(user);
 
                 if (page <= 0) {
-                    return navigate(`/profile/${encodeURIComponent(email)}?page=1`);
+                    return navigate(`/profile/${codedEmail}?page=1`);
                 }
 
                 setIsLoading(true);
@@ -81,13 +81,13 @@ export default function Profile() {
                     className={`${styles.toggleButton} ${selected === "my" ? styles.active : styles.inactive}`}
                     onClick={() => {
                         setSelected("my")
-                        navigate(`/profile/${encodeURIComponent(email)}?page=1`);
+                        navigate(`/profile/${codedEmail}?page=1`);
                     }}>{myEmail === email ? 'My Auctions' : 'User Auctions'}</button>
                 <button
                     className={`${styles.toggleButton} ${selected === "won" ? styles.active : styles.inactive}`}
                     onClick={() => {
                         setSelected("won")
-                        navigate(`/profile/${encodeURIComponent(email)}?page=1`);
+                        navigate(`/profile/${codedEmail}?page=1`);
                     }}>Won Auctions</button>
             </div>
 
@@ -139,15 +139,15 @@ export default function Profile() {
 
             {auctions.length > 0 && (
                 <div className={styles.paginationContainer}>
-                    <button disabled={page === 1} onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+                    <button disabled={page === 1} onClick={() => navigate(`/profile/${codedEmail}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
 
-                    {page > 1 && <button onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
+                    {page > 1 && <button onClick={() => navigate(`/profile/${codedEmail}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
 
                     <button className={styles.pageCircleCurrent}>{page}</button>
 
-                    {nextPage && <button onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+                    {nextPage && <button onClick={() => navigate(`/profile/${codedEmail}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
 
-                    <button disabled={!nextPage} onClick={() => navigate(`/profile/${encodeURIComponent(email)}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                    <button disabled={!nextPage} onClick={() => navigate(`/profile/${codedEmail}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>
             )}
 
