@@ -301,6 +301,12 @@
 .commentTextOwner {
   color: #6A4E23;
   font-size: 1.1em;
+  width: fit-content;
+}
+
+.commentTextOwner:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .deleteComment {

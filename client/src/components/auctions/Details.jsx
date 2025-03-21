@@ -231,7 +231,7 @@ export default function DetailsAuction() {
                                             )}
 
                                             <div className={styles.commentTextWrapper}>
-                                                <span className={styles.commentTextOwner}>{comment.owner}:</span>
+                                                <span onClick={() => navigate(`/profile/${comment.owner}`)} className={styles.commentTextOwner}>{comment.owner}:</span>
                                                 <p className={styles.commentText}> {comment.comment}</p>
                                             </div>
 
