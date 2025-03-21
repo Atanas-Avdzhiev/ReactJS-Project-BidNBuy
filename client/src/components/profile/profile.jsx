@@ -38,7 +38,7 @@ export default function Profile() {
 
                 if (selected === 'my') {
                     const ownerAuctions = await auctionsAPI.getOwnerAuctions(user._ownerId, recordsToSkip, recordsPerPage + 1);
-                    
+
                     if (ownerAuctions.length === recordsPerPage + 1) {
                         setNextPage(true);
                         ownerAuctions.pop();
@@ -107,7 +107,7 @@ export default function Profile() {
                                 </div>
                             ))}
                         </div>
-                    ) : (page === 1 && <p className={styles.noAuctions}>No auctions created.</p>)}
+                    ) : ((page === 1 || page === 0) && <p className={styles.noAuctions}>No auctions created.</p>)}
                 </div>
 
             )}
@@ -130,7 +130,7 @@ export default function Profile() {
 
                             )}
                         </div>
-                    ) : (page === 1 && <p className={styles.noAuctions}>No auctions won.</p>)}
+                    ) : ((page === 1 || page === 0) && <p className={styles.noAuctions}>No auctions won.</p>)}
                 </div>
 
             )}
