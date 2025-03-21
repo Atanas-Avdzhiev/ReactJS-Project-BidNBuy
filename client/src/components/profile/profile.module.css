@@ -181,3 +181,9 @@
     background-color: white;
     border: 4px solid black;
 }
+
+.noAuctions{
+    font-size: 2.5em;
+    margin: 5em 0;
+    color: #777;
+}

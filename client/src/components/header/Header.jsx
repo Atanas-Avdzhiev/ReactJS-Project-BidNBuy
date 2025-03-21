@@ -48,7 +48,7 @@ export default function Header() {
                     {isAuthenticated ? (
                         <div className={styles.user}>
                             <li><Link to="/auctions/create" className={styles.navLink}>Create Auction</Link></li>
-                            <li><Link to={`/profile/${encodeURIComponent(email)}`} className={styles.navLink}>Profile</Link></li>
+                            <li><Link to={`/profile/${email}`} className={styles.navLink}>Profile</Link></li>
                             <li><Link to="/logout" className={styles.navLink}>Logout</Link></li>
                         </div>
                     ) : (

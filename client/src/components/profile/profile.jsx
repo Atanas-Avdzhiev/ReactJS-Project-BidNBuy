@@ -7,9 +7,7 @@ import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import { getUser } from '../../api/auth-api';
 
 export default function Profile() {
-    const { codedEmail } = useParams();
-
-    const email = decodeURIComponent(codedEmail);
+    const { email } = useParams();
 
     const [user, setUser] = useState({ email: '', _ownerId: '', _createdOn: '' });
 
@@ -33,14 +31,14 @@ export default function Profile() {
                 setUser(user);
 
                 if (page <= 0) {
-                    return navigate(`/profile/${codedEmail}?page=1`);
+                    return navigate(`/profile/${email}?page=1`);
                 }
 
                 setIsLoading(true);
 
                 if (selected === 'my') {
                     const ownerAuctions = await auctionsAPI.getOwnerAuctions(user._ownerId, recordsToSkip, recordsPerPage + 1);
-                    //console.log(user)
+                    
                     if (ownerAuctions.length === recordsPerPage + 1) {
                         setNextPage(true);
                         ownerAuctions.pop();
@@ -81,13 +79,13 @@ export default function Profile() {
                     className={`${styles.toggleButton} ${selected === "my" ? styles.active : styles.inactive}`}
                     onClick={() => {
                         setSelected("my")
-                        navigate(`/profile/${codedEmail}?page=1`);
+                        navigate(`/profile/${email}?page=1`);
                     }}>{myEmail === email ? 'My Auctions' : 'User Auctions'}</button>
                 <button
                     className={`${styles.toggleButton} ${selected === "won" ? styles.active : styles.inactive}`}
                     onClick={() => {
                         setSelected("won")
-                        navigate(`/profile/${codedEmail}?page=1`);
+                        navigate(`/profile/${email}?page=1`);
                     }}>Won Auctions</button>
             </div>
 
@@ -109,7 +107,7 @@ export default function Profile() {
                                 </div>
                             ))}
                         </div>
-                    ) : (page === 1 && <p>No auctions created.</p>)}
+                    ) : (page === 1 && <p className={styles.noAuctions}>No auctions created.</p>)}
                 </div>
 
             )}
@@ -132,22 +130,22 @@ export default function Profile() {
 
                             )}
                         </div>
-                    ) : (page === 1 && <p>No auctions won.</p>)}
+                    ) : (page === 1 && <p className={styles.noAuctions}>No auctions won.</p>)}
                 </div>
 
             )}
 
             {auctions.length > 0 && (
                 <div className={styles.paginationContainer}>
-                    <button disabled={page === 1} onClick={() => navigate(`/profile/${codedEmail}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+                    <button disabled={page === 1} onClick={() => navigate(`/profile/${email}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
 
-                    {page > 1 && <button onClick={() => navigate(`/profile/${codedEmail}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
+                    {page > 1 && <button onClick={() => navigate(`/profile/${email}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
 
                     <button className={styles.pageCircleCurrent}>{page}</button>
 
-                    {nextPage && <button onClick={() => navigate(`/profile/${codedEmail}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+                    {nextPage && <button onClick={() => navigate(`/profile/${email}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
 
-                    <button disabled={!nextPage} onClick={() => navigate(`/profile/${codedEmail}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                    <button disabled={!nextPage} onClick={() => navigate(`/profile/${email}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
                 </div>
             )}
 

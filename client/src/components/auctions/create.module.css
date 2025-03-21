@@ -56,7 +56,7 @@
 .createPage input:focus,
 .createPage textarea:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #d18f00;
 }
 
 .createPage .btn {

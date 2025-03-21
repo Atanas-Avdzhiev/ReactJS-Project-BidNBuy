@@ -455,3 +455,10 @@
   gap: 0.5em;
   cursor: default;
 }
+
+.likeButtonPreview {
+  font-size: 18px;
+  color: #1DA7FC;
+  background: none;
+  border: none;
+}

@@ -71,8 +71,7 @@ export default function DetailsAuction() {
             values.auctionId = auctionId;
             values.owner = email;
             values.likes = [];
-            const newComment = await commentsAPI.create(values);
-            //setComments(prevComments => [newComment, ...prevComments]);
+            await commentsAPI.create(values);
             setCommentsToLoad(prevComments => prevComments + 1);
             setUserAddedComment(true);
             resetForm();
@@ -122,7 +121,6 @@ export default function DetailsAuction() {
         try {
             const commentId = isDeleteCommentDialogOpen;
             await commentsAPI.del(commentId);
-            //setComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
             setCommentsToLoad(prevComments => prevComments - 1);
         } catch (err) {
             console.log(err.message);
@@ -239,8 +237,9 @@ export default function DetailsAuction() {
                                                         onMouseEnter={() => setHoveredComment(comment.owner)}
                                                         onMouseLeave={() => setHoveredComment(null)}
                                                     >
+                                                        <button className={styles.likeButtonPreview}><FaThumbsUp /> {comment?.likes?.length || 0}</button>
                                                         {comment.likes.map((owner, index) => (
-                                                            <p onClick={() => navigate(`/profile/${encodeURIComponent(owner)}`)} className={styles.likesEmail} key={index}>{owner}</p>
+                                                            <p onClick={() => navigate(`/profile/${owner}`)} className={styles.likesEmail} key={index}>{owner}</p>
                                                         ))}
                                                     </div>
                                                 )}
