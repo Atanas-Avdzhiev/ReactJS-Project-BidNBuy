@@ -309,12 +309,17 @@
   text-decoration: underline;
 }
 
-.deleteComment {
+.editAndDeleteButtonsWrapper {
   position: absolute;
   top: 0;
   right: 0;
   margin-right: 0.5em;
   margin-top: 0.5em;
+  display: flex;
+  gap: 0.5em;
+}
+
+.editAndDeleteButtons {
   background-color: transparent;
   border-radius: 10px;
   border-color: white;
@@ -323,7 +328,7 @@
   border: 2px solid white;
 }
 
-.deleteComment:hover {
+.editAndDeleteButtons:hover {
   cursor: pointer;
   background-color: #d47f00;
   transform: scale(1.1);
@@ -415,6 +420,7 @@
   gap: 0.5em;
   padding-left: 0.5em;
   position: relative;
+  width: fit-content;
 }
 
 .likesText {
@@ -484,4 +490,70 @@
 
 .auctionOwnerEmail:hover {
   text-decoration: underline;
+}
+
+.editButtons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+  display: flex;
+  gap: 0.5em;
+}
+
+.saveAndCancelComment {
+  background-color: transparent;
+  border-radius: 10px;
+  border-color: white;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid white;
+}
+
+.saveAndCancelComment:hover {
+  cursor: pointer;
+  background-color: #d47f00;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.editCommentInput {
+  width: calc(100% - 10em);
+  min-height: 40px;
+  max-height: 160px;
+  resize: vertical;
+  padding: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.editCommentInput:focus {
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.editCommentError {
+  color: #8B0000;
+  font-size: 1em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.likesContainerAndErrorWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.editCommentErrorWrapper {
+  flex: 1;
+  text-align: center;
 }

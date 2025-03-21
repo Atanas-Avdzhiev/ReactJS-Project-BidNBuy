@@ -6,6 +6,8 @@ const getAll = (auctionId, commentsToLoad) => requester('GET', `${BASE_URL}?wher
 
 const create = (commentData) => requester('POST', BASE_URL, commentData);
 
+const edit = (commentId, commentData) => requester('PATCH', `${BASE_URL}/${commentId}`, commentData);
+
 const del = (commentId) => requester('DELETE', `${BASE_URL}/${commentId}`);
 
 const like = (commentId, commentData) => requester('PATCH', `${BASE_URL}/${commentId}`, commentData);
@@ -13,6 +15,7 @@ const like = (commentId, commentData) => requester('PATCH', `${BASE_URL}/${comme
 export const commentsAPI = {
     getAll,
     create,
+    edit,
     del,
     like
 }

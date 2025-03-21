@@ -65,9 +65,9 @@ export const validateBidPrice = (bidPrice, auction) => {
 export const validateComment = (values) => {
 
     if (values.comment.length < 1) {
-        return 'Comment must be at least 1 character long!';
+        return 'Comment cannot be empty!';
     }
-    if (values.comment.length > 300) {
+    if (values.comment.length > 1000) {
         return 'Comment is too long!';
     }
 

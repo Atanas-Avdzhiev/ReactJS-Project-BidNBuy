@@ -26,6 +26,10 @@ export default function DetailsAuction() {
     const [commentError, setCommentError] = useState('');
     const [isDeleteCommentDialogOpen, setIsDeleteCommentDialogOpen] = useState(false);
     const [hoveredComment, setHoveredComment] = useState(null);
+    const [editCommentError, seteditCommentError] = useState('');
+
+    const [editingCommentId, setEditingCommentId] = useState(null);
+    const [editedText, setEditedText] = useState('');
 
     const { isAuthenticated, userId, email } = useContext(AuthContext);
     const isOwner = userId === auction._ownerId;
@@ -144,6 +148,17 @@ export default function DetailsAuction() {
         }
     }
 
+    const saveEditHandler = async (commentId) => {
+        const validate = validateComment({ comment: editedText });
+        if (validate !== true) return seteditCommentError(validate);
+        seteditCommentError('');
+
+        const response = await commentsAPI.edit(commentId, { comment: editedText });
+
+        setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
+        setEditingCommentId(null);
+    };
+
     const { values, changeHandler, submitHandler, resetForm } = useForm({ comment: '' }, createCommentHandler);
 
     return (
@@ -226,42 +241,73 @@ export default function DetailsAuction() {
                                 <ul className={styles.commentsUl}>
                                     {comments.map((comment, i) => (
                                         <li key={comment._id} className={styles.comment} id={i === 0 ? "last-comment" : ''}>
-                                            {comment._ownerId === userId && auction.closed === 'false' && (
-                                                <button onClick={() => setIsDeleteCommentDialogOpen(comment._id)} className={styles.deleteComment} >Delete</button>
+                                            {comment._ownerId === userId && auction.closed === 'false' && editingCommentId !== comment._id && (
+                                                <div className={styles.editAndDeleteButtonsWrapper}>
+                                                    <button onClick={() => {
+                                                        setEditingCommentId(comment._id);
+                                                        setEditedText(comment.comment);
+                                                    }} className={styles.editAndDeleteButtons}>Edit</button>
+
+                                                    <button onClick={() => setIsDeleteCommentDialogOpen(comment._id)} className={styles.editAndDeleteButtons}>Delete</button>
+                                                </div>
                                             )}
 
                                             <div className={styles.commentTextWrapper}>
                                                 <span onClick={() => navigate(`/profile/${comment.owner}`)} className={styles.commentTextOwner}>{comment.owner}:</span>
-                                                <p className={styles.commentText}> {comment.comment}</p>
+
+                                                {editingCommentId === comment._id ? (
+                                                    <textarea
+                                                        type="text"
+                                                        value={editedText}
+                                                        onChange={(e) => setEditedText(e.target.value)}
+                                                        className={styles.editCommentInput}
+                                                    />
+                                                ) : (
+                                                    <p className={styles.commentText}>{comment.comment}</p>
+                                                )}
                                             </div>
 
-                                            <div className={styles.likesContainer}>
+                                            {editingCommentId === comment._id && (
+                                                <div className={styles.editButtons}>
+                                                    <button onClick={() => saveEditHandler(comment._id)} className={styles.saveAndCancelComment}>Save</button>
+                                                    <button onClick={() => setEditingCommentId(null)} className={styles.saveAndCancelComment}>Cancel</button>
+                                                </div>
+                                            )}
+                                            <div className={styles.likesContainerAndErrorWrapper}>
+                                                <div className={styles.likesContainer}>
 
-                                                {hoveredComment === comment.owner && comment.likes.length > 0 && (
-                                                    <div className={styles.likesDropdown}
+                                                    {hoveredComment === comment.owner && comment.likes.length > 0 && (
+                                                        <div className={styles.likesDropdown}
+                                                            onMouseEnter={() => setHoveredComment(comment.owner)}
+                                                            onMouseLeave={() => setHoveredComment(null)}
+                                                        >
+                                                            <button className={styles.likeButtonPreview}><FaThumbsUp /> {comment?.likes?.length || 0}</button>
+                                                            {comment.likes.map((owner) => (
+                                                                <p onClick={() => navigate(`/profile/${owner}`)} className={styles.likesEmail} key={owner}>{owner}</p>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                    <div className={styles.likesNumberWrapper}
                                                         onMouseEnter={() => setHoveredComment(comment.owner)}
                                                         onMouseLeave={() => setHoveredComment(null)}
                                                     >
-                                                        <button className={styles.likeButtonPreview}><FaThumbsUp /> {comment?.likes?.length || 0}</button>
-                                                        {comment.likes.map((owner) => (
-                                                            <p onClick={() => navigate(`/profile/${owner}`)} className={styles.likesEmail} key={owner}>{owner}</p>
-                                                        ))}
+                                                        <p className={styles.likesText}>Likes: </p>
+                                                        <span className={styles.likesNumber}>{comment?.likes?.length || 0}</span>
                                                     </div>
-                                                )}
-                                                <div className={styles.likesNumberWrapper}
-                                                    onMouseEnter={() => setHoveredComment(comment.owner)}
-                                                    onMouseLeave={() => setHoveredComment(null)}
-                                                >
-                                                    <p className={styles.likesText}>Likes: </p>
-                                                    <span className={styles.likesNumber}>{comment?.likes?.length || 0}</span>
+
+                                                    {isAuthenticated && comment._ownerId !== userId && (
+                                                        <button onClick={() => likeHandler(comment)} className={comment?.likes?.includes(email) ? styles.likeButton : styles.likeButtonFalse}><FaThumbsUp /></button>
+                                                    )}
                                                 </div>
 
-                                                {isAuthenticated && comment._ownerId !== userId && (
-                                                    <button onClick={() => likeHandler(comment)} className={comment?.likes?.includes(email) ? styles.likeButton : styles.likeButtonFalse}><FaThumbsUp /></button>
+                                                {editCommentError && editingCommentId === comment._id && (
+                                                    <div className={styles.editCommentErrorWrapper}>
+                                                        <p className={styles.editCommentError}>{editCommentError}</p>
+                                                    </div>
                                                 )}
-                                            </div>
 
-                                            <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
+                                                <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
