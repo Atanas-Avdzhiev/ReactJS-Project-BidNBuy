@@ -243,8 +243,8 @@ export default function DetailsAuction() {
                                                         onMouseLeave={() => setHoveredComment(null)}
                                                     >
                                                         <button className={styles.likeButtonPreview}><FaThumbsUp /> {comment?.likes?.length || 0}</button>
-                                                        {comment.likes.map((owner, index) => (
-                                                            <p onClick={() => navigate(`/profile/${owner}`)} className={styles.likesEmail} key={index}>{owner}</p>
+                                                        {comment.likes.map((owner) => (
+                                                            <p onClick={() => navigate(`/profile/${owner}`)} className={styles.likesEmail} key={owner}>{owner}</p>
                                                         ))}
                                                     </div>
                                                 )}
