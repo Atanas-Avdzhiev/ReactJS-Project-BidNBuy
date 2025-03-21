@@ -339,14 +339,15 @@ export default function DetailsAuction() {
                                         }
                                     }}
                                 ></textarea>
+                                <div className={styles.submitAndErrorWrapper}>
+                                    <input className={styles.submit} type="submit" value="Add Comment" />
 
-                                {commentError && (
-                                    <p className={styles.authError}>
-                                        <span>{commentError}</span>
-                                    </p>
-                                )}
-
-                                <input className={styles.submit} type="submit" value="Add Comment" />
+                                    {commentError && (
+                                        <p className={styles.authError}>
+                                            <span>{commentError}</span>
+                                        </p>
+                                    )}
+                                </div>
                             </form>
                         </article>
                     )}
