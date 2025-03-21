@@ -462,3 +462,20 @@
   background: none;
   border: none;
 }
+
+.auctionOwnerEmailWrapper {
+  display: flex;
+  margin-left: 2em;
+  gap: 1em;
+  align-items: center;
+}
+
+.auctionOwnerEmail {
+  cursor: pointer;
+  color: #555;
+  font-size: 1.25em;
+}
+
+.auctionOwnerEmail:hover {
+  text-decoration: underline;
+}

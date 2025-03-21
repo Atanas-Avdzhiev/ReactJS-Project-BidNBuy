@@ -1469,7 +1469,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073630,
                 "_id": "50b34531-e345-40ad-b6d7-0cbd597fa937",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "c77d9eb1-e392-4e62-9fc0-e7ef5b4f4620": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1482,7 +1483,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073631,
                 "_id": "3f9cb383-2ce1-44b1-8ca3-af13517ca099",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "62a5e551-36e3-4a99-b3c5-dcc58cbf9ddf": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1495,7 +1497,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073632,
                 "_id": "90623de6-549a-42af-817e-9117c9694f68",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "9128f3e2-808c-4535-86e5-09fd42653a37": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1508,7 +1511,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073633,
                 "_id": "900f6e08-f304-4228-b94f-8d2ae595581a",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "63b834ff-65af-4381-9ca1-eae9cebee2ba": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1521,7 +1525,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073634,
                 "_id": "8ac7e7f0-f3b5-4e7d-9c0d-240083ee692b",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "be83f66d-8bb3-4b50-b156-053b6ac8e850": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1534,7 +1539,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073635,
                 "_id": "7e58b37f-01bd-4dd2-a6df-488c76cbd060",
-                "bidOwner": "nasko@abv.bg"
+                "bidOwner": "nasko@abv.bg",
+                "owner": "pesho@abv.bg"
             },
             "4d40b9db-b634-484d-ac00-517759e32e9a": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1547,7 +1553,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073636,
                 "_id": "2f41c799-76e8-4b37-9254-eb932b10d506",
-                "bidOwner": "nasko@abv.bg"
+                "bidOwner": "nasko@abv.bg",
+                "owner": "pesho@abv.bg"
             },
             "7829c101-5a40-4339-be6f-6075de353c95": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1560,7 +1567,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073637,
                 "_id": "3c0ec2eb-cde4-4c73-a99b-b8dfc8a65ac3",
-                "bidOwner": "nasko@abv.bg"
+                "bidOwner": "nasko@abv.bg",
+                "owner": "pesho@abv.bg"
             },
             "4a5325cb-d5b9-4ca8-8c93-43d930ee11f2": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1573,7 +1581,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073638,
                 "_id": "7db21b39-e8f5-4324-b157-47d2bb8f87c8",
-                "bidOwner": "nasko@abv.bg"
+                "bidOwner": "nasko@abv.bg",
+                "owner": "pesho@abv.bg"
             },
             "a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1586,7 +1595,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073639,
                 "_id": "a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78",
-                "bidOwner": "nasko@abv.bg"
+                "bidOwner": "nasko@abv.bg",
+                "owner": "pesho@abv.bg"
             },
             "b2c3d4e5-f678-90ab-12cd-34ef56gh78ij": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1599,7 +1609,8 @@
                 "closed": "false",
                 "_createdOn": 1741811073640,
                 "_id": "b2c3d4e5-f678-90ab-12cd-34ef56gh78ij",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "c3d4e5f6-7890-ab12-cd34-ef56gh78ijkl": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1612,7 +1623,8 @@
                 "closed": "false",
                 "_createdOn": 1741811073641,
                 "_id": "c3d4e5f6-7890-ab12-cd34-ef56gh78ijkl",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "d4e5f678-90ab-12cd-34ef-56gh78ijklmn": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1625,7 +1637,8 @@
                 "closed": "false",
                 "_createdOn": 1741811073642,
                 "_id": "d4e5f678-90ab-12cd-34ef-56gh78ijklmn",
-                "bidOwner": "pesho@abv.bg"
+                "bidOwner": "pesho@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "e5f67890-ab12-cd34-ef56-gh78ijklmnop": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1638,7 +1651,8 @@
                 "closed": "false",
                 "_createdOn": 1741811073643,
                 "_id": "e5f67890-ab12-cd34-ef56-gh78ijklmnop",
-                "bidOwner": "ivan@abv.bg"
+                "bidOwner": "ivan@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "f67890ab-12cd-34ef-56gh-78ijklmnopqr": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1651,7 +1665,8 @@
                 "closed": "false",
                 "_createdOn": 1741811073644,
                 "_id": "f67890ab-12cd-34ef-56gh-78ijklmnopqr",
-                "bidOwner": "ivan@abv.bg"
+                "bidOwner": "ivan@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "g7890abc-12de-34fg-56hi-78ijklmnopqrs": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1664,7 +1679,8 @@
                 "closed": "false",
                 "_createdOn": 1741811073644,
                 "_id": "g7890abc-12de-34fg-56hi-78ijklmnopqrs",
-                "bidOwner": "ivan@abv.bg"
+                "bidOwner": "ivan@abv.bg",
+                "owner": "nasko@abv.bg"
             },
             "h890abcd-12ef-34gh-56ij-78klmnopqrst": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1676,7 +1692,8 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073646,
-                "_id": "h890abcd-12ef-34gh-56ij-78klmnopqrst"
+                "_id": "h890abcd-12ef-34gh-56ij-78klmnopqrst",
+                "owner": "nasko@abv.bg"
             },
             "i901bcde-23fg-45hi-67jk-89lmnopqrstuv": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1688,7 +1705,8 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073647,
-                "_id": "i901bcde-23fg-45hi-67jk-89lmnopqrstuv"
+                "_id": "i901bcde-23fg-45hi-67jk-89lmnopqrstuv",
+                "owner": "nasko@abv.bg"
             },
             "j012cdef-34gh-56ij-78kl-90mnopqrstuv": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1700,7 +1718,8 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073648,
-                "_id": "j012cdef-34gh-56ij-78kl-90mnopqrstuv"
+                "_id": "j012cdef-34gh-56ij-78kl-90mnopqrstuv",
+                "owner": "nasko@abv.bg"
             },
             "k123defg-45hi-67jk-89lm-01nopqrstuvw": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1712,7 +1731,8 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073649,
-                "_id": "k123defg-45hi-67jk-89lm-01nopqrstuvw"
+                "_id": "k123defg-45hi-67jk-89lm-01nopqrstuvw",
+                "owner": "nasko@abv.bg"
             },
             "l234efgh-56ij-78kl-90mn-12opqrstuvwx": {
                 "_ownerId": "db303ad2-22cd-4d3d-b67b-8298bcf0192c",
@@ -1724,7 +1744,8 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073650,
-                "_id": "l234efgh-56ij-78kl-90mn-12opqrstuvwx"
+                "_id": "l234efgh-56ij-78kl-90mn-12opqrstuvwx",
+                "owner": "nasko@abv.bg"
             },
             "m345fghi-67jk-89lm-01no-23pqrstuvwxy": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1736,7 +1757,8 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073651,
-                "_id": "m345fghi-67jk-89lm-01no-23pqrstuvwxy"
+                "_id": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
+                "owner": "pesho@abv.bg"
             },
             "n456ghij-78kl-90mn-12op-34qrstuvwxyz": {
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
@@ -1748,7 +1770,8 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073652,
-                "_id": "n456ghij-78kl-90mn-12op-34qrstuvwxyz"
+                "_id": "n456ghij-78kl-90mn-12op-34qrstuvwxyz",
+                "owner": "ivan@abv.bg"
             },
             "o567hijk-89lm-01no-23pq-45rstuvwxyz1": {
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
@@ -1761,7 +1784,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073653,
                 "_id": "o567hijk-89lm-01no-23pq-45rstuvwxyz1",
-                "bidOwner": "nasko@abv.bg"
+                "bidOwner": "nasko@abv.bg",
+                "owner": "ivan@abv.bg"
             },
             "f3d7e2a4-b7c8-4f9b-9a56-ec5c89d7b0cd": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1774,7 +1798,8 @@
                 "closed": "true",
                 "_createdOn": 1741811073654,
                 "_id": "f3d7e2a4-b7c8-4f9b-9a56-ec5c89d7b0cd",
-                "bidOwner": "nasko@abv.bg"
+                "bidOwner": "nasko@abv.bg",
+                "owner": "pesho@abv.bg"
             },
         },
         comments: {

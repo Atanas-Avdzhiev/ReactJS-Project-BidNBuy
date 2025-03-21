@@ -214,6 +214,11 @@ export default function DetailsAuction() {
                         <p className={styles.text}>{auction.description}</p>
                     </div>
 
+                    <div className={styles.auctionOwnerEmailWrapper}>
+                        <h3>Auction Owner:</h3>
+                        <p className={styles.auctionOwnerEmail} onClick={() => navigate(`/profile/${auction.owner}`)}>{auction.owner}</p>
+                    </div>
+
                     <div>
                         {comments.length > 0 ? (
                             <>

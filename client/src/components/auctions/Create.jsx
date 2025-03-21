@@ -2,11 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from "../../hooks/useForm";
 import { useCreateAuction } from "../../hooks/useAuctions";
 import styles from './create.module.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { validateCreateEditAuctions } from '../../utils/validation';
+import { AuthContext } from '../../contexts/authContext';
 
 export default function CreateAuction() {
 
+    const { email } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const initialValues = {
@@ -29,6 +31,7 @@ export default function CreateAuction() {
             values.price = +values.price;
             values.bidPrice = 0;
             values.closed = 'false';
+            values.owner = email;
             const { _id: auctionId } = await createAuction(values);
             navigate(`/auctions/${auctionId}/details`);
         } catch (err) {
