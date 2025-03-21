@@ -229,9 +229,16 @@ export default function DetailsAuction() {
                         <p className={styles.text}>{auction.description}</p>
                     </div>
 
-                    <div className={styles.auctionOwnerEmailWrapper}>
-                        <h3>Auction Owner:</h3>
-                        <p className={styles.auctionOwnerEmail} onClick={() => navigate(`/profile/${auction.owner}`)}>{auction.owner}</p>
+                    <div className={styles.ownerEmailTimestampWrapper}>
+                        <div className={styles.auctionOwnerEmailWrapper}>
+                            <h3>Auction Owner:</h3>
+                            <p className={styles.auctionOwnerEmail} onClick={() => navigate(`/profile/${auction.owner}`)}>{auction.owner}</p>
+                        </div>
+
+                        <div className={styles.auctionOwnerEmailWrapper}>
+                            <p className={styles.auctionOwnerDateTitle}>Published At:</p>
+                            <p className={styles.auctionOwnerDate}>{new Date(auction._createdOn).toLocaleString()}</p>
+                        </div>
                     </div>
 
                     <div>
@@ -306,7 +313,7 @@ export default function DetailsAuction() {
                                                     </div>
                                                 )}
 
-                                                <p className={styles.commentDate}>{comment._updatedOn ? 'Edited ' + new Date(comment._updatedOn).toLocaleString() : new Date(comment._createdOn).toLocaleString()}</p>
+                                                <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
                                             </div>
                                         </li>
                                     ))}
