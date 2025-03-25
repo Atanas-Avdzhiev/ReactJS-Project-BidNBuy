@@ -28,6 +28,7 @@ export default function Profile() {
         (async () => {
             try {
                 const user = await getUser(email);
+                if (!user) return navigate('/404');
                 setUser(user);
 
                 if (page <= 0) {
