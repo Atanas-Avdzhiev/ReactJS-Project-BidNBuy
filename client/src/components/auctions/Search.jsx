@@ -143,7 +143,7 @@ export default function SearchAuctions() {
                         return (
                             <div key={auction._id} onClick={() => navigate(`/auctions/${auction._id}/details`)} className={styles.auction}>
                                 <div className={styles.imageWrap}>
-                                    <img src={auction.imageUrl} alt={auction.auctionName} />
+                                    <img src={auction.image ? auction.image : auction.imageUrl} alt={auction.auctionName} />
                                 </div>
                                 <h6>{auction.auctionName}</h6>
                                 <h2>{auction.category}</h2>

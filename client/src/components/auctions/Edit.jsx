@@ -18,14 +18,14 @@ export default function EditAuction() {
                 auctionName: auction.auctionName || '',
                 category: auction.category || '',
                 price: auction.price || '',
-                imageUrl: auction.imageUrl || '',
-                description: auction.description || ''
+                description: auction.description || '',
+                image: auction.image || ''
             });
         }
     }, [auction]);
 
     const editHandler = async (values) => {
-
+        
         const validate = validateCreateEditAuctions(values);
         if (validate !== true) return setError(validate);
 
@@ -46,8 +46,8 @@ export default function EditAuction() {
         auctionName: '',
         category: '',
         price: '',
-        imageUrl: '',
-        description: ''
+        description: '',
+        image: ''
     }, editHandler);
 
     return (
@@ -84,14 +84,18 @@ export default function EditAuction() {
                         onChange={changeHandler}
                     />
 
-                    <label htmlFor="imageUrl">Image URL:</label>
+                    <label htmlFor="image">Upload Image:</label>
                     <input
-                        type="text"
-                        id="imageUrl"
-                        name="imageUrl"
-                        value={values.imageUrl}
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*"
                         onChange={changeHandler}
                     />
+
+                    {values.image && (
+                        <img src={values.image} alt="Preview" className={styles.imagePreview} />
+                    )}
 
                     <label htmlFor="description">Description:</label>
                     <textarea

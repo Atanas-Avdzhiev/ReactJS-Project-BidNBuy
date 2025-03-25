@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from './home.module.css';
 
-export default function AuctionHome({ _id, auctionName, category, imageUrl, bidPrice, price }) {
+export default function AuctionHome({ _id, auctionName, category, imageUrl, bidPrice, price, image }) {
     const navigate = useNavigate();
 
     return (
@@ -12,7 +12,7 @@ export default function AuctionHome({ _id, auctionName, category, imageUrl, bidP
             tabIndex="0"
         >
             <div className={styles.imageWrap}>
-                <img src={imageUrl} alt={auctionName} />
+                <img src={image ? image : imageUrl} alt={auctionName} />
             </div>
             <h3>{auctionName}</h3>
             <h2>{category}</h2>

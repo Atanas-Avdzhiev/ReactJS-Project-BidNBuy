@@ -88,3 +88,11 @@
   margin-bottom: 15px;
   text-align: center;
 }
+
+.imagePreview {
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}

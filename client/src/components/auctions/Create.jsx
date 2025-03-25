@@ -15,8 +15,8 @@ export default function CreateAuction() {
         auctionName: '',
         category: '',
         price: '',
-        imageUrl: '',
-        description: ''
+        description: '',
+        image: ''
     };
 
     const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function CreateAuction() {
     };
 
     const { values, changeHandler, submitHandler } = useForm(initialValues, createHandler);
-
+    
     return (
         <section className={styles.createPage}>
             <form onSubmit={submitHandler} id="create" className={styles.form}>
@@ -79,15 +79,18 @@ export default function CreateAuction() {
                         placeholder="1"
                     />
 
-                    <label htmlFor="imageUrl">Image:</label>
+                    <label htmlFor="image">Upload Image:</label>
                     <input
-                        type="text"
-                        id="imageUrl"
-                        name="imageUrl"
-                        value={values.imageUrl}
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*"
                         onChange={changeHandler}
-                        placeholder="Upload a photo..."
                     />
+
+                    {values.image && (
+                        <img src={values.image} alt="Preview" className={styles.imagePreview} />
+                    )}
 
                     <label htmlFor="description">Description:</label>
                     <textarea

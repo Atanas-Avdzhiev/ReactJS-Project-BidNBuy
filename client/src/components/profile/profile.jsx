@@ -72,6 +72,7 @@ export default function Profile() {
             <h1 className={styles.title}>Profile</h1>
             <div className={styles.infoSection}>
                 <p><strong>Email:</strong> {user.email}</p>
+                <br></br>
                 <p>Member since: {new Date(user._createdOn).toLocaleDateString()}</p>
             </div>
 
@@ -101,7 +102,7 @@ export default function Profile() {
                             {auctions.map((auction) => (
                                 <div key={auction._id} onClick={() => navigate(`/auctions/${auction._id}/details`)} className={styles.auction}>
                                     <div className={styles.imageWrap}>
-                                        <img src={auction.imageUrl} alt={auction.auctionName} />
+                                        <img src={auction.image ? auction.image : auction.imageUrl} alt={auction.auctionName} />
                                     </div>
                                     <h6>{auction.auctionName}</h6>
                                     <h2>{auction.category}</h2>
@@ -122,7 +123,7 @@ export default function Profile() {
                             {auctions.map((auction) => (
                                 <div key={auction._id} onClick={() => navigate(`/auctions/${auction._id}/details`)} className={styles.auction}>
                                     <div className={styles.imageWrap}>
-                                        <img src={auction.imageUrl} alt={auction.auctionName} />
+                                        <img src={auction.image ? auction.image : auction.imageUrl} alt={auction.auctionName} />
                                     </div>
                                     <h6>{auction.auctionName}</h6>
                                     <h2>Winning bid: <strong>{auction.bidPrice}$</strong></h2>

@@ -169,7 +169,7 @@ export default function DetailsAuction() {
                 <div className={styles.infoSection}>
                     <div className={styles.auctionHeader}>
                         <div>
-                            <img className={styles.auctionImg} src={auction.imageUrl} alt="auction" />
+                            <img className={styles.auctionImg} src={auction.image ? auction.image : auction.imageUrl} alt="auction" />
                         </div>
                         <div className={styles.auctionText}>
                             <div>
