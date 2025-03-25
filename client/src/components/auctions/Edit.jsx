@@ -4,6 +4,7 @@ import { useEditAuction, useGetOneAuction } from "../../hooks/useAuctions";
 import { useForm } from "../../hooks/useForm";
 import styles from "./edit.module.css";
 import { validateCreateEditAuctions } from "../../utils/validation";
+import { IoIosWarning } from "react-icons/io";
 
 export default function EditAuction() {
     const { auctionId } = useParams();
@@ -102,6 +103,11 @@ export default function EditAuction() {
                         onChange={changeHandler}
                     />
 
+                    <div style={{ display: "flex", marginBottom: "1em", fontSize: "14px" }}>
+                        <IoIosWarning />
+                        <p>The first image will be the main one!</p>
+                    </div>
+
                     <div className={styles.imagePreviewContainer}>
                         {values.image.length > 0 &&
                             values.image.map((image, index) => (
@@ -110,9 +116,7 @@ export default function EditAuction() {
                                         type="button"
                                         className={styles.removeImageButton}
                                         onClick={() => removeImage(index)}
-                                    >
-                                        ❌
-                                    </button>
+                                    >&times;</button>
                                     <img src={image} alt={`Uploaded ${index}`} className={styles.imagePreview} />
                                 </div>
                             ))}

@@ -91,6 +91,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  width: 500px;
+  justify-content: start;
 }
 
 .imageWrapper {
@@ -99,29 +101,30 @@
 }
 
 .imagePreview {
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: 5px;
 }
 
 .removeImageButton {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  background: red;
-  color: white;
+  top: 1px;
+  right: 1px;
+  color: red;
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 30px;
   border-radius: 50%;
   width: 20px;
   height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
 
 .removeImageButton:hover {
-  background: darkred;
+  background-color: rgb(226, 226, 226);
+  color: darkred;
 }

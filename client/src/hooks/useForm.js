@@ -6,19 +6,6 @@ export function useForm(initialValues, submitCallback) {
     const changeHandler = (e) => {
 
         if (e.target.type === 'file') {
-            // const file = e.target.files[0];
-
-            // if (file) {
-            //     const reader = new FileReader();
-            //     reader.onloadend = () => {
-            //         setValues(state => ({
-            //             ...state,
-            //             [e.target.name]: reader.result
-            //         }))
-            //     };
-            //     reader.readAsDataURL(file);
-            // }
-            // return;
 
             const files = Array.from(e.target.files);
             const imagePromises = files.map((file) => {

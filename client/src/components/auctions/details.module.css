@@ -34,17 +34,15 @@
 }
 
 .auctionImg {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
+  width: 800px;
+  height: 600px;
+  object-fit: contain;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  float: left;
   margin-left: 15px;
   margin-right: 22px;
-  max-height: 800px;
-  object-fit: contain;
   border-radius: 5%;
+  display: block;
+  background-color: #f0f0f0;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
 }
 
@@ -173,7 +171,6 @@
 
 .button:hover {
   background-color: #d47f00;
-  ;
 }
 
 .delete-button {
@@ -614,5 +611,5 @@ p {
 }
 
 .thumbnail:active {
-  border-color: blue;
+  border-color: #d47f00;
 }

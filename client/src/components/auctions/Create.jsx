@@ -5,6 +5,7 @@ import styles from './create.module.css';
 import { useContext, useState } from 'react';
 import { validateCreateEditAuctions } from '../../utils/validation';
 import { AuthContext } from '../../contexts/authContext';
+import { IoIosWarning } from "react-icons/io";
 
 export default function CreateAuction() {
 
@@ -95,6 +96,10 @@ export default function CreateAuction() {
                         multiple
                         onChange={changeHandler}
                     />
+                    <div style={{ display: "flex", marginBottom: "1em", fontSize: "14px" }}>
+                        <IoIosWarning />
+                        <p>The first image will be the main one!</p>
+                    </div>
 
                     <div className={styles.imagePreviewContainer}>
                         {values.image.length > 0 &&
@@ -104,9 +109,7 @@ export default function CreateAuction() {
                                         type="button"
                                         className={styles.removeImageButton}
                                         onClick={() => removeImage(index)}
-                                    >
-                                        ❌
-                                    </button>
+                                    >&times;</button>
                                     <img src={image} alt={`Uploaded ${index}`} className={styles.imagePreview} />
                                 </div>
                             ))}
