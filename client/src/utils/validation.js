@@ -35,18 +35,6 @@ export const validateCreateEditAuctions = (values) => {
         return 'Start Price is too high!'
     }
 
-    // if (!values.image) {
-    //     return "Please upload an image!";
-    // }
-
-    // if (!base64Regex.test(values.image)) {
-    //     return "Invalid image format! Only JPEG, PNG, WEBP, and GIF are allowed.";
-    // }
-
-    // if (base64Size > maxFileSize) {
-    //     return "Image size is too large! Maximum allowed size is 5MB.";
-    // }
-
     if (values.description.length < 10) {
         return 'Description must be at least 10 characters long!'
     }
