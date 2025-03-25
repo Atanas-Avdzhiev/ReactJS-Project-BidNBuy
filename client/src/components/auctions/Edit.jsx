@@ -19,13 +19,13 @@ export default function EditAuction() {
                 category: auction.category || '',
                 price: auction.price || '',
                 description: auction.description || '',
-                image: auction.image || ''
+                image: auction.image || []
             });
         }
     }, [auction]);
 
     const editHandler = async (values) => {
-        
+
         const validate = validateCreateEditAuctions(values);
         if (validate !== true) return setError(validate);
 
@@ -42,12 +42,20 @@ export default function EditAuction() {
         }
     }
 
+    const removeImage = (index) => {
+        setValues((prevState) => ({
+            ...prevState,
+            image: prevState.image.filter((_, i) => i !== index),
+        }));
+    };
+
+
     const { values, changeHandler, submitHandler, setValues } = useForm({
         auctionName: '',
         category: '',
         price: '',
         description: '',
-        image: ''
+        image: []
     }, editHandler);
 
     return (
@@ -90,12 +98,25 @@ export default function EditAuction() {
                         id="image"
                         name="image"
                         accept="image/*"
+                        multiple
                         onChange={changeHandler}
                     />
 
-                    {values.image && (
-                        <img src={values.image} alt="Preview" className={styles.imagePreview} />
-                    )}
+                    <div className={styles.imagePreviewContainer}>
+                        {values.image.length > 0 &&
+                            values.image.map((image, index) => (
+                                <div key={index} className={styles.imageWrapper}>
+                                    <button
+                                        type="button"
+                                        className={styles.removeImageButton}
+                                        onClick={() => removeImage(index)}
+                                    >
+                                        ❌
+                                    </button>
+                                    <img src={image} alt={`Uploaded ${index}`} className={styles.imagePreview} />
+                                </div>
+                            ))}
+                    </div>
 
                     <label htmlFor="description">Description:</label>
                     <textarea

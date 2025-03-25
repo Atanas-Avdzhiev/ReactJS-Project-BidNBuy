@@ -31,8 +31,18 @@ export default function DetailsAuction() {
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editedText, setEditedText] = useState('');
 
+    const [selectedImage, setSelectedImage] = useState(null);
+
     const { isAuthenticated, userId, email } = useContext(AuthContext);
     const isOwner = userId === auction._ownerId;
+
+    useEffect(() => {
+        if (auction) {
+            setSelectedImage(
+                auction.image && auction.image.length > 0 ? auction.image[0] : auction.imageUrl
+            );
+        }
+    }, [auction]);
 
     useEffect(() => {
         if (userAddedComment) {
@@ -169,7 +179,7 @@ export default function DetailsAuction() {
                 <div className={styles.infoSection}>
                     <div className={styles.auctionHeader}>
                         <div>
-                            <img className={styles.auctionImg} src={auction.image ? auction.image : auction.imageUrl} alt="auction" />
+                            <img className={styles.auctionImg} src={selectedImage ? selectedImage : auction.imageUrl} alt="auction" />
                         </div>
                         <div className={styles.auctionText}>
                             <div>
@@ -223,6 +233,20 @@ export default function DetailsAuction() {
                             </div>
                         </div>
                     </div>
+
+                    {auction?.image?.length > 0 && (
+                        <div className={styles.imageThumbnails}>
+                            {auction.image.map((img, index) => (
+                                <img
+                                    key={index}
+                                    src={img}
+                                    alt={`Thumbnail ${index}`}
+                                    className={styles.thumbnail}
+                                    onClick={() => setSelectedImage(img)}
+                                />
+                            ))}
+                        </div>
+                    )}
 
                     <div>
                         <h3 className={styles.descriptionTitle}>Description:</h3>

@@ -87,10 +87,41 @@
   text-align: center;
 }
 
+.imagePreviewContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .imagePreview {
   width: 60px;
   height: 60px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  object-fit: cover;
   border-radius: 5px;
+}
+
+.removeImageButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeImageButton:hover {
+  background: darkred;
 }

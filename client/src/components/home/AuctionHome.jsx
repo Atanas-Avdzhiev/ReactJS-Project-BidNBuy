@@ -12,7 +12,7 @@ export default function AuctionHome({ _id, auctionName, category, imageUrl, bidP
             tabIndex="0"
         >
             <div className={styles.imageWrap}>
-                <img src={image ? image : imageUrl} alt={auctionName} />
+                <img src={image?.length > 0 ? image[0] : imageUrl} alt={auctionName} />
             </div>
             <h3>{auctionName}</h3>
             <h2>{category}</h2>

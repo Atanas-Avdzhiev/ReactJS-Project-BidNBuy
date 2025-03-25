@@ -16,7 +16,7 @@ export default function CreateAuction() {
         category: '',
         price: '',
         description: '',
-        image: ''
+        image: []
     };
 
     const navigate = useNavigate();
@@ -39,8 +39,15 @@ export default function CreateAuction() {
         }
     };
 
-    const { values, changeHandler, submitHandler } = useForm(initialValues, createHandler);
-    
+    const removeImage = (index) => {
+        setValues((prevState) => ({
+            ...prevState,
+            image: prevState.image.filter((_, i) => i !== index),
+        }));
+    };
+
+    const { values, changeHandler, submitHandler, setValues } = useForm(initialValues, createHandler);
+
     return (
         <section className={styles.createPage}>
             <form onSubmit={submitHandler} id="create" className={styles.form}>
@@ -85,12 +92,25 @@ export default function CreateAuction() {
                         id="image"
                         name="image"
                         accept="image/*"
+                        multiple
                         onChange={changeHandler}
                     />
 
-                    {values.image && (
-                        <img src={values.image} alt="Preview" className={styles.imagePreview} />
-                    )}
+                    <div className={styles.imagePreviewContainer}>
+                        {values.image.length > 0 &&
+                            values.image.map((image, index) => (
+                                <div key={index} className={styles.imageWrapper}>
+                                    <button
+                                        type="button"
+                                        className={styles.removeImageButton}
+                                        onClick={() => removeImage(index)}
+                                    >
+                                        ❌
+                                    </button>
+                                    <img src={image} alt={`Uploaded ${index}`} className={styles.imagePreview} />
+                                </div>
+                            ))}
+                    </div>
 
                     <label htmlFor="description">Description:</label>
                     <textarea

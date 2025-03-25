@@ -7,7 +7,7 @@ export default function Auction({ _id, auctionName, category, imageUrl, bidPrice
     return (
         <div onClick={() => navigate(`/auctions/${_id}/details`)} className={styles.auction}>
             <div className={styles.imageWrap}>
-                <img src={image ? image : imageUrl} alt={auctionName} />
+                <img src={image?.length > 0 ? image[0] : imageUrl} alt={auctionName} />
             </div>
             <h6>{auctionName}</h6>
             <h2>{category}</h2>

@@ -1,10 +1,26 @@
 export const validateCreateEditAuctions = (values) => {
-    // const imageRegex = /^https?:\/\/.+/;
+
+    if (values.image.length === 0) {
+        return "Please upload at least one image!";
+    }
+
+    if (values.image.length > 10) {
+        return "You can only upload a maximum of 10 images!";
+    }
 
     const base64Regex = /^data:image\/(jpeg|png|webp|gif);base64,/;
-
-    const base64Size = values.image ? (values.image.length * 3) / 4 - 2 : 0;
     const maxFileSize = 5 * 1024 * 1024; // 5MB
+
+    for (const image of values.image) {
+        if (!base64Regex.test(image)) {
+            return "Invalid image format! Only JPEG, PNG, WEBP, and GIF are allowed.";
+        }
+
+        const estimatedSize = (image.length * 3) / 4 - 2;
+        if (estimatedSize > maxFileSize) {
+            return "One of the images is too large! Maximum size is 5MB.";
+        }
+    }
 
     if (values.auctionName.length < 2 || values.auctionName.length > 30) {
         return 'Auction Name must be between 2 and 30 characters long!'
@@ -18,21 +34,18 @@ export const validateCreateEditAuctions = (values) => {
     if (+values.price > 999999999999) {
         return 'Start Price is too high!'
     }
-    // if (!imageRegex.test(values.imageUrl)) {
-    //     return 'Please upload a valid image starting with https://'
+
+    // if (!values.image) {
+    //     return "Please upload an image!";
     // }
 
-    if (!values.image) {
-        return "Please upload an image!";
-    }
+    // if (!base64Regex.test(values.image)) {
+    //     return "Invalid image format! Only JPEG, PNG, WEBP, and GIF are allowed.";
+    // }
 
-    if (!base64Regex.test(values.image)) {
-        return "Invalid image format! Only JPEG, PNG, WEBP, and GIF are allowed.";
-    }
-
-    if (base64Size > maxFileSize) {
-        return "Image size is too large! Maximum allowed size is 5MB.";
-    }
+    // if (base64Size > maxFileSize) {
+    //     return "Image size is too large! Maximum allowed size is 5MB.";
+    // }
 
     if (values.description.length < 10) {
         return 'Description must be at least 10 characters long!'
