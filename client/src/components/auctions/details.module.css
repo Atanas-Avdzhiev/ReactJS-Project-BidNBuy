@@ -613,3 +613,58 @@ p {
 .thumbnail:active {
   border-color: #d47f00;
 }
+
+.selectedThumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 2px solid #d47f00;
+}
+
+.selectedThumbnail:hover {
+  transform: scale(1.1);
+}
+
+.selectedThumbnail:active {
+  border-color: #d47f00;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.navButton:first-of-type {
+  left: 10px;
+}
+
+.navButton:last-of-type {
+  right: 16px;
+}

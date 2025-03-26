@@ -10,6 +10,7 @@ import ConfirmationDialog from "../confirmation-dialog/ConfirmationDialog";
 import styles from './details.module.css';
 import { validateBidPrice, validateComment } from "../../utils/validation";
 import { FaThumbsUp } from 'react-icons/fa';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function DetailsAuction() {
     const { auctionId } = useParams();
@@ -38,9 +39,7 @@ export default function DetailsAuction() {
 
     useEffect(() => {
         if (auction) {
-            setSelectedImage(
-                auction.image && auction.image.length > 0 ? auction.image[0] : auction.imageUrl
-            );
+            setSelectedImage(auction.image && auction.image.length > 0 ? 0 : auction.imageUrl);
         }
     }, [auction]);
 
@@ -169,6 +168,14 @@ export default function DetailsAuction() {
         setEditingCommentId(null);
     };
 
+    const nextImage = () => {
+        setSelectedImage((prev) => (prev + 1) % auction.image.length);
+    };
+
+    const prevImage = () => {
+        setSelectedImage((prev) => (prev - 1 + auction.image.length) % auction.image.length);
+    };
+
     const { values, changeHandler, submitHandler, resetForm } = useForm({ comment: '' }, createCommentHandler);
 
     return (
@@ -178,9 +185,25 @@ export default function DetailsAuction() {
                 {auction.closed === 'true' && <p className={styles.noteWinner}>This auction is closed! The winner is {auction.bidOwner}</p>}
                 <div className={styles.infoSection}>
                     <div className={styles.auctionHeader}>
-                        <div>
-                            <img className={styles.auctionImg} src={selectedImage ? selectedImage : auction.imageUrl} alt="auction" />
+
+                        <div className={styles.imageContainer}>
+                            {auction?.image?.length > 0 && (
+                                <button className={styles.navButton} onClick={prevImage} disabled={selectedImage === 0}>
+                                    <ChevronLeft size={40} />
+                                </button>
+                            )}
+
+                            <div>
+                                <img className={styles.auctionImg} src={auction?.image?.length > 0 ? auction.image[selectedImage] : auction.imageUrl} alt="auction" />
+                            </div>
+
+                            {auction?.image?.length > 0 && (
+                                <button className={styles.navButton} onClick={nextImage} disabled={selectedImage === auction?.image?.length - 1}>
+                                    <ChevronRight size={40} />
+                                </button>
+                            )}
                         </div>
+
                         <div className={styles.auctionText}>
                             <div>
                                 <h1>{auction.auctionName}</h1>
@@ -241,8 +264,8 @@ export default function DetailsAuction() {
                                     key={index}
                                     src={img}
                                     alt={`Thumbnail ${index}`}
-                                    className={styles.thumbnail}
-                                    onClick={() => setSelectedImage(img)}
+                                    className={index === selectedImage ? styles.selectedThumbnail : styles.thumbnail}
+                                    onClick={() => setSelectedImage(index)}
                                 />
                             ))}
                         </div>
