@@ -1,7 +1,6 @@
 import requester from "./requester";
 import BASE_URL_BidNBuy from "../config";
 
-// const BASE_URL = 'http://localhost:3030/users';
 const BASE_URL = `${BASE_URL_BidNBuy}/users`;
 
 export const login = (email, password) => requester('POST', `${BASE_URL}/login`, { email, password });

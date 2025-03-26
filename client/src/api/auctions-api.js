@@ -1,10 +1,13 @@
 import requester from "./requester";
 import BASE_URL_BidNBuy from "../config";
 
-// const BASE_URL = 'http://localhost:3030/data/auctions';
 const BASE_URL = `${BASE_URL_BidNBuy}/data/auctions`;
 
-export const AUCTIONS_NEWS_URL = 'https://newsapi.org/v2/everything?q=\"auction\"&searchIn=title&sortBy=publishedAt&language=en&pageSize=10&domains=bbc.com,cnn.com,forbes.com,bloomberg.com,reuters.com,nytimes.com,wsj.com,guardian.com,sothebys.com,christies.com&apiKey=712955d977944dffbcf8372294aabaae';
+const FIREBASE_NEWS_API = "https://fetchauctionnews-alt2niizeq-lm.a.run.app";
+
+export const AUCTIONS_NEWS_URL = process.env.NODE_ENV === "development"
+    ? 'https://newsapi.org/v2/everything?q=%22auction%22&searchIn=title&sortBy=publishedAt&language=en&pageSize=10&domains=bbc.com,cnn.com,forbes.com,bloomberg.com,reuters.com,nytimes.com,wsj.com,guardian.com,sothebys.com,christies.com&apiKey=712955d977944dffbcf8372294aabaae'
+    : FIREBASE_NEWS_API;
 
 const getAll = () => requester('GET', `${BASE_URL}?sortBy=_createdOn%20desc`);
 
