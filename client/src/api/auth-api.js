@@ -1,7 +1,8 @@
 import requester from "./requester";
+import BASE_URL_BidNBuy from "../config";
 
 // const BASE_URL = 'http://localhost:3030/users';
-const BASE_URL = `${import.meta.env.VITE_API_URL}/users`;
+const BASE_URL = `${BASE_URL_BidNBuy}/users`;
 
 export const login = (email, password) => requester('POST', `${BASE_URL}/login`, { email, password });
 
@@ -11,7 +12,7 @@ export const logout = () => requester('GET', `${BASE_URL}/logout`);
 
 export const saveUser = async (email, accessToken) => {
     try {
-        await fetch(`${import.meta.env.VITE_API_URL}/data/savedUsers`, {
+        await fetch(`${BASE_URL_BidNBuy}/data/savedUsers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,6 +26,6 @@ export const saveUser = async (email, accessToken) => {
 }
 
 export const getUser = async (email) => {
-    const response = await requester('GET', `${import.meta.env.VITE_API_URL}/data/savedUsers?where=email%3D%22${email}%22&pageSize=1`)
+    const response = await requester('GET', `${BASE_URL_BidNBuy}/data/savedUsers?where=email%3D%22${email}%22&pageSize=1`)
     return response[0];
 };
