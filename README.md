@@ -15,6 +15,8 @@ BidNBuy is a web application where users can create auctions, bid on ongoing auc
 
 # Project Setup
 
+The project is also deployed at: "https://reactjs-project-bidnbuy.web.app"
+
 ## Starting the Client
 To start the client, navigate to the `client` folder in the terminal and run "npm install", then after the installation of node_modules is ready, run "npm run dev".
 
