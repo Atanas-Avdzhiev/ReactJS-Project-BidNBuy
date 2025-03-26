@@ -169,11 +169,11 @@ export default function DetailsAuction() {
     };
 
     const nextImage = () => {
-        setSelectedImage((prev) => (prev + 1) % auction.image.length);
+        setSelectedImage((prev) => Math.min(prev + 1, auction.image.length - 1));
     };
 
     const prevImage = () => {
-        setSelectedImage((prev) => (prev - 1 + auction.image.length) % auction.image.length);
+        setSelectedImage((prev) => Math.max(prev - 1, 0));
     };
 
     const { values, changeHandler, submitHandler, resetForm } = useForm({ comment: '' }, createCommentHandler);
