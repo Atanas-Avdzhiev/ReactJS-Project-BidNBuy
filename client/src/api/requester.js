@@ -4,7 +4,9 @@ export default async function requester(method, url, data) {
 
     const accessToken = JSON.parse(localStorage.getItem('auth'))?.accessToken;
 
-    if (accessToken) {
+    const isLogout = url.split('/')[url.split('/').length - 1] === 'logout';
+
+    if ((accessToken && method !== 'GET') || isLogout) {
         options.headers = {
             ...options.headers,
             'X-Authorization': accessToken
@@ -23,7 +25,7 @@ export default async function requester(method, url, data) {
 
         options.body = JSON.stringify(data);
     }
-    
+
     const response = await fetch(url, options);
 
     if (response.status === 204) {

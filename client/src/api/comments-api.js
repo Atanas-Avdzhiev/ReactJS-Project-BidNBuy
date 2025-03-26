@@ -1,6 +1,7 @@
 import requester from "./requester"
 
-const BASE_URL = 'http://localhost:3030/data/comments'
+// const BASE_URL = 'http://localhost:3030/data/comments';
+const BASE_URL = `${import.meta.env.VITE_API_URL}/data/comments`;
 
 const getAll = (auctionId, commentsToLoad) => requester('GET', `${BASE_URL}?where=auctionId%3D%22${auctionId}%22&sortBy=_createdOn%20desc&pageSize=${commentsToLoad}`);
 

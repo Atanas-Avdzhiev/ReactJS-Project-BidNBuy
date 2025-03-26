@@ -193,7 +193,7 @@ export default function DetailsAuction() {
                                 </button>
                             )}
 
-                            <div>
+                            <div className={styles.imageWrapper} >
                                 <img className={styles.auctionImg} src={auction?.image?.length > 0 ? auction.image[selectedImage] : auction.imageUrl} alt="auction" />
                             </div>
 

@@ -646,6 +646,7 @@ p {
   align-items: center;
   justify-content: center;
   transition: background 0.3s;
+  z-index: 10;
 }
 
 .navButton:disabled {
@@ -659,6 +660,7 @@ p {
   justify-content: center;
   width: 100%;
   max-width: 800px;
+  overflow: hidden;
 }
 
 .navButton:first-of-type {
@@ -667,4 +669,9 @@ p {
 
 .navButton:last-of-type {
   right: 16px;
+}
+
+.imageWrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
