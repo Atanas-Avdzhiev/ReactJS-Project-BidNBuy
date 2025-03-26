@@ -4,6 +4,7 @@ import styles from './search.module.css';
 import { useEffect, useState } from 'react';
 import { useGetSearchedAuctions } from '../../hooks/useAuctions';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+import { FaSearch } from "react-icons/fa";
 
 export default function SearchAuctions() {
 
@@ -120,20 +121,26 @@ export default function SearchAuctions() {
 
                 <div className={styles.inputDiv}>
                     <label htmlFor="closed">Status:</label>
-                    <select
-                        id="closed"
-                        name="closed"
-                        value={values.closed}
-                        onChange={changeHandler}
-                        className={styles.select}
-                    >
-                        <option value="">All</option>
-                        <option value="false">Open</option>
-                        <option value="true">Closed</option>
-                    </select>
+                    <div className={styles.selectWrapper}>
+                        <select
+                            id="closed"
+                            name="closed"
+                            value={values.closed}
+                            onChange={changeHandler}
+                            className={styles.select}
+                        >
+                            <option value="">All</option>
+                            <option value="false">Open</option>
+                            <option value="true">Closed</option>
+                        </select>
+
+                        <button className={styles.searchButton}>
+                            <FaSearch size={24} />
+                        </button>
+
+                    </div>
                 </div>
 
-                <button type="submit" className={styles.searchButton}>Search</button>
             </form>
 
             {auctions.length > 0
