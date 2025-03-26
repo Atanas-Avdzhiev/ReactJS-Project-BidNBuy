@@ -1,5 +1,5 @@
 export const validateCreateEditAuctions = (values) => {
-
+    //
     if (values.image.length === 0) {
         return "Please upload at least one image!";
     }
