@@ -1,5 +1,5 @@
 export const validateCreateEditAuctions = (values) => {
-    
+
     if (values.image.length === 0) {
         return "Please upload at least one image!";
     }
@@ -11,14 +11,16 @@ export const validateCreateEditAuctions = (values) => {
     const base64Regex = /^data:image\/(jpeg|png|webp|gif);base64,/;
     const maxFileSize = 5 * 1024 * 1024; // 5MB
 
-    for (const image of values.image) {
+    for (let i = 0; i < values.image.length; i++) {
+        const image = values.image[i];
+
         if (!base64Regex.test(image)) {
-            return "Invalid image format! Only JPEG, PNG, WEBP, and GIF are allowed.";
+            return `Image #${i + 1} has an invalid format! Only JPEG, PNG, WEBP, and GIF are allowed.`;
         }
 
         const estimatedSize = (image.length * 3) / 4 - 2;
         if (estimatedSize > maxFileSize) {
-            return "One of the images is too large! Maximum size is 5MB.";
+            return `Image #${i + 1} is too large! Maximum size is 5MB.`;
         }
     }
 

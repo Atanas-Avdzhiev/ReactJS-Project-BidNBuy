@@ -111,13 +111,14 @@ export default function EditAuction() {
 
                     <div style={{ display: "flex", marginBottom: "1em", fontSize: "14px" }}>
                         <IoIosWarning />
-                        <p>The first image will be the main one!</p>
+                        <p>The first image will be the main one! Allowed formats: JPEG, PNG, WEBP, and GIF.</p>
                     </div>
 
                     <div className={styles.imagePreviewContainer}>
                         {values.image.length > 0 &&
                             values.image.map((image, index) => (
                                 <div key={index} className={styles.imageWrapper}>
+                                    <p className={styles.imageNumber}>{index + 1}</p>
                                     <button
                                         type="button"
                                         className={styles.removeImageButton}
