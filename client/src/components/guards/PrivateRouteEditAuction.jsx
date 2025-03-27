@@ -10,8 +10,12 @@ export default function PrivateRouteEditAuction() {
 
     useEffect(() => {
         (async () => {
-            const auction = await auctionsAPI.getOne(auctionId);
-            setAuction(auction)
+            try {
+                const auction = await auctionsAPI.getOne(auctionId);
+                setAuction(auction);
+            } catch (err) {
+                console.log(err.message);
+            }
         })()
     }, [auctionId])
 
