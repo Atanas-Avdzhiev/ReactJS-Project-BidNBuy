@@ -137,6 +137,8 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
+  border: 2px solid transparent;
+  box-sizing: border-box;
 }
 
 .pageCircle:hover {
@@ -149,16 +151,11 @@
   font-weight: bold;
 }
 
-.pageCircleCurrent{
+.pageCircleCurrent {
   padding: 10px 15px;
   background-color: transparent;
   border: 2px solid black;
   border-radius: 50%;
   cursor: pointer;
   font-size: 16px;
-}
-
-.pageCircleCurrent:hover {
-  background-color: white;
-  border: 4px solid black;
 }

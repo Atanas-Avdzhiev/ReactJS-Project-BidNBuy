@@ -156,6 +156,8 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
 }
 
 .pageCircle:hover {
@@ -177,12 +179,7 @@
     font-size: 16px;
 }
 
-.pageCircleCurrent:hover {
-    background-color: white;
-    border: 4px solid black;
-}
-
-.noAuctions{
+.noAuctions {
     font-size: 2.5em;
     margin: 5em 0;
     color: #777;
