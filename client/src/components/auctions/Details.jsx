@@ -191,7 +191,7 @@ export default function DetailsAuction() {
             if (validate !== true) return setEditCommentError(validate);
             setEditCommentError('');
 
-            const response = await commentsAPI.edit(commentId, { comment: editedText });
+            const response = await commentsAPI.edit(commentId, { comment: editedText, editedByOwner: Date.now() });
 
             setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
             setEditingCommentId(null);
@@ -408,8 +408,10 @@ export default function DetailsAuction() {
                                                         <p className={styles.editCommentError}>{editCommentError}</p>
                                                     </div>
                                                 )}
-
-                                                <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
+                                                {comment.editedByOwner
+                                                    ? <p className={styles.commentDate}>Edited {new Date(comment.editedByOwner).toLocaleString()}</p>
+                                                    : <p className={styles.commentDate}>{new Date(comment._createdOn).toLocaleString()}</p>
+                                                }
                                             </div>
                                         </li>
                                     ))}
