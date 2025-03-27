@@ -701,3 +701,8 @@ p {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
+
+.sellerPhoneNumberTitle{
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}

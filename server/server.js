@@ -1841,6 +1841,7 @@
                 "bidPrice": 0,
                 "closed": "false",
                 "_createdOn": 1741811073654,
+                "editedByOwner": 1743096134839,
                 "_id": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "pesho@abv.bg",
                 "phone": "359123456789",
@@ -1908,6 +1909,7 @@
                 "auctionId": "m345fghi-67jk-89lm-01no-23pqrstuvwxy",
                 "owner": "maria@abv.bg",
                 "_createdOn": 1742223969000,
+                "editedByOwner": 1743095807070,
                 "_id": "05180496-86a1-4ef5-9a2c-aa393b109783",
                 "likes": ["nasko@abv.bg", "pesho@abv.bg", "elena@abv.bg", "ivaylo@abv.bg", "georgi@abv.bg"]
             },

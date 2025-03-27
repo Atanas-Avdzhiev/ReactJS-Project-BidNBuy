@@ -321,7 +321,7 @@ export default function DetailsAuction() {
                         </div>
 
                         <div className={styles.auctionOwnerEmailWrapper}>
-                            <h4>Seller Phone Number:</h4>
+                            <h4 className={styles.sellerPhoneNumberTitle}>Seller Phone Number:</h4>
                             <p className={styles.auctionOwnerPhone} >{auction.phone}</p>
                         </div>
 
