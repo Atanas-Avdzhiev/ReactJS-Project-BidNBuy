@@ -228,6 +228,7 @@
   white-space: nowrap;
   margin-top: 3.5em;
   min-height: 71px;
+  position: relative;
 }
 
 .newsHeading {
@@ -262,6 +263,7 @@
   border: solid 2px;
   border-radius: 8px;
   border-color: #ecae3b;
+  height: 55px;
 }
 
 .newsItem:hover {
@@ -280,9 +282,13 @@
   font-size: 15px;
   white-space: normal;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   max-width: 180px;
   word-wrap: break-word;
   color: #444444;
+  text-overflow: ellipsis;
 }
 
 .newsTickerContent:hover {

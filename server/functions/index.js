@@ -17,7 +17,7 @@ exports.api = onRequest((req, res) => {
 exports.fetchAuctionNews = onRequest((req, res) => {
     cors()(req, res, async () => {
         try {
-            const NEWS_API_URL = "https://newsapi.org/v2/everything?q=%22auction%22&searchIn=title&sortBy=publishedAt&language=en&pageSize=10&domains=bbc.com,cnn.com,forbes.com,bloomberg.com,reuters.com,nytimes.com,wsj.com,guardian.com,sothebys.com,christies.com&apiKey=712955d977944dffbcf8372294aabaae";
+            const NEWS_API_URL = "https://newsapi.org/v2/everything?q=%22auction%22&searchIn=title&sortBy=publishedAt&language=en&pageSize=10&domains=bbc.com,cnn.com,forbes.com,bloomberg.com,reuters.com,nytimes.com,wsj.com,guardian.com,sothebys.com,christies.com,christiantoday.com,robbreport.com&apiKey=712955d977944dffbcf8372294aabaae";
 
             const response = await fetch(NEWS_API_URL);
 
