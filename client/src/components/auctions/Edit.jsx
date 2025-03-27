@@ -36,6 +36,7 @@ export default function EditAuction() {
                 values.bidOwner = '';
             }
             values.price = +values.price;
+            values.editedByOwner = Date.now();
             await editAuction(auctionId, values);
             navigate(`/auctions/${auctionId}/details`);
         } catch (err) {

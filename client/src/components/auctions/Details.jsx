@@ -329,6 +329,12 @@ export default function DetailsAuction() {
                             <p className={styles.auctionOwnerDateTitle}>Published At:</p>
                             <p className={styles.auctionOwnerDate}>{new Date(auction._createdOn).toLocaleString()}</p>
                         </div>
+                        {auction.editedByOwner && (
+                            <div className={styles.auctionOwnerEmailWrapper}>
+                                <p className={styles.auctionOwnerDateTitle}>Last Edited At:</p>
+                                <p className={styles.auctionOwnerDate}>{new Date(auction.editedByOwner).toLocaleString()}</p>
+                            </div>
+                        )}
                     </div>
 
                     <div>
