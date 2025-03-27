@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { logout } from "../api/auth-api";
 
 export default function usePersistedState(key, initialState) {
     const [state, setState] = useState(() => {
@@ -11,15 +12,22 @@ export default function usePersistedState(key, initialState) {
         return JSON.parse(persistedAuth);
     });
 
-    const updateState = (value) => {
+    const updateState = async (value) => {
+        try {
+            if (value === null || value === undefined) {
+                await logout();
+                localStorage.removeItem(key);
+            } else {
+                localStorage.setItem(key, JSON.stringify(value));
+            }
 
-        if (value === null || value === undefined) {
-            localStorage.removeItem(key);
-        } else {
-            localStorage.setItem(key, JSON.stringify(value));
+            setState(value);
+        } catch (err) {
+            if (value === null || value === undefined) {
+                setState(value);
+            }
+            console.log(err.message);
         }
-
-        setState(value);
     }
 
     return [state, updateState];

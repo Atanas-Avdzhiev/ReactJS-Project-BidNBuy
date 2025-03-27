@@ -27,7 +27,7 @@ export default function DetailsAuction() {
     const [commentError, setCommentError] = useState('');
     const [isDeleteCommentDialogOpen, setIsDeleteCommentDialogOpen] = useState(false);
     const [hoveredComment, setHoveredComment] = useState(null);
-    const [editCommentError, seteditCommentError] = useState('');
+    const [editCommentError, setEditCommentError] = useState('');
 
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editedText, setEditedText] = useState('');
@@ -69,6 +69,12 @@ export default function DetailsAuction() {
             await auctionsAPI.del(auctionId);
             navigate('/auctions/catalog');
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 5000)
+            }
             console.log(err.message);
         }
 
@@ -89,6 +95,12 @@ export default function DetailsAuction() {
             setUserAddedComment(true);
             resetForm();
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setCommentError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 5000)
+            }
             console.log(err.message);
         }
     }
@@ -100,6 +112,12 @@ export default function DetailsAuction() {
             setAuction(result);
             setBidValue({ bidPrice: '' });
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 5000)
+            }
             console.log(err.message);
         }
     }
@@ -136,6 +154,11 @@ export default function DetailsAuction() {
             await commentsAPI.del(commentId);
             setCommentsToLoad(prevComments => prevComments - 1);
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 1000)
+            }
             console.log(err.message);
         }
     }
@@ -153,19 +176,34 @@ export default function DetailsAuction() {
                 setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
             }
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 1000)
+            }
             console.log(err.message);
         }
     }
 
     const saveEditHandler = async (commentId) => {
-        const validate = validateComment({ comment: editedText });
-        if (validate !== true) return seteditCommentError(validate);
-        seteditCommentError('');
+        try {
+            const validate = validateComment({ comment: editedText });
+            if (validate !== true) return setEditCommentError(validate);
+            setEditCommentError('');
 
-        const response = await commentsAPI.edit(commentId, { comment: editedText });
+            const response = await commentsAPI.edit(commentId, { comment: editedText });
 
-        setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
-        setEditingCommentId(null);
+            setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
+            setEditingCommentId(null);
+        } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setEditCommentError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 5000)
+            }
+            console.log(err.message);
+        }
     };
 
     const nextImage = () => {
@@ -222,7 +260,7 @@ export default function DetailsAuction() {
                                 )}
 
                                 {error && (
-                                    <p className={styles.authError}>
+                                    <p className={styles.authErrorBid}>
                                         <span>{error}</span>
                                     </p>
                                 )}

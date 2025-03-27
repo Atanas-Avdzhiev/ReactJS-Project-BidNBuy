@@ -36,6 +36,12 @@ export default function CreateAuction() {
             const { _id: auctionId } = await createAuction(values);
             navigate(`/auctions/${auctionId}/details`);
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 5000)
+            }
             console.log(err.message);
         }
     };
