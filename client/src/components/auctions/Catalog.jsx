@@ -13,7 +13,8 @@ export default function CatalogAuction() {
     const [nextPage, setNextPage] = useState(false);
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
-    const page = Number(params.get('page'));
+    const page = Number(params.get('page')) || 1;
+    
     const recordsPerPage = 10; // change this number if you want to change the number of auctions per page
     const recordsToSkip = (page - 1) * recordsPerPage;
 
@@ -23,6 +24,7 @@ export default function CatalogAuction() {
                 if (page <= 0) {
                     return navigate(`${location.pathname}?page=1`);
                 }
+
                 let auctions = [];
                 setIsLoading(true);
                 if (location.pathname === '/auctions/catalog') {

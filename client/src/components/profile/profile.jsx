@@ -13,14 +13,14 @@ export default function Profile() {
 
     const { email: myEmail } = useContext(AuthContext);
     const [auctions, setAuctions] = useState([]);
-    const [selected, setSelected] = useState("my");
+    const [selected, setSelected] = useState('my');
     const [isLoading, setIsLoading] = useState(false);
     const [nextPage, setNextPage] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
     const params = new URLSearchParams(location.search);
-    const page = Number(params.get('page'));
+    const page = Number(params.get('page')) || 1;
     const recordsPerPage = 6; // change this number if you want to change the number of auctions per page
     const recordsToSkip = (page - 1) * recordsPerPage;
 
@@ -111,7 +111,7 @@ export default function Profile() {
                                 </div>
                             ))}
                         </div>
-                    ) : ((page === 1 || page === 0) && <p className={styles.noAuctions}>No auctions created.</p>)}
+                    ) : (page === 1 || page === 0) ? <p className={styles.noAuctions}>No auctions created.</p> : <p className={styles.noAuctions}>No auctions on this page.</p>}
                 </div>
 
             )}
@@ -134,7 +134,7 @@ export default function Profile() {
 
                             )}
                         </div>
-                    ) : ((page === 1 || page === 0) && <p className={styles.noAuctions}>No auctions won.</p>)}
+                    ) : (page === 1 || page === 0) ? <p className={styles.noAuctions}>No auctions won.</p> : <p className={styles.noAuctions}>No auctions on this page.</p>}
                 </div>
 
             )}

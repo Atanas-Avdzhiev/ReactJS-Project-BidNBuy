@@ -19,7 +19,7 @@ export default function SearchAuctions() {
     const minPrice = searchParams.get('minPrice') || '';
     const maxPrice = searchParams.get('maxPrice') || '';
     const closed = searchParams.get('closed') || '';
-    const page = Number(searchParams.get('page'));
+    const page = Number(searchParams.get('page')) || 1;
 
     const recordsPerPage = 10; // change this number if you want to change the number of auctions per page
     const recordsToSkip = (+page - 1) * recordsPerPage;
@@ -27,10 +27,6 @@ export default function SearchAuctions() {
     useEffect(() => {
         (async () => {
             try {
-                if (!searchParams.toString()) {
-                    setSearchParams({ auctionName: '', category: '', minPrice: '', maxPrice: '', closed: '', page: '1' });
-                    return;
-                }
                 if (page <= 0) {
                     setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: '1' });
                     return;
