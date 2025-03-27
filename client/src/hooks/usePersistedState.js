@@ -15,17 +15,15 @@ export default function usePersistedState(key, initialState) {
     const updateState = async (value) => {
         try {
             if (value === null || value === undefined) {
+                setState(null);
                 await logout();
                 localStorage.removeItem(key);
             } else {
                 localStorage.setItem(key, JSON.stringify(value));
-            }
-
-            setState(value);
-        } catch (err) {
-            if (value === null || value === undefined) {
                 setState(value);
             }
+
+        } catch (err) {
             console.log(err.message);
         }
     }

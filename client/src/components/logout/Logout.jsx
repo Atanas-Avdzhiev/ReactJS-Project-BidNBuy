@@ -1,26 +1,22 @@
-import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 import { useLogout } from '../../hooks/useAuth'
 
 export default function Logout() {
     const logout = useLogout();
-    const [isLoggedOut, setIsLoggedOut] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
             try {
                 await logout();
-                setIsLoggedOut(true);
+                navigate('/login');
             } catch (err) {
                 console.log(err.message);
             }
         })();
     }, []);
-
-    if (isLoggedOut) {
-        return <Navigate to="/login" />;
-    }
 
     return null;
 }

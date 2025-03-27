@@ -36,7 +36,6 @@ export const useLogout = () => {
 
     const logoutHandler = async () => {
         await localLogout();
-        //await logout();
     }
     return logoutHandler;
 }

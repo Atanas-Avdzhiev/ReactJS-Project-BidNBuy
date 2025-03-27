@@ -70,7 +70,7 @@ export default function DetailsAuction() {
             navigate('/auctions/catalog');
         } catch (err) {
             if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
-                setError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setError('Your session has expired, please login again. You will be redirected to login page in 5 seconds.');
                 setTimeout(() => {
                     navigate('/logout');
                 }, 5000)
@@ -96,7 +96,7 @@ export default function DetailsAuction() {
             resetForm();
         } catch (err) {
             if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
-                setCommentError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setCommentError('Your session has expired, please login again. You will be redirected to login page in 5 seconds.');
                 setTimeout(() => {
                     navigate('/logout');
                 }, 5000)
@@ -113,7 +113,7 @@ export default function DetailsAuction() {
             setBidValue({ bidPrice: '' });
         } catch (err) {
             if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
-                setError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setError('Your session has expired, please login again. You will be redirected to login page in 5 seconds.');
                 setTimeout(() => {
                     navigate('/logout');
                 }, 5000)
@@ -197,7 +197,7 @@ export default function DetailsAuction() {
             setEditingCommentId(null);
         } catch (err) {
             if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
-                setEditCommentError('Your session has expired, please login again. You will be redirected to home page in 5 seconds.');
+                setEditCommentError('Your session has expired, please login again. You will be redirected to login page in 5 seconds.');
                 setTimeout(() => {
                     navigate('/logout');
                 }, 5000)
