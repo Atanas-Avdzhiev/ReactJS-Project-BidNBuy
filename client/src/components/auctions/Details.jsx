@@ -220,7 +220,7 @@ export default function DetailsAuction() {
         <>
             <section className={styles.auctionDetails}>
                 <h1 className={styles.auctionDetailsTitle}>Auction Details</h1>
-                {auction.closed === 'true' && <p className={styles.noteWinner}>This auction is closed! The winner is {auction.bidOwner}</p>}
+                {auction.closed === 'true' && <p className={styles.noteWinner}>This auction is closed! The winner is <span className={styles.winnerName} onClick={() => navigate(`/profile/${auction.bidOwner}`)}>{auction.bidOwner}</span></p>}
                 <div className={styles.infoSection}>
                     <div className={styles.auctionHeader}>
 

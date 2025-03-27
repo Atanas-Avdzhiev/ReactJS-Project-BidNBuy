@@ -702,7 +702,12 @@ p {
   transition: transform 0.5s ease-in-out;
 }
 
-.sellerPhoneNumberTitle{
+.sellerPhoneNumberTitle {
   margin-top: 0.25em;
   margin-bottom: 0.25em;
+}
+
+.winnerName:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
