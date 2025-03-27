@@ -86,6 +86,7 @@
   text-align: justify;
   margin-bottom: 30px;
   margin-left: 2em;
+  overflow-wrap: break-word;
 }
 
 .descriptionTitle {
