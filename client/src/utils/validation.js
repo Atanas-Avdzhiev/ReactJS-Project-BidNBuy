@@ -47,8 +47,9 @@ export const validateCreateEditAuctions = (values) => {
     return true;
 }
 
-export const validateRegisterForm = ({ email, password, rePassword }) => {
+export const validateRegisterForm = ({ email, password, rePassword, phone }) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phoneRegex = /^\d{10,15}$/;
 
     if (!emailRegex.test(email)) {
         return 'Invalid email format!';
@@ -60,6 +61,10 @@ export const validateRegisterForm = ({ email, password, rePassword }) => {
 
     if (password !== rePassword) {
         return 'Passwords do not match!';
+    }
+
+    if (!phoneRegex.test(phone)) {
+        return 'Phone Number must contain only digits and be between 10 and 15 digits long.';
     }
 
     return true;

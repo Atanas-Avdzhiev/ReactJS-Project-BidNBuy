@@ -9,7 +9,7 @@ import { IoIosWarning } from "react-icons/io";
 
 export default function CreateAuction() {
 
-    const { email } = useContext(AuthContext);
+    const { email, phone } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const initialValues = {
@@ -33,6 +33,7 @@ export default function CreateAuction() {
             values.bidPrice = 0;
             values.closed = 'false';
             values.owner = email;
+            values.phone = phone;
             const { _id: auctionId } = await createAuction(values);
             navigate(`/auctions/${auctionId}/details`);
         } catch (err) {

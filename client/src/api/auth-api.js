@@ -5,11 +5,11 @@ const BASE_URL = `${BASE_URL_BidNBuy}/users`;
 
 export const login = (email, password) => requester('POST', `${BASE_URL}/login`, { email, password });
 
-export const register = (email, password) => requester('POST', `${BASE_URL}/register`, { email, password });
+export const register = (email, password, phone) => requester('POST', `${BASE_URL}/register`, { email, password, phone });
 
 export const logout = () => requester('GET', `${BASE_URL}/logout`);
 
-export const saveUser = async (email, accessToken) => {
+export const saveUser = async (email, accessToken, phone) => {
     try {
         await fetch(`${BASE_URL_BidNBuy}/data/savedUsers`, {
             method: 'POST',
@@ -17,7 +17,7 @@ export const saveUser = async (email, accessToken) => {
                 'Content-Type': 'application/json',
                 'X-Authorization': accessToken
             },
-            body: JSON.stringify({ email })
+            body: JSON.stringify({ email, phone })
         })
     } catch (err) {
         console.log(err.message)

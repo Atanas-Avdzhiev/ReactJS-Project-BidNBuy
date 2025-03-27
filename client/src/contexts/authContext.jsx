@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
 export function AuthContextProvider(props) {
     const [authState, setAuthState] = usePersistedState('auth', {});
-    
+
     const changeAuthState = (state) => {
         setAuthState(state);
     }
@@ -18,6 +18,7 @@ export function AuthContextProvider(props) {
     const contextData = {
         userId: authState?._id,
         email: authState?.email,
+        phone: authState?.phone,
         accessToken: authState?.accessToken,
         createdOn: authState?._createdOn,
         isAuthenticated: !!authState?.email,

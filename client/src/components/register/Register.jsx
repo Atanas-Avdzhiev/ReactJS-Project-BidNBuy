@@ -10,15 +10,15 @@ export default function Register() {
     const register = useRegister();
     const navigate = useNavigate();
 
-    const initialValues = { email: '', password: '', rePassword: '' };
+    const initialValues = { email: '', password: '', rePassword: '', phone: '' };
 
-    const registerHandler = async ({ email, password, rePassword }) => {
+    const registerHandler = async ({ email, password, rePassword, phone }) => {
 
-        const validate = validateRegisterForm({ email, password, rePassword });
+        const validate = validateRegisterForm({ email, password, rePassword, phone });
         if (validate !== true) return setError(validate);
 
         try {
-            await register(email, password);
+            await register(email, password, phone);
             navigate('/');
         } catch (err) {
             setError(err.message);
@@ -43,6 +43,16 @@ export default function Register() {
                         value={values.email}
                         onChange={changeHandler}
                         placeholder="pesho@abv.bg"
+                    />
+
+                    <label htmlFor="phone">Phone:</label>
+                    <input
+                        type="number"
+                        id="phone"
+                        name="phone"
+                        value={values.phone}
+                        onChange={changeHandler}
+                        placeholder="359123456789"
                     />
 
                     <label htmlFor="pass">Password:</label>

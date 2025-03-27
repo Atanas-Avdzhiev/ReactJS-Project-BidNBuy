@@ -73,6 +73,8 @@ export default function Profile() {
             <div className={styles.infoSection}>
                 <p><strong>Email:</strong> {user.email}</p>
                 <br></br>
+                <p>Phone Number: {user.phone}</p>
+                <br></br>
                 <p>Member since: {new Date(user._createdOn).toLocaleDateString()}</p>
             </div>
 

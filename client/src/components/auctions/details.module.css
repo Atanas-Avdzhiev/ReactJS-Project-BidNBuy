@@ -510,6 +510,20 @@ p {
   text-decoration: underline;
 }
 
+.bidWinner {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.bidWinner:hover {
+  text-decoration: underline;
+}
+
+.auctionOwnerPhone {
+  color: #555;
+  font-size: 1.1em;
+}
+
 .editButtons {
   position: absolute;
   top: 0;

@@ -266,10 +266,10 @@ export default function DetailsAuction() {
                                 )}
 
                                 {auction.bidOwner && auction.closed === 'false' && (
-                                    <span className={styles.levels}>Highest Bid: <strong>{auction.bidPrice}$</strong> <br /> by {auction.bidOwner}</span>
+                                    <span className={styles.levels}>Highest Bid: <strong>{auction.bidPrice}$</strong> <br /> by <strong className={styles.bidWinner} onClick={() => navigate(`/profile/${auction.bidOwner}`)}>{auction.bidOwner}</strong></span>
                                 )}
                                 {auction.bidOwner && auction.closed === 'true' && (
-                                    <span className={styles.levels}>Bid: {auction.bidPrice}$ won by <strong>{auction.bidOwner}</strong></span>
+                                    <span className={styles.levels}>Bid: <strong>{auction.bidPrice}$</strong> won by <strong className={styles.bidWinner} onClick={() => navigate(`/profile/${auction.bidOwner}`)}>{auction.bidOwner}</strong></span>
                                 )}
 
                                 {!auction.bidOwner && auction.closed === 'false' && (
@@ -318,6 +318,11 @@ export default function DetailsAuction() {
                         <div className={styles.auctionOwnerEmailWrapper}>
                             <h3>Auction Owner:</h3>
                             <p className={styles.auctionOwnerEmail} onClick={() => navigate(`/profile/${auction.owner}`)}>{auction.owner}</p>
+                        </div>
+
+                        <div className={styles.auctionOwnerEmailWrapper}>
+                            <h4>Seller Phone Number:</h4>
+                            <p className={styles.auctionOwnerPhone} >{auction.phone}</p>
                         </div>
 
                         <div className={styles.auctionOwnerEmailWrapper}>

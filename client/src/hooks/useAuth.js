@@ -18,12 +18,12 @@ export const useLogin = () => {
 export const useRegister = () => {
     const { changeAuthState } = useContext(AuthContext);
 
-    const registerHandler = async (email, password) => {
-        const { password: _, ...result } = await register(email, password);
+    const registerHandler = async (email, password, phone) => {
+        const { password: _, ...result } = await register(email, password, phone);
         changeAuthState(result);
-        
+
         if (result.email && result.accessToken) {
-            await saveUser(result.email, result.accessToken);
+            await saveUser(result.email, result.accessToken, result.phone);
         }
 
         return result;
