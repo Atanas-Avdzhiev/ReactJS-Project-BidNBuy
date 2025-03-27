@@ -37,9 +37,10 @@ export default function CatalogAuction() {
                     setNextPage(false);
                 }
                 setAuctions(auctions);
-                setIsLoading(false);
             } catch (err) {
                 console.log(err.message);
+            } finally {
+                setIsLoading(false);
             }
         })();
 

@@ -25,6 +25,10 @@ export const saveUser = async (email, accessToken, phone) => {
 }
 
 export const getUser = async (email) => {
-    const response = await requester('GET', `${BASE_URL_BidNBuy}/data/savedUsers?where=email%3D%22${email}%22&pageSize=1`)
-    return response[0];
+    try {
+        const response = await requester('GET', `${BASE_URL_BidNBuy}/data/savedUsers?where=email%3D%22${email}%22&pageSize=1`)
+        return response[0];
+    } catch (err) {
+        console.log(err.message);
+    }
 };

@@ -8,14 +8,18 @@ export function useGetAllComments(auctionId, commentsToLoad) {
 
     useEffect(() => {
         (async () => {
-            const comments = await commentsAPI.getAll(auctionId, commentsToLoad + 1);
-            if (comments.length === commentsToLoad + 1) {
-                setIsMoreComments(true);
-                comments.pop();
-            } else {
-                setIsMoreComments(false);
+            try {
+                const comments = await commentsAPI.getAll(auctionId, commentsToLoad + 1);
+                if (comments.length === commentsToLoad + 1) {
+                    setIsMoreComments(true);
+                    comments.pop();
+                } else {
+                    setIsMoreComments(false);
+                }
+                setComments(comments);
+            } catch (err) {
+                console.log(err.message);
             }
-            setComments(comments);
         })()
     }, [commentsToLoad])
 

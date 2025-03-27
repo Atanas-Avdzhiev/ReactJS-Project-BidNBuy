@@ -59,10 +59,10 @@ export default function Profile() {
                     }
                     setAuctions(auctionsWon);
                 }
-
-                setIsLoading(false);
             } catch (err) {
                 console.log(err.message);
+            } finally {
+                setIsLoading(false);
             }
         })()
     }, [selected, location.search]);

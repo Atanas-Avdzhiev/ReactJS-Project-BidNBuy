@@ -45,9 +45,10 @@ export default function SearchAuctions() {
                     setNextPage(false);
                 }
                 setAuctions(auctions);
-                setIsLoading(false);
             } catch (err) {
                 console.log(err.message);
+            } finally {
+                setIsLoading(false);
             }
         })()
     }, [searchParams])
