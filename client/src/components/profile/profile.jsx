@@ -3,7 +3,6 @@ import styles from './profile.module.css';
 import { auctionsAPI } from '../../api/auctions-api';
 import { AuthContext } from '../../contexts/authContext';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import { editProfile, getUser } from '../../api/auth-api';
 import { validatePhone, validateSingleImage } from '../../utils/validation';
 
@@ -208,9 +207,7 @@ export default function Profile() {
                                 navigate(`/profile/${email}?page=1`);
                             }}>Won Auctions</button>
                     </div>
-
-                    {isLoading && <LoadingSpinner />}
-
+                    
                     {selected === 'my' && (
 
                         <div className={styles.auctionsSection}>
