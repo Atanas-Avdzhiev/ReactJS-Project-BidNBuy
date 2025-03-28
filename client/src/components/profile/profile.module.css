@@ -190,14 +190,17 @@
 
 .profilePanel {
     margin: 4em auto;
-    /* width: 300px; */
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     flex: 0 0 350px;
-    height: 400px;
+    min-height: 400px;
+}
+
+.profilePanel h3{
+    font-size: 1.3em;
 }
 
 .avatarContainer {
@@ -260,7 +263,6 @@ h3 {
 .profileError {
     color: red;
     font-size: 1em;
-    margin-bottom: 15px;
     text-align: center;
 }
 
