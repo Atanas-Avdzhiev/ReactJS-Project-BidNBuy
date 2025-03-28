@@ -1,24 +1,13 @@
 .profileContainer {
     max-width: 1100px;
-    margin: 6em auto;
+    margin: 4em auto;
     padding: 20px;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-.title {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.infoSection {
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    flex: 1;
+    min-width: 1100px;
 }
 
 .auctionsSection {
@@ -183,4 +172,133 @@
     font-size: 2.5em;
     margin: 5em 0;
     color: #777;
+}
+
+.profileWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 6em auto 0 auto;
+    background-color: #f9f9f9;
+}
+
+.mainProfile {
+    background-color: #f9f9f9;
+}
+
+.profilePanel {
+    margin: 4em auto;
+    /* width: 300px; */
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 0 0 350px;
+    height: 400px;
+}
+
+.avatarContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+}
+
+.avatarOwner {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    cursor: pointer;
+}
+
+.avatarContainer input[type="file"] {
+    display: none;
+}
+
+h3 {
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.phoneContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2em;
+}
+
+.phoneOwner {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.phoneOwner:hover {
+    color: #e98400;
+}
+
+.memberSince {
+    margin-top: 2em;
+}
+
+.profileError {
+    color: red;
+    font-size: 1em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.buttonsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.buttonsWrapper button {
+    align-self: flex-end;
+    padding: 6px 12px;
+    background-color: #e98f08;
+    color: white;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.buttonsWrapper button:hover {
+    background-color: #d47f00;
+}
+
+.phoneContainer input {
+    padding: 0.3em 0.5em;
+    border-radius: 0.5em;
+}
+
+@media (max-width: 900px) {
+    .profileWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profilPanel {
+        width: 100%;
+    }
 }

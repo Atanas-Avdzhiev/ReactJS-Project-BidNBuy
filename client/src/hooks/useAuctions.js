@@ -29,7 +29,7 @@ export function useGetOneAuction(auctionId) {
         })()
     }, [auctionId])
 
-    return [auction, setAuction ];
+    return [auction, setAuction];
 }
 
 export function useCreateAuction() {

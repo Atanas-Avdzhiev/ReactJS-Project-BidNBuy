@@ -99,3 +99,32 @@ export const validateComment = (values) => {
 
     return true;
 }
+
+export const validateSingleImage = (image) => {
+
+    const base64Regex = /^data:image\/(jpeg|png|webp|gif);base64,/;
+    const maxFileSize = 5 * 1024 * 1024; // 5MB
+
+    if (!base64Regex.test(image)) {
+        return 'Image has an invalid format! Only JPEG, PNG, WEBP, and GIF are allowed.';
+    }
+
+    const estimatedSize = (image.length * 3) / 4 - 2;
+
+    if (estimatedSize > maxFileSize) {
+        return 'Image is too large! Maximum size is 5MB.';
+    }
+
+    return true;
+}
+
+export const validatePhone = (phone) => {
+
+    const phoneRegex = /^\d{10,15}$/;
+
+    if (!phoneRegex.test(phone)) {
+        return 'Phone Number must contain only digits and be between 10 and 15 digits long.';
+    }
+
+    return true;
+}

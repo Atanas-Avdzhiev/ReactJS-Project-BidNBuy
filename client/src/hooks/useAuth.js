@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { login, logout, register, saveUser } from "../api/auth-api";
+import { editUser, getUser, login, logout, register, saveUser } from "../api/auth-api";
 import { AuthContext } from "../contexts/authContext";
 
 export const useLogin = () => {
@@ -8,7 +8,11 @@ export const useLogin = () => {
     const loginHandler = async (email, password) => {
         const { password: _, ...result } = await login(email, password);
 
-        changeAuthState(result);
+        if (result.email && result.accessToken) {
+            const findUser = await getUser(result.email);
+            const editedUser = await editUser(findUser._id, result.accessToken);
+            changeAuthState(editedUser);
+        }
 
         return result;
     }
@@ -20,10 +24,10 @@ export const useRegister = () => {
 
     const registerHandler = async (email, password, phone) => {
         const { password: _, ...result } = await register(email, password, phone);
-        changeAuthState(result);
 
         if (result.email && result.accessToken) {
-            await saveUser(result.email, result.accessToken, result.phone);
+            const savedUser = await saveUser(result.email, result.accessToken, result.phone);
+            changeAuthState(savedUser);
         }
 
         return result;

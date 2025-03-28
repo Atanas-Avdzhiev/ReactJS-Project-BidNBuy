@@ -11,10 +11,12 @@ import styles from './details.module.css';
 import { validateBidPrice, validateComment } from "../../utils/validation";
 import { FaThumbsUp } from 'react-icons/fa';
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getUser } from "../../api/auth-api";
 
 export default function DetailsAuction() {
     const { auctionId } = useParams();
     const [auction, setAuction] = useGetOneAuction(auctionId);
+    const [auctionOwner, setAuctionOwner] = useState({});
     const [commentsToLoad, setCommentsToLoad] = useState(3);
     const [comments, isMoreComments, setComments] = useGetAllComments(auctionId, commentsToLoad);
     const [userAddedComment, setUserAddedComment] = useState(false);
@@ -36,6 +38,19 @@ export default function DetailsAuction() {
 
     const { isAuthenticated, userId, email } = useContext(AuthContext);
     const isOwner = userId === auction._ownerId;
+
+    useEffect(() => {
+        if (auction) {
+            (async () => {
+                try {
+                    const auctionOwner = await getUser(auction.owner);
+                    setAuctionOwner(auctionOwner);
+                } catch (err) {
+                    console.log(err)
+                }
+            })()
+        }
+    }, [auction]);
 
     useEffect(() => {
         if (auction) {
@@ -322,7 +337,7 @@ export default function DetailsAuction() {
 
                         <div className={styles.auctionOwnerEmailWrapper}>
                             <h4 className={styles.sellerPhoneNumberTitle}>Seller Phone Number:</h4>
-                            <p className={styles.auctionOwnerPhone} >{auction.phone}</p>
+                            <p className={styles.auctionOwnerPhone} >{auctionOwner?.phone}</p>
                         </div>
 
                         <div className={styles.auctionOwnerEmailWrapper}>
