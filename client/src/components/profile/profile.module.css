@@ -228,14 +228,12 @@
     cursor: pointer;
 }
 
-.avatarContainer input[type="file"] {
-    display: none;
+.avatarOwner:hover {
+    filter: brightness(0.75);
 }
 
-h3 {
-    margin: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
+.avatarContainer input[type="file"] {
+    display: none;
 }
 
 .phoneContainer {
