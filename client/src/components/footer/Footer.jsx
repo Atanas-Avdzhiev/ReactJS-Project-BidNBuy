@@ -18,7 +18,6 @@ export default function Footer() {
                 <nav className={styles.nav}>
                     <a href="" onClick={(e) => e.preventDefault()}>About</a>
                     <a href="" onClick={(e) => e.preventDefault()}>Contact</a>
-                    <a href="" onClick={(e) => e.preventDefault()}>Terms of Service</a>
                     <a href="" onClick={(e) => e.preventDefault()}>Privacy Policy</a>
                 </nav>
                 <div className={styles.social}>

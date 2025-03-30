@@ -7,15 +7,17 @@ import { useState, useEffect } from "react";
 import LoadingSpinner from "../loading-spinner/LoadingSpinner";
 
 export default function CatalogAuction() {
+    const navigate = useNavigate();
     const location = useLocation();
+
     const [auctions, setAuctions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [nextPage, setNextPage] = useState(false);
-    const navigate = useNavigate();
+
     const params = new URLSearchParams(location.search);
     const page = Number(params.get('page')) || 1;
-    
-    const recordsPerPage = 10; // change this number if you want to change the number of auctions per page
+
+    const recordsPerPage = 10;
     const recordsToSkip = (page - 1) * recordsPerPage;
 
     useEffect(() => {

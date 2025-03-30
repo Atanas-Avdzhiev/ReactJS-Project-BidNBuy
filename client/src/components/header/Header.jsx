@@ -4,9 +4,9 @@ import { AuthContext } from '../../contexts/authContext';
 import styles from './header.module.css';
 
 export default function Header() {
+
     const { isAuthenticated, email } = useContext(AuthContext);
     const [scrolled, setScrolled] = useState(false);
-
     const [showAuctionDropdown, setShowAuctionDropdown] = useState(false);
 
     useEffect(() => {

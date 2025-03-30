@@ -6,35 +6,39 @@ import { auctionsAPI } from "../../api/auctions-api";
 import { useGetAllComments } from "../../hooks/useComments";
 import { useForm } from "../../hooks/useForm";
 import { commentsAPI } from "../../api/comments-api";
-import ConfirmationDialog from "../confirmation-dialog/ConfirmationDialog";
-import styles from './details.module.css';
 import { validateBidPrice, validateComment } from "../../utils/validation";
 import { FaThumbsUp } from 'react-icons/fa';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getUser } from "../../api/auth-api";
+import ConfirmationDialog from "../confirmation-dialog/ConfirmationDialog";
+import styles from './details.module.css';
 
 export default function DetailsAuction() {
+
     const { auctionId } = useParams();
+    const navigate = useNavigate();
+
     const [auction, setAuction] = useGetOneAuction(auctionId);
     const [auctionOwner, setAuctionOwner] = useState({});
+
     const [commentsToLoad, setCommentsToLoad] = useState(3);
     const [comments, isMoreComments, setComments] = useGetAllComments(auctionId, commentsToLoad);
     const [userAddedComment, setUserAddedComment] = useState(false);
-    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-    const [isCloseAuctionDialogOpen, setisCloseAuctionDialogOpen] = useState(false);
-    const [isPlaceBid, setIsPlaceBid] = useState(false);
-    const [bidValue, setBidValue] = useState({ bidPrice: '' });
-    const navigate = useNavigate();
-    const [error, setError] = useState('');
-    const [commentError, setCommentError] = useState('');
-    const [isDeleteCommentDialogOpen, setIsDeleteCommentDialogOpen] = useState(false);
     const [hoveredComment, setHoveredComment] = useState(null);
-    const [editCommentError, setEditCommentError] = useState('');
-
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editedText, setEditedText] = useState('');
 
+    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+    const [isCloseAuctionDialogOpen, setisCloseAuctionDialogOpen] = useState(false);
+    const [isDeleteCommentDialogOpen, setIsDeleteCommentDialogOpen] = useState(false);
+    const [isPlaceBid, setIsPlaceBid] = useState(false);
+
+    const [bidValue, setBidValue] = useState({ bidPrice: '' });
     const [selectedImage, setSelectedImage] = useState(null);
+
+    const [error, setError] = useState('');
+    const [commentError, setCommentError] = useState('');
+    const [editCommentError, setEditCommentError] = useState('');
 
     const { isAuthenticated, userId, email } = useContext(AuthContext);
     const isOwner = userId === auction._ownerId;
@@ -43,18 +47,13 @@ export default function DetailsAuction() {
         if (auction) {
             (async () => {
                 try {
+                    setSelectedImage(auction.image && auction.image.length > 0 ? 0 : auction.imageUrl);
                     const auctionOwner = await getUser(auction.owner);
                     setAuctionOwner(auctionOwner);
                 } catch (err) {
-                    console.log(err)
+                    console.log(err.message);
                 }
             })()
-        }
-    }, [auction]);
-
-    useEffect(() => {
-        if (auction) {
-            setSelectedImage(auction.image && auction.image.length > 0 ? 0 : auction.imageUrl);
         }
     }, [auction]);
 
@@ -79,7 +78,7 @@ export default function DetailsAuction() {
         }
     }, [comments]);
 
-    async function deleteHandler() {
+    async function deleteAuctionHandler() {
         try {
             await auctionsAPI.del(auctionId);
             navigate('/auctions/catalog');
@@ -185,7 +184,8 @@ export default function DetailsAuction() {
                 comment.likes.push(email);
                 const response = await commentsAPI.like(comment._id, { likes: comment.likes });
                 setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
-            } else if (comment?.likes?.includes(email)) {
+            }
+            else if (comment?.likes?.includes(email)) {
                 comment.likes = comment.likes.filter(like => like !== email);
                 const response = await commentsAPI.like(comment._id, { likes: comment.likes });
                 setComments(prevComments => prevComments.map(comment => comment._id === response._id ? response : comment));
@@ -200,7 +200,7 @@ export default function DetailsAuction() {
         }
     }
 
-    const saveEditHandler = async (commentId) => {
+    const saveEditCommentHandler = async (commentId) => {
         try {
             const validate = validateComment({ comment: editedText });
             if (validate !== true) return setEditCommentError(validate);
@@ -387,7 +387,7 @@ export default function DetailsAuction() {
 
                                             {editingCommentId === comment._id && (
                                                 <div className={styles.editButtons}>
-                                                    <button onClick={() => saveEditHandler(comment._id)} className={styles.saveAndCancelComment}>Save</button>
+                                                    <button onClick={() => saveEditCommentHandler(comment._id)} className={styles.saveAndCancelComment}>Save</button>
                                                     <button onClick={() => setEditingCommentId(null)} className={styles.saveAndCancelComment}>Cancel</button>
                                                 </div>
                                             )}
@@ -477,7 +477,7 @@ export default function DetailsAuction() {
             <ConfirmationDialog
                 isOpen={isDeleteDialogOpen}
                 onClose={() => setIsDeleteDialogOpen(false)}
-                onConfirm={deleteHandler}
+                onConfirm={deleteAuctionHandler}
                 message={`Are you sure you want to delete the auction: ${auction.auctionName} ?`}
             />
 

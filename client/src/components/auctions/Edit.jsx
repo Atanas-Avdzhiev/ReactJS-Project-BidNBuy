@@ -7,10 +7,13 @@ import { validateCreateEditAuctions } from "../../utils/validation";
 import { IoIosWarning } from "react-icons/io";
 
 export default function EditAuction() {
+
+    const navigate = useNavigate();
+
     const { auctionId } = useParams();
     const [auction] = useGetOneAuction(auctionId);
-    const navigate = useNavigate();
     const editAuction = useEditAuction();
+
     const [error, setError] = useState('');
 
     useEffect(() => {

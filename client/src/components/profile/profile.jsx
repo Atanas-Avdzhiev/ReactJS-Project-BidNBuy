@@ -7,32 +7,33 @@ import { editProfile, getUser } from '../../api/auth-api';
 import { validatePhone, validateSingleImage } from '../../utils/validation';
 
 export default function Profile() {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const { email } = useParams();
+    const { email: myEmail, savedUserId } = useContext(AuthContext);
 
     const [user, setUser] = useState({ email: '', _ownerId: '', _createdOn: '' });
-
-    const { email: myEmail, savedUserId } = useContext(AuthContext);
     const [auctions, setAuctions] = useState([]);
     const [selected, setSelected] = useState('my');
-    const [isLoading, setIsLoading] = useState(false);
     const [nextPage, setNextPage] = useState(false);
 
     const [phone, setPhone] = useState('');
     const [phonePreview, setPhonePreview] = useState('');
+
     const [avatar, setAvatar] = useState(null);
     const [avatarPreview, setAvatarPreview] = useState(null);
+
     const [imageError, setImageError] = useState('');
     const [phoneError, setPhoneError] = useState('');
 
     const [isEditingPhone, setIsEditingPhone] = useState(false);
     const [isEditingAvatar, setIsEditingAvatar] = useState(false);
 
-    const navigate = useNavigate();
-    const location = useLocation();
-
     const params = new URLSearchParams(location.search);
     const page = Number(params.get('page')) || 1;
-    const recordsPerPage = 6; // change this number if you want to change the number of auctions per page
+    const recordsPerPage = 6;
     const recordsToSkip = (page - 1) * recordsPerPage;
 
     useEffect(() => {
@@ -48,8 +49,6 @@ export default function Profile() {
                 if (page <= 0) {
                     return navigate(`/profile/${email}?page=1`);
                 }
-
-                setIsLoading(true);
 
                 if (selected === 'my') {
                     const ownerAuctions = await auctionsAPI.getOwnerAuctions(user._ownerId, recordsToSkip, recordsPerPage + 1);
@@ -75,8 +74,6 @@ export default function Profile() {
                 }
             } catch (err) {
                 console.log(err.message);
-            } finally {
-                setIsLoading(false);
             }
         })()
     }, [selected, location.search, email]);
@@ -207,7 +204,7 @@ export default function Profile() {
                                 navigate(`/profile/${email}?page=1`);
                             }}>Won Auctions</button>
                     </div>
-                    
+
                     {selected === 'my' && (
 
                         <div className={styles.auctionsSection}>

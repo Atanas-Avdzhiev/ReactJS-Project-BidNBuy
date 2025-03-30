@@ -7,9 +7,10 @@ import styles from './home.module.css';
 import { AUCTIONS_NEWS_URL } from "../../api/auctions-api";
 
 export default function Home() {
-    const auctions = useGetLatestAuctions();
+
     const navigate = useNavigate();
 
+    const auctions = useGetLatestAuctions();
     const [news, setNews] = useState([]);
 
     useEffect(() => {

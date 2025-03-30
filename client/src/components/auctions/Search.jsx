@@ -8,10 +8,12 @@ import { FaSearch } from "react-icons/fa";
 
 export default function SearchAuctions() {
 
+    const navigate = useNavigate();
+
     const [auctions, setAuctions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [nextPage, setNextPage] = useState(false);
-    const navigate = useNavigate();
+    
     const [searchParams, setSearchParams] = useSearchParams();
 
     const auctionName = searchParams.get('auctionName') || '';
@@ -21,7 +23,7 @@ export default function SearchAuctions() {
     const closed = searchParams.get('closed') || '';
     const page = Number(searchParams.get('page')) || 1;
 
-    const recordsPerPage = 10; // change this number if you want to change the number of auctions per page
+    const recordsPerPage = 10;
     const recordsToSkip = (+page - 1) * recordsPerPage;
 
     useEffect(() => {

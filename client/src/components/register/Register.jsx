@@ -6,9 +6,11 @@ import styles from './register.module.css';
 import { validateRegisterForm } from "../../utils/validation";
 
 export default function Register() {
-    const [error, setError] = useState('');
+
     const register = useRegister();
     const navigate = useNavigate();
+
+    const [error, setError] = useState('');
 
     const initialValues = { email: '', password: '', rePassword: '', phone: '' };
 
@@ -32,7 +34,6 @@ export default function Register() {
             <form onSubmit={submitHandler} id="register" className={styles.form}>
 
                 <div className={styles.container}>
-                    {/* <div className={styles.brandLogo}></div> */}
                     <h1>Register</h1>
 
                     <label htmlFor="email">Email:</label>

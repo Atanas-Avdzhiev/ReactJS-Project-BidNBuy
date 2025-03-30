@@ -4,6 +4,7 @@ import styles from './catalog.module.css';
 export default function Auction({ _id, auctionName, category, imageUrl, bidPrice, price, image }) {
     const location = useLocation();
     const navigate = useNavigate();
+    
     return (
         <div onClick={() => navigate(`/auctions/${_id}/details`)} className={styles.auction}>
             <div className={styles.imageWrap}>

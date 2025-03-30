@@ -5,9 +5,11 @@ import { useState } from 'react';
 import styles from './login.module.css';
 
 export default function Login() {
-    const [error, setError] = useState('');
-    const login = useLogin();
+
     const navigate = useNavigate();
+
+    const login = useLogin();
+    const [error, setError] = useState('');
 
     const initialValues = { email: '', password: '' };
 
