@@ -149,7 +149,6 @@
     cursor: pointer;
     font-size: 2rem;
     color: white;
-    /* position: absolute; */
     right: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
