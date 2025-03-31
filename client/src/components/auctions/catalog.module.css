@@ -163,4 +163,12 @@
   .auction {
     flex: 1 1 50%;
   }
+
+  .catalogPage {
+    padding: 0;
+  }
+
+  .catalogPage h1 {
+    margin-top: 1em;
+  }
 }

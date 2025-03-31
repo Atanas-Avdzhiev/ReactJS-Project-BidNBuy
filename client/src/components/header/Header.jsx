@@ -8,6 +8,7 @@ export default function Header() {
     const { isAuthenticated, email } = useContext(AuthContext);
     const [scrolled, setScrolled] = useState(false);
     const [showAuctionDropdown, setShowAuctionDropdown] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,28 +26,25 @@ export default function Header() {
         };
     }, []);
 
-    useEffect(() => {
-        const menuToggle = document.querySelector(`.${styles.menuToggle}`);
-        const nav = document.querySelector(`.${styles.nav}`);
+    const toggleMenu = () => {
+        setMenuOpen((prev) => !prev);
+    };
 
-        if (menuToggle && nav) {
-            const toggleNav = () => nav.classList.toggle(styles.active);
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
 
-            menuToggle.addEventListener("click", toggleNav);
-
-            return () => {
-                menuToggle.removeEventListener("click", toggleNav);
-            };
-        }
-    }, []);
+    if (scrolled && menuOpen) {
+        closeMenu();
+    }
 
     return (
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <h1 className={styles.logo}>
                 <Link className={styles.home} to="/">BidNBuy</Link>
             </h1>
-            <div className={styles.menuToggle}>&#9776;</div>
-            <nav className={styles.nav}>
+            <div className={styles.menuToggle} onClick={toggleMenu}>&#9776;</div>
+            <nav className={`${styles.nav} ${menuOpen ? styles.active : ''}`}>
                 <ul className={styles.navList}>
                     <div className={styles.guest}
                         onMouseEnter={() => setShowAuctionDropdown(true)}
@@ -55,22 +53,22 @@ export default function Header() {
                         <li><Link to="#" onClick={(e) => e.preventDefault()} className={styles.navLink}>Auctions</Link></li>
                         {showAuctionDropdown && (
                             <div className={styles.dropdownMenu}>
-                                <Link to="/auctions/catalog" className={styles.dropdownItem}>Open Auctions</Link>
-                                <Link to="/auctions/closed" className={styles.dropdownItem}>Closed Auctions</Link>
-                                <Link to="/auctions/search" className={styles.dropdownItem}>Search Auctions</Link>
+                                <Link to="/auctions/catalog" className={styles.dropdownItem} onClick={closeMenu}>Open Auctions</Link>
+                                <Link to="/auctions/closed" className={styles.dropdownItem} onClick={closeMenu}>Closed Auctions</Link>
+                                <Link to="/auctions/search" className={styles.dropdownItem} onClick={closeMenu}>Search Auctions</Link>
                             </div>
                         )}
                     </div>
                     {isAuthenticated ? (
                         <div className={styles.user}>
-                            <li><Link to="/auctions/create" className={styles.navLink}>Create Auction</Link></li>
-                            <li><Link to={`/profile/${email}`} className={styles.navLink}>Profile</Link></li>
-                            <li><Link to="/logout" className={styles.navLink}>Logout</Link></li>
+                            <li><Link to="/auctions/create" className={styles.navLink} onClick={closeMenu}>Create Auction</Link></li>
+                            <li><Link to={`/profile/${email}`} className={styles.navLink} onClick={closeMenu}>Profile</Link></li>
+                            <li><Link to="/logout" className={styles.navLink} onClick={closeMenu}>Logout</Link></li>
                         </div>
                     ) : (
                         <div className={styles.guest}>
-                            <li><Link to="/login" className={styles.navLink}>Login</Link></li>
-                            <li><Link to="/register" className={styles.navLink}>Register</Link></li>
+                            <li><Link to="/login" className={styles.navLink} onClick={closeMenu}>Login</Link></li>
+                            <li><Link to="/register" className={styles.navLink} onClick={closeMenu}>Register</Link></li>
                         </div>
                     )}
                 </ul>
