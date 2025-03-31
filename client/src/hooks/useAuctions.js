@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { auctionsAPI } from '../api/auctions-api';
+import { useNavigate } from "react-router-dom";
 
 export function useGetAllAuctions() {
     const [auctions, setAuctions] = useState([]);
@@ -17,6 +18,7 @@ export function useGetAllAuctions() {
 
 export function useGetOneAuction(auctionId) {
     const [auction, setAuction] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -25,6 +27,7 @@ export function useGetOneAuction(auctionId) {
                 setAuction(auction);
             } catch (err) {
                 console.log(err.message);
+                navigate('/404');
             }
         })()
     }, [auctionId])
