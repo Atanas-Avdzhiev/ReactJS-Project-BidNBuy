@@ -709,7 +709,10 @@ p {
 
 @media (max-width: 768px) {
   .auctionDetails {
-    padding: 6em 0 2.5em 0;
+    margin: 0;
+  }
+
+  .auctionDetailsTitle {
     margin: 0;
   }
 
@@ -740,15 +743,11 @@ p {
   }
 
   .descriptionTitle {
-    margin: 0;
-    /* margin-left: 2em;
-    margin-top: 2em; */
+    margin: 2em 0 0 0;
   }
 
   .text {
     line-height: 1.6;
-    /* margin-bottom: 30px;
-    margin-left: 2em; */
     margin: 0;
   }
 
@@ -757,7 +756,7 @@ p {
     flex-direction: column;
     padding-left: 2em;
     gap: 0.5em;
-    margin: 0;
+    margin: 2em 0 2em 0;
   }
 
   .commentsContainer {
@@ -782,7 +781,8 @@ p {
   }
 
   .loadMoreCommentsWrapper {
-    margin-top: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 3em;
   }
 
   .detailsTextarea {
