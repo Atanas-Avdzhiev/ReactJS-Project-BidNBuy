@@ -104,3 +104,11 @@
 .loginPage .field a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+
+  .loginPage .container {
+    width: 250px;
+  }
+
+}

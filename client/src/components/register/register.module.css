@@ -104,3 +104,11 @@
 .registerPage .field a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+
+  .registerPage .container {
+    width: 250px;
+  }
+
+}
