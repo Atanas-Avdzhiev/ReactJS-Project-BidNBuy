@@ -1,5 +1,5 @@
 .profileContainer {
-    max-width: 1100px;
+    width: 1100px;
     margin: 4em auto;
     padding: 20px;
     background: #fff;
@@ -7,7 +7,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     flex: 1;
-    min-width: 1100px;
 }
 
 .auctionsSection {
@@ -199,7 +198,7 @@
     min-height: 400px;
 }
 
-.profilePanel h3{
+.profilePanel h3 {
     font-size: 1.3em;
 }
 
@@ -300,5 +299,46 @@
 
     .profilPanel {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .profileWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0;
+        margin: 0 auto;
+        padding-top: 6em;
+        background-color: #ffffff;
+    }
+
+    .profileContainer {
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+        flex: 1;
+        width: 100vw;
+    }
+
+    .auction {
+        flex: 1 1 50%;
+    }
+
+    .profileError {
+        max-width: 75%;
+    }
+
+    .profilePanel {
+        margin: 0;
+        padding: 4em 0;
+        width: 100%;
+        min-height: 400px;
+    }
+
+    .memberSince {
+        margin-top: 1em;
     }
 }

@@ -63,7 +63,6 @@
 .detailsButton {
   text-decoration: none;
   background-color: #e98f08;
-  ;
   color: white;
   padding: 10px 20px;
   font-size: 1rem;
@@ -73,7 +72,6 @@
 
 .detailsButton:hover {
   background-color: #d47f00;
-  ;
 }
 
 .noArticles {
@@ -159,4 +157,10 @@
   border-radius: 50%;
   cursor: pointer;
   font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .auction {
+    flex: 1 1 50%;
+  }
 }

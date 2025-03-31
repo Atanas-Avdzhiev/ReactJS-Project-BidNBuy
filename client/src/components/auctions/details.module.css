@@ -1,5 +1,5 @@
 .auctionDetails {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f5f5f5;
   padding: 40px 20px;
   margin: 30px auto 0 auto;
@@ -9,7 +9,7 @@
 .auctionDetailsTitle {
   text-align: center;
   font-size: 3rem;
-  color: #6A4E23;
+  color: #6a4e23;
   margin-bottom: 0.25em;
   margin-top: 1.5em;
 }
@@ -37,13 +37,12 @@
   width: 800px;
   height: 600px;
   object-fit: contain;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   margin-left: 15px;
   margin-right: 22px;
   border-radius: 5%;
   display: block;
   background-color: #f0f0f0;
-  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
 }
 
 .auctionHeader h1 {
@@ -59,7 +58,6 @@
   gap: 3em;
   width: 30em;
 }
-
 
 .auctionBidInfo {
   display: flex;
@@ -162,7 +160,6 @@
 .button {
   padding: 10px 20px;
   background-color: #e98f08;
-  ;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -175,7 +172,7 @@
 }
 
 .delete-button {
-  background-color: #FF4747;
+  background-color: #ff4747;
 }
 
 .delete-button:hover {
@@ -234,7 +231,6 @@
 
 .submit:hover {
   background-color: #d47f00;
-  ;
 }
 
 .bid {
@@ -257,7 +253,6 @@
 .buttonClose {
   padding: 10px 20px;
   background-color: #e98f08;
-  ;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -313,7 +308,7 @@
 }
 
 .commentTextOwner {
-  color: #6A4E23;
+  color: #6a4e23;
   font-size: 1.1em;
   width: fit-content;
 }
@@ -406,7 +401,7 @@
 
 .likeButton {
   font-size: 18px;
-  color: #1DA7FC;
+  color: #1da7fc;
   background: none;
   border: none;
   cursor: pointer;
@@ -444,7 +439,7 @@
 }
 
 .likesNumber {
-  color: #1DA7FC;
+  color: #1da7fc;
   font-size: 1.1em;
   font-weight: bold;
 }
@@ -484,7 +479,7 @@
 
 .likeButtonPreview {
   font-size: 18px;
-  color: #1DA7FC;
+  color: #1da7fc;
   background: none;
   border: none;
 }
@@ -571,7 +566,7 @@ p {
 }
 
 .editCommentError {
-  color: #8B0000;
+  color: #8b0000;
   font-size: 1em;
   font-weight: bold;
   white-space: nowrap;
@@ -710,4 +705,126 @@ p {
 .winnerName:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .auctionDetails {
+    padding: 6em 0 2.5em 0;
+    margin: 0;
+  }
+
+  .auctionHeader {
+    display: flex;
+    flex-direction: column;
+    margin: 2em 0 0 0;
+  }
+
+  .auctionImg {
+    width: 600px;
+    height: 400px;
+  }
+
+  .auctionText {
+    gap: 2em;
+    width: 100%;
+  }
+
+  .imageThumbnails {
+    display: none;
+  }
+
+  .descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+  }
+
+  .descriptionTitle {
+    margin: 0;
+    /* margin-left: 2em;
+    margin-top: 2em; */
+  }
+
+  .text {
+    line-height: 1.6;
+    /* margin-bottom: 30px;
+    margin-left: 2em; */
+    margin: 0;
+  }
+
+  .ownerEmailTimestampWrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2em;
+    gap: 0.5em;
+    margin: 0;
+  }
+
+  .commentsContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2em;
+    align-items: center;
+  }
+
+  .commentsTitle {
+    margin: 0;
+  }
+
+  .commentsUl {
+    width: 95%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .loadMoreComments {
+    right: 1em;
+  }
+
+  .loadMoreCommentsWrapper {
+    margin-top: 2em;
+  }
+
+  .detailsTextarea {
+    width: calc(95% - 1.5em);
+  }
+
+  .authErrorBid {
+    max-width: 85%;
+  }
+
+  .submitAndErrorWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+    position: relative;
+    padding: 1em 1em 0 1.5em;
+  }
+
+  .submit {
+    align-self: flex-end;
+    padding: 10px 20px;
+    background-color: #e98f08;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0;
+  }
+
+  .authError {
+    position: static;
+    transform: none;
+  }
+
+  .editCommentErrorWrapper {
+    text-align: start;
+  }
+
+  .editCommentError {
+    font-size: 12px;
+  }
 }

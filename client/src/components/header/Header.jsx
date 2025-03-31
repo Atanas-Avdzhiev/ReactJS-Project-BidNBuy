@@ -25,11 +25,27 @@ export default function Header() {
         };
     }, []);
 
+    useEffect(() => {
+        const menuToggle = document.querySelector(`.${styles.menuToggle}`);
+        const nav = document.querySelector(`.${styles.nav}`);
+
+        if (menuToggle && nav) {
+            const toggleNav = () => nav.classList.toggle(styles.active);
+
+            menuToggle.addEventListener("click", toggleNav);
+
+            return () => {
+                menuToggle.removeEventListener("click", toggleNav);
+            };
+        }
+    }, []);
+
     return (
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <h1 className={styles.logo}>
                 <Link className={styles.home} to="/">BidNBuy</Link>
             </h1>
+            <div className={styles.menuToggle}>&#9776;</div>
             <nav className={styles.nav}>
                 <ul className={styles.navList}>
                     <div className={styles.guest}

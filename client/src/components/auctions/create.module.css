@@ -62,8 +62,7 @@
 .createPage .btn {
   width: 100%;
   padding: 12px;
-  background-color: #e98f08;
-  ;
+  background-color: #E98F08;
   color: white;
   border: none;
   border-radius: 4px;
@@ -74,7 +73,6 @@
 
 .createPage .btn:hover {
   background-color: #d47f00;
-  ;
 }
 
 .createPage .btn:focus {
@@ -146,4 +144,31 @@
   justify-content: center;
   background-color: white;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .createPage {
+    padding: 100px 20px 50px 20px;
+  }
+
+  .createPage form {
+    max-width: 100%;
+  }
+
+  .createPage .container {
+    padding: 0.5em;
+    width: calc(100% - 1em);
+    margin-top: 2em;
+  }
+
+  .createPage input,
+  .createPage textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .createPage form svg {
+    display: none;
+  }
 }

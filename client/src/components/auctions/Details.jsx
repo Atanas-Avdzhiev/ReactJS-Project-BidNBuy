@@ -324,7 +324,7 @@ export default function DetailsAuction() {
                         </div>
                     )}
 
-                    <div>
+                    <div className={styles.descriptionContainer}>
                         <h3 className={styles.descriptionTitle}>Description:</h3>
                         <p className={styles.text}>{auction.description}</p>
                     </div>
@@ -352,7 +352,7 @@ export default function DetailsAuction() {
                         )}
                     </div>
 
-                    <div>
+                    <div className={styles.commentsContainer}>
                         {comments.length > 0 ? (
                             <>
                                 <h2 className={styles.commentsTitle}>Comments:</h2>

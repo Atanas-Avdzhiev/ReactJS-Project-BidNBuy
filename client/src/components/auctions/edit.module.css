@@ -145,3 +145,32 @@
   background-color: white;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+
+  .editPage {
+    padding: 100px 20px 50px 20px;
+  }
+
+  .editPage form {
+    max-width: 100%;
+  }
+
+  .editPage .container {
+    padding: 0.5em;
+    width: calc(100% - 1em);
+    margin-top: 2em;
+  }
+
+  .editPage input,
+  .editPage textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .editPage form svg {
+    display: none;
+  }
+
+}

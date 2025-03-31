@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     z-index: 10;
-    margin-top: 8em;
+    padding-top: 8em;
     flex: 1 1 100%;
 }
 
@@ -229,5 +229,34 @@
 
     .searchButton {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .searchContainer {
+        padding-top: 10em;
+    }
+
+    .auction {
+        flex: 1 1 50%;
+    }
+
+    .searchForm {
+        justify-content: start;
+        margin: 0 auto 3em auto;
+        width: 75%;
+    }
+
+    .selectWrapper {
+        margin-right: 3em;
+        gap: 1.75em;
+    }
+
+    .searchButton {
+        margin: 0;
+    }
+
+    .inputDiv {
+        width: 90%;
     }
 }
