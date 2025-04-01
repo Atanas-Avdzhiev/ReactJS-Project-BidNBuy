@@ -41,10 +41,10 @@ export default function Login() {
                         placeholder="pesho@abv.com"
                     />
 
-                    <label htmlFor="login-pass">Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input
                         type="password"
-                        id="login-password"
+                        id="password"
                         name="password"
                         value={values.password}
                         onChange={changeHandler}

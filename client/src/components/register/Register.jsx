@@ -17,6 +17,7 @@ export default function Register() {
     const registerHandler = async ({ email, password, rePassword, phone }) => {
 
         const validate = validateRegisterForm({ email, password, rePassword, phone });
+
         if (validate !== true) return setError(validate);
 
         try {
@@ -31,7 +32,7 @@ export default function Register() {
 
     return (
         <section className={styles.registerPage}>
-            <form onSubmit={submitHandler} id="register" className={styles.form}>
+            <form onSubmit={submitHandler} id="register" className={styles.form} data-testid="register-form">
 
                 <div className={styles.container}>
                     <h1>Register</h1>
@@ -56,21 +57,21 @@ export default function Register() {
                         placeholder="359123456789"
                     />
 
-                    <label htmlFor="pass">Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input
                         type="password"
                         name="password"
-                        id="register-password"
+                        id="password"
                         value={values.password}
                         onChange={changeHandler}
                         placeholder="Enter your password"
                     />
 
-                    <label htmlFor="con-pass">Confirm Password:</label>
+                    <label htmlFor="rePassword">Confirm Password:</label>
                     <input
                         type="password"
                         name="rePassword"
-                        id="confirm-password"
+                        id="rePassword"
                         value={values.rePassword}
                         onChange={changeHandler}
                         placeholder="Confirm your password"
