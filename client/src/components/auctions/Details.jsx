@@ -339,7 +339,7 @@ export default function DetailsAuction() {
                         <div className={styles.auctionOwnerEmailWrapper}>
                             <h4 className={styles.sellerPhoneNumberTitle}>Seller Phone Number:</h4>
 
-                            {showPhone
+                            {showPhone || isOwner
                                 ? <p className={styles.auctionOwnerPhone} >{auctionOwner?.phone}</p>
                                 : <button onClick={() => setShowPhone(true)} className={styles.auctionOwnerPhoneReveal} >Show Number</button>
                             }
