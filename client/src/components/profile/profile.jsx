@@ -6,6 +6,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { editProfile, getUser } from '../../api/auth-api';
 import { validatePhone, validateSingleImage } from '../../utils/validation';
 import { FaSave, FaTimes, FaEdit } from 'react-icons/fa';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Profile() {
 
@@ -262,15 +263,15 @@ export default function Profile() {
 
                     {auctions.length > 0 && (
                         <div className={styles.paginationContainer}>
-                            <button disabled={page === 1} onClick={() => navigate(`/profile/${email}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+                            <button disabled={page === 1} onClick={() => navigate(`/profile/${email}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}><ChevronLeft style={{ width: '35px', height: '35px' }} /></button>
+                            <div className={styles.pageNumbers}>
+                                {page > 1 && <button onClick={() => navigate(`/profile/${email}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
 
-                            {page > 1 && <button onClick={() => navigate(`/profile/${email}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
+                                <button className={styles.pageCircleCurrent}>{page}</button>
 
-                            <button className={styles.pageCircleCurrent}>{page}</button>
-
-                            {nextPage && <button onClick={() => navigate(`/profile/${email}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
-
-                            <button disabled={!nextPage} onClick={() => navigate(`/profile/${email}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                                {nextPage && <button onClick={() => navigate(`/profile/${email}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+                            </div>
+                            <button disabled={!nextPage} onClick={() => navigate(`/profile/${email}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}><ChevronRight style={{ width: '35px', height: '35px' }} /></button>
                         </div>
                     )}
 

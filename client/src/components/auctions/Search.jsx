@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useGetSearchedAuctions } from '../../hooks/useAuctions';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import { FaSearch } from "react-icons/fa";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function SearchAuctions() {
 
@@ -13,7 +14,7 @@ export default function SearchAuctions() {
     const [auctions, setAuctions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [nextPage, setNextPage] = useState(false);
-    
+
     const [searchParams, setSearchParams] = useSearchParams();
 
     const auctionName = searchParams.get('auctionName') || '';
@@ -173,21 +174,21 @@ export default function SearchAuctions() {
                 <div className={styles.paginationContainer}>
                     <button disabled={+page === 1}
                         onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page - 1).toString() })}
-                        className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+                        className={`${styles.paginationBtn} ${styles.prev}`}><ChevronLeft style={{ width: '35px', height: '35px' }} /></button>
+                    <div className={styles.pageNumbers}>
+                        {page > 1 && <button
+                            onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page - 1).toString() })}
+                            className={styles.pageCircle}>{+page - 1}</button>}
 
-                    {page > 1 && <button
-                        onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page - 1).toString() })}
-                        className={styles.pageCircle}>{+page - 1}</button>}
+                        <button className={styles.pageCircleCurrent}>{+page}</button>
 
-                    <button className={styles.pageCircleCurrent}>{+page}</button>
-
-                    {nextPage && <button
-                        onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page + 1).toString() })}
-                        className={styles.pageCircle}>{+page + 1}</button>}
-
+                        {nextPage && <button
+                            onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page + 1).toString() })}
+                            className={styles.pageCircle}>{+page + 1}</button>}
+                    </div>
                     <button disabled={!nextPage}
                         onClick={() => setSearchParams({ auctionName, category, minPrice, maxPrice, closed, page: (page + 1).toString() })}
-                        className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                        className={`${styles.paginationBtn} ${styles.next}`}><ChevronRight style={{ width: '35px', height: '35px' }} /></button>
                 </div>
             )}
         </div>

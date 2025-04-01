@@ -118,23 +118,30 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 3em;
     margin-bottom: 3em;
 }
 
 .paginationBtn {
-    padding: 8px 16px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    font-size: 16px;
-    margin: auto 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .paginationBtn:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
+    background-color: transparent;
+    cursor: default;
+}
+
+.pageNumbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 150px;
 }
 
 .pageCircle {

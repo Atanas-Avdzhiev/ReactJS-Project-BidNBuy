@@ -5,6 +5,7 @@ import Auction from "./Auction";
 import styles from './catalog.module.css';
 import { useState, useEffect } from "react";
 import LoadingSpinner from "../loading-spinner/LoadingSpinner";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function CatalogAuction() {
     const navigate = useNavigate();
@@ -72,15 +73,15 @@ export default function CatalogAuction() {
 
             {auctions.length > 0 && (
                 <div className={styles.paginationContainer}>
-                    <button disabled={page === 1} onClick={() => navigate(`${location.pathname}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}>Prev</button>
+                    <button disabled={page === 1} onClick={() => navigate(`${location.pathname}?page=${page - 1}`)} className={`${styles.paginationBtn} ${styles.prev}`}><ChevronLeft style={{ width: '35px', height: '35px' }} /></button>
+                    <div className={styles.pageNumbers}>
+                        {page > 1 && <button onClick={() => navigate(`${location.pathname}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
 
-                    {page > 1 && <button onClick={() => navigate(`${location.pathname}?page=${page - 1}`)} className={styles.pageCircle}>{page - 1}</button>}
+                        <button className={styles.pageCircleCurrent}>{page}</button>
 
-                    <button className={styles.pageCircleCurrent}>{page}</button>
-
-                    {nextPage && <button onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
-
-                    <button disabled={!nextPage} onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}>Next</button>
+                        {nextPage && <button onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={styles.pageCircle}>{page + 1}</button>}
+                    </div>
+                    <button disabled={!nextPage} onClick={() => navigate(`${location.pathname}?page=${page + 1}`)} className={`${styles.paginationBtn} ${styles.next}`}><ChevronRight style={{ width: '35px', height: '35px' }} /></button>
                 </div>
             )}
 
