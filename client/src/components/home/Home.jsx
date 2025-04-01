@@ -46,9 +46,10 @@ export default function Home() {
 
                 <div className={styles.welcomeMessage}>
                     <h1 data-testid="home-title">BidNBuy</h1>
-                    <h2>Discover, bid, and win! Sell your items or score incredible deals at BidNBuy, the ultimate auction marketplace.</h2>
+                    <h2>Discover, bid, and win!</h2>
+                    <h2>Sell your items or score incredible deals at BidNBuy, the ultimate auction marketplace.</h2>
+                    <div onClick={() => navigate('/auctions/catalog')} className={styles.explore}>Explore</div>
                 </div>
-                <div onClick={() => navigate('/auctions/catalog')} className={styles.explore}>Explore</div>
             </section>
 
             <div className={styles.videoSection}>
