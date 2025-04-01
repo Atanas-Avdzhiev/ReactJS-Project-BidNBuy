@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/authContext';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { editProfile, getUser } from '../../api/auth-api';
 import { validatePhone, validateSingleImage } from '../../utils/validation';
+import { FaSave, FaTimes, FaEdit } from 'react-icons/fa';
 
 export default function Profile() {
 
@@ -21,6 +22,7 @@ export default function Profile() {
 
     const [phone, setPhone] = useState('');
     const [phonePreview, setPhonePreview] = useState('');
+    const [showPhone, setShowPhone] = useState(false);
 
     const [avatar, setAvatar] = useState(null);
     const [avatarPreview, setAvatarPreview] = useState(null);
@@ -152,11 +154,11 @@ export default function Profile() {
                         )}
                         {imageError && <p className={styles.profileError}>{imageError}</p>}
                     </div>
-                    <h3>{user.email}</h3>
+                    <h3 className={styles.emailText}>{user.email}</h3>
                     <div className={styles.phoneContainer}>
                         {isEditingPhone ? (
-                            <>
-                                <p>Edit Phone: </p>
+                            <div className={styles.phoneTextEdit}>
+                                <p><strong>Phone: </strong></p>
                                 <input
                                     type="number"
                                     value={phonePreview}
@@ -164,28 +166,39 @@ export default function Profile() {
                                     autoFocus
                                 />
                                 <div className={styles.buttonsWrapper}>
-                                    <button onClick={savePhoneHandler}>Save</button>
+                                    <button onClick={savePhoneHandler}><FaSave /></button>
                                     <button onClick={() => {
                                         setIsEditingPhone(false);
                                         setPhonePreview(phone);
                                         setPhoneError('');
-                                    }}>Cancel</button>
+                                    }}><FaTimes /></button>
                                 </div>
-                            </>
+                            </div>
                         ) : (
-                            <p className={email === myEmail
-                                ? styles.phoneOwner
-                                : styles.phoneUser}
-                                onClick={email === myEmail ? () => {
-                                    setIsEditingPhone(true);
-                                    setPhonePreview(phone);
+                            <div className={styles.phoneText}>
+                                <p
+                                ><strong>Phone: </strong>
+                                    {email === myEmail
+                                        ? <span>{phone}</span>
+                                        : showPhone === false
+                                            ? <span>{'*'.repeat(phone.length)}</span>
+                                            : <span>{phone}</span>}
+                                </p>
+
+                                {email === myEmail
+                                    ? <FaEdit className={styles.editPhoneButton}
+                                        onClick={() => {
+                                            setIsEditingPhone(true);
+                                            setPhonePreview(phone);
+                                        }}
+                                    />
+                                    : showPhone === false && <button className={styles.showPhoneButton} onClick={() => setShowPhone(true)}>Show</button>
                                 }
-                                    : () => ''
-                                }><strong>Phone: </strong>{phone}</p>
+                            </div>
                         )}
                         {phoneError && <p className={styles.profileError}>{phoneError}</p>}
                     </div>
-                    <p className={styles.memberSince}><strong>Member since:</strong> {new Date(user._createdOn).toLocaleDateString()}</p>
+                    <p className={styles.memberSinceText}><strong>Member since:</strong> {new Date(user._createdOn).toLocaleDateString()}</p>
                 </div>
 
                 <div className={styles.profileContainer}>
@@ -236,7 +249,7 @@ export default function Profile() {
                                                 <img src={auction?.image?.length > 0 ? auction.image[0] : auction.imageUrl} alt={auction.auctionName} />
                                             </div>
                                             <h6>{auction.auctionName}</h6>
-                                            <h2>Winning bid: <strong>{auction.bidPrice}$</strong></h2>
+                                            <h2>{auction.category}</h2>
                                         </div>
                                     )
 
