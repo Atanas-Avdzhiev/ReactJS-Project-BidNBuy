@@ -52,11 +52,7 @@ export const editUser = async (userId, accessToken) => {
     }
 }
 
-export const editProfile = async (savedUserId, userData) => {
-    try {
-        const response = await requester('PATCH', `${BASE_URL_BidNBuy}/data/savedUsers/${savedUserId}`, userData);
-        return response;
-    } catch (err) {
-        console.log(err.message);
-    }
+export const editProfile = (savedUserId, userData) => {
+    const response = requester('PATCH', `${BASE_URL_BidNBuy}/data/savedUsers/${savedUserId}`, userData);
+    return response;
 };

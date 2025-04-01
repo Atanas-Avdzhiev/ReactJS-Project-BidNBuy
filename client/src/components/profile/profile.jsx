@@ -106,6 +106,12 @@ export default function Profile() {
             setAvatar(response.image);
             setIsEditingAvatar(false);
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setImageError('Your session has expired, please login again. You will be redirected to login page in 5 seconds.');
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 5000)
+            }
             console.log(err.message);
         }
     }
@@ -120,6 +126,12 @@ export default function Profile() {
             setPhone(response.phone);
             setIsEditingPhone(false);
         } catch (err) {
+            if (err.message === 'Unauthorized' || err.message === 'Invalid access token') {
+                setPhoneError('Your session has expired, please login again. You will be redirected to login page in 5 seconds.');
+                setTimeout(() => {
+                    navigate('/logout');
+                }, 5000)
+            }
             console.log(err.message);
         }
     };
