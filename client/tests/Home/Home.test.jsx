@@ -19,13 +19,13 @@ describe("Testing Home Component", () => {
 
         await waitFor(() => {
             const title = screen.getByTestId("home-title");
-            console.log(window.getComputedStyle(title));
             expect(title).toBeInTheDocument();
             expect(title).toBeVisible();
             expect(title).toHaveTextContent("BidNBuy");
             expect(title).toHaveStyle({
                 "font-size": "1.5em",
-                "font-weight": "bold"
+                "font-weight": "bold",
+                "color": "6A4E23"
             });
         });
     });
