@@ -18,7 +18,7 @@ const getRandomString = (length = 15) => {
     return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 };
 
-describe("Register Component", () => {
+describe("Testing Register Component", () => {
 
     it("Should show an error message that user already exists, when trying to register with already existing email", async () => {
         render(

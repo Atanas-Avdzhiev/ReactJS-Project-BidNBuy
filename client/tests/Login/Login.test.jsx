@@ -13,7 +13,7 @@ vi.mock('react-router-dom', async () => {
     };
 });
 
-describe("Login Component", () => {
+describe("Testing Login Component", () => {
 
     it("Should show an error message that login or password don't match, when trying to login with wrong password", async () => {
         render(

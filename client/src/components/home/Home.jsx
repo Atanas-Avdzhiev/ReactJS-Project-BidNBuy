@@ -45,7 +45,7 @@ export default function Home() {
                 </div>
 
                 <div className={styles.welcomeMessage}>
-                    <h1>BidNBuy</h1>
+                    <h1 data-testid="home-title">BidNBuy</h1>
                     <h2>Discover, bid, and win! Sell your items or score incredible deals at BidNBuy, the ultimate auction marketplace.</h2>
                 </div>
                 <div onClick={() => navigate('/auctions/catalog')} className={styles.explore}>Explore</div>
