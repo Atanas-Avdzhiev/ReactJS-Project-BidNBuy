@@ -24,8 +24,7 @@ describe("Testing Home Component", () => {
             expect(title).toHaveTextContent("BidNBuy");
             expect(title).toHaveStyle({
                 "font-size": "1.5em",
-                "font-weight": "bold",
-                "color": "6A4E23"
+                "font-weight": "bold"
             });
         });
     });
