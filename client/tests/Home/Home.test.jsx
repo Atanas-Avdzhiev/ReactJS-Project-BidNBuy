@@ -30,13 +30,16 @@ describe("Testing Home Component", () => {
         });
     });
 
-    it("Should show the sub-title on home page", async () => {
+    it("Should show the sub-titles on home page", async () => {
         render(<Home />);
 
         await waitFor(() => {
-            const subtitle = screen.getByText(/Discover, bid, and win! Sell your items or score incredible deals at BidNBuy, the ultimate auction marketplace./i);
-            expect(subtitle).toBeInTheDocument();
-            expect(subtitle).toBeVisible();
+            const subtitle1 = screen.getByText(/Discover, bid, and win!/i);
+            const subtitle2 = screen.getByText(/Sell your items or score incredible deals at BidNBuy, the ultimate auction marketplace./i);
+            expect(subtitle1).toBeInTheDocument();
+            expect(subtitle1).toBeVisible();
+            expect(subtitle2).toBeInTheDocument();
+            expect(subtitle2).toBeVisible();
         });
     });
 
