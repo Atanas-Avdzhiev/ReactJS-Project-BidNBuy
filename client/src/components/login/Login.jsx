@@ -26,7 +26,7 @@ export default function Login() {
 
     return (
         <section className={styles.loginPage}>
-            <form onSubmit={submitHandler} id="login" className={styles.form}>
+            <form onSubmit={submitHandler} id="login" className={styles.form} data-testid="login-form">
 
                 <div className={styles.container}>
                     <div className={styles.brandLogo}></div>
