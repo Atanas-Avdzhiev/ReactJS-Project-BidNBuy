@@ -35,6 +35,7 @@ export default function DetailsAuction() {
 
     const [bidValue, setBidValue] = useState({ bidPrice: '' });
     const [selectedImage, setSelectedImage] = useState(null);
+    const [showPhone, setShowPhone] = useState(false);
 
     const [error, setError] = useState('');
     const [commentError, setCommentError] = useState('');
@@ -337,7 +338,11 @@ export default function DetailsAuction() {
 
                         <div className={styles.auctionOwnerEmailWrapper}>
                             <h4 className={styles.sellerPhoneNumberTitle}>Seller Phone Number:</h4>
-                            <p className={styles.auctionOwnerPhone} >{auctionOwner?.phone}</p>
+
+                            {showPhone
+                                ? <p className={styles.auctionOwnerPhone} >{auctionOwner?.phone}</p>
+                                : <button onClick={() => setShowPhone(true)} className={styles.auctionOwnerPhoneReveal} >Show Number</button>
+                            }
                         </div>
 
                         <div className={styles.auctionOwnerEmailWrapper}>

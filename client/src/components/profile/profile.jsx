@@ -181,7 +181,7 @@ export default function Profile() {
                                     {email === myEmail
                                         ? <span>{phone}</span>
                                         : showPhone === false
-                                            ? <span>{'*'.repeat(phone.length)}</span>
+                                            ? <span>{'*'.repeat(phone?.length || 10)}</span>
                                             : <span>{phone}</span>}
                                 </p>
 

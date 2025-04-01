@@ -597,8 +597,8 @@ p {
   display: flex;
   flex-direction: column;
   margin-left: 2em;
-  gap: 0.5em;
   margin-top: 4em;
+  gap: 0.25em;
 }
 
 .auctionOwnerDate {
@@ -697,14 +697,27 @@ p {
   transition: transform 0.5s ease-in-out;
 }
 
-.sellerPhoneNumberTitle {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-}
-
 .winnerName:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.auctionOwnerPhoneReveal {
+  display: inline-block;
+  background-color: transparent;
+  color: #555;
+  font-size: 1em;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: solid 2px #d8d8d8;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.auctionOwnerPhoneReveal:hover {
+  transform: scale(1.025);
+  border-color: #a5a5a5;
 }
 
 @media (max-width: 768px) {
