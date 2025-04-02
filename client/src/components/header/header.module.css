@@ -218,5 +218,6 @@
         flex-direction: column;
         padding: 0;
         gap: 0.5em;
+        width: 100%;
     }
 }
