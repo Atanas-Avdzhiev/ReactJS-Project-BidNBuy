@@ -734,7 +734,7 @@ p {
 @media (max-width: 768px) {
 
   .auctionImg {
-    width: 390px;
+    width: 360px;
     height: 400px;
     object-fit: contain;
     border-radius: 5%;
@@ -747,7 +747,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 390px;
+    width: 360px;
     overflow: hidden;
   }
 
