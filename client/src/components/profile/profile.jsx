@@ -209,9 +209,9 @@ export default function Profile() {
                                 }
                             </div>
                         )}
-                        {phoneError && <p className={styles.profileError}>{phoneError}</p>}
                     </div>
                     <p className={styles.memberSinceText}><strong>Member since:</strong> {new Date(user._createdOn).toLocaleDateString()}</p>
+                    {phoneError && <p className={styles.profileError}>{phoneError}</p>}
                 </div>
 
                 <div className={styles.profileContainer}>

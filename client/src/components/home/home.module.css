@@ -2,7 +2,7 @@
   background: url('/images/bid.jpg') no-repeat center center/cover;
   color: white;
   text-align: center;
-  padding: 60px 20px;
+  padding: 60px 0px 60px 0px;
   height: 55em;
 }
 
@@ -234,7 +234,7 @@
   align-items: center;
   overflow: hidden;
   background: transparent;
-  padding: 10px;
+  padding: 10px 0 10px 0;
   white-space: nowrap;
   margin-top: 3.5em;
   min-height: 75px;
