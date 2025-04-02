@@ -29,6 +29,9 @@ export default function DetailsAuction() {
     const [bidValue, setBidValue] = useState({ bidPrice: '' });
     const [selectedImage, setSelectedImage] = useState(null);
 
+    const hasMultipleImages = auction?.image?.length > 0;
+    const images = hasMultipleImages ? auction.image : [auction.imageUrl];
+
     const { isAuthenticated, userId, email } = useContext(AuthContext);
     const isOwner = userId === auction._ownerId;
 
@@ -147,19 +150,38 @@ export default function DetailsAuction() {
                     <div className={styles.auctionHeader}>
 
                         <div className={styles.imageContainer}>
-                            {auction?.image?.length > 0 && (
-                                <button className={styles.navButton} onClick={prevImage} disabled={selectedImage === 0}>
-                                    <ChevronLeft size={40} />
+                            {hasMultipleImages && (
+                                <button
+                                    className={styles.navButton}
+                                    onClick={prevImage}
+                                    disabled={selectedImage === 0}
+                                >
+                                    <ChevronLeft size={24} />
                                 </button>
                             )}
 
-                            <div className={styles.imageWrapper} >
-                                <img className={styles.auctionImg} src={auction?.image?.length > 0 ? auction.image[selectedImage] : auction.imageUrl} alt="auction" />
+                            <div className={styles.imageWrapper} style={{
+                                width: `${100}%`,
+                                transform: `translateX(-${selectedImage * (100)}%)`
+                            }}>
+                                {images.map((src, index) => (
+                                    <div className={styles.imageSlide} key={index}>
+                                        <img
+                                            className={styles.auctionImg}
+                                            src={src}
+                                            alt={`auction-${index}`}
+                                        />
+                                    </div>
+                                ))}
                             </div>
 
-                            {auction?.image?.length > 0 && (
-                                <button className={styles.navButton} onClick={nextImage} disabled={selectedImage === auction?.image?.length - 1}>
-                                    <ChevronRight size={40} />
+                            {hasMultipleImages && (
+                                <button
+                                    className={styles.navButton}
+                                    onClick={nextImage}
+                                    disabled={selectedImage === images.length - 1}
+                                >
+                                    <ChevronRight size={24} />
                                 </button>
                             )}
                         </div>
