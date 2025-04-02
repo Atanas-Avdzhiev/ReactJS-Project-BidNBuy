@@ -26,42 +26,44 @@ export default function Login() {
 
     return (
         <section className={styles.loginPage}>
-            <form onSubmit={submitHandler} id="login" className={styles.form} data-testid="login-form">
+            <div className={styles.formWrapper}>
+                <form onSubmit={submitHandler} id="login" className={styles.form} data-testid="login-form">
 
-                <div className={styles.container}>
-                    <div className={styles.brandLogo}></div>
-                    <h1>Login</h1>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={values.email}
-                        onChange={changeHandler}
-                        placeholder="pesho@abv.com"
-                    />
+                    <div className={styles.container}>
+                        <div className={styles.brandLogo}></div>
+                        <h1>Login</h1>
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={values.email}
+                            onChange={changeHandler}
+                            placeholder="pesho@abv.com"
+                        />
 
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={values.password}
-                        onChange={changeHandler}
-                    />
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={values.password}
+                            onChange={changeHandler}
+                        />
 
-                    {error && (
-                        <p className={styles.authError}>
-                            <span>{error}</span>
+                        {error && (
+                            <p className={styles.authError}>
+                                <span>{error}</span>
+                            </p>
+                        )}
+
+                        <input type="submit" className={`${styles.btn} submit`} value="Login" />
+                        <p className={styles.field}>
+                            <span>Don't have an account? <Link to="/register">Register</Link></span>
                         </p>
-                    )}
-
-                    <input type="submit" className={`${styles.btn} submit`} value="Login" />
-                    <p className={styles.field}>
-                        <span>Don't have an account? <Link to="/register">Register</Link></span>
-                    </p>
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }

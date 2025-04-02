@@ -107,8 +107,18 @@
 
 @media (max-width: 768px) {
 
+  .registerPage {
+    align-items: start;
+    padding-top: 6em;
+    min-height: calc(100vh - 400px);
+  }
+
   .registerPage .container {
     width: 250px;
+  }
+
+  .formWrapper {
+    height: 30%;
   }
 
 }

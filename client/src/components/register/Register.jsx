@@ -32,64 +32,66 @@ export default function Register() {
 
     return (
         <section className={styles.registerPage}>
-            <form onSubmit={submitHandler} id="register" className={styles.form} data-testid="register-form">
+            <div className={styles.formWrapper}>
+                <form onSubmit={submitHandler} id="register" className={styles.form} data-testid="register-form">
 
-                <div className={styles.container}>
-                    <h1>Register</h1>
+                    <div className={styles.container}>
+                        <h1>Register</h1>
 
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={values.email}
-                        onChange={changeHandler}
-                        placeholder="pesho@abv.bg"
-                    />
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={values.email}
+                            onChange={changeHandler}
+                            placeholder="pesho@abv.bg"
+                        />
 
-                    <label htmlFor="phone">Phone:</label>
-                    <input
-                        type="number"
-                        id="phone"
-                        name="phone"
-                        value={values.phone}
-                        onChange={changeHandler}
-                        placeholder="359123456789"
-                    />
+                        <label htmlFor="phone">Phone:</label>
+                        <input
+                            type="number"
+                            id="phone"
+                            name="phone"
+                            value={values.phone}
+                            onChange={changeHandler}
+                            placeholder="359123456789"
+                        />
 
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        value={values.password}
-                        onChange={changeHandler}
-                        placeholder="Enter your password"
-                    />
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            value={values.password}
+                            onChange={changeHandler}
+                            placeholder="Enter your password"
+                        />
 
-                    <label htmlFor="rePassword">Confirm Password:</label>
-                    <input
-                        type="password"
-                        name="rePassword"
-                        id="rePassword"
-                        value={values.rePassword}
-                        onChange={changeHandler}
-                        placeholder="Confirm your password"
-                    />
+                        <label htmlFor="rePassword">Confirm Password:</label>
+                        <input
+                            type="password"
+                            name="rePassword"
+                            id="rePassword"
+                            value={values.rePassword}
+                            onChange={changeHandler}
+                            placeholder="Confirm your password"
+                        />
 
-                    {error && (
-                        <p className={styles.authError}>
-                            <span>{error}</span>
+                        {error && (
+                            <p className={styles.authError}>
+                                <span>{error}</span>
+                            </p>
+                        )}
+
+                        <input className={`${styles.btn} submit`} type="submit" value="Register" />
+
+                        <p className={styles.field}>
+                            <span>Already have an account? <Link to="/login">Login</Link></span>
                         </p>
-                    )}
-
-                    <input className={`${styles.btn} submit`} type="submit" value="Register" />
-
-                    <p className={styles.field}>
-                        <span>Already have an account? <Link to="/login">Login</Link></span>
-                    </p>
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }
