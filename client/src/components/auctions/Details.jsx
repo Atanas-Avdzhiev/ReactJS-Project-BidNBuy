@@ -337,7 +337,7 @@ export default function DetailsAuction() {
                         </div>
 
                         <div className={styles.auctionOwnerEmailWrapper}>
-                            <h4 className={styles.sellerPhoneNumberTitle}>Seller Phone Number:</h4>
+                            <h4 className={styles.sellerPhoneNumberTitle}>Seller Phone:</h4>
 
                             {showPhone || isOwner
                                 ? <p className={styles.auctionOwnerPhone} >{auctionOwner?.phone}</p>
