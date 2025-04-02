@@ -43,6 +43,38 @@
   color: #333;
 }
 
+.createPage input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px dashed #E98F08;
+  background-color: #f8f9fa;
+  font-size: 1rem;
+  color: #E98F08;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+.createPage input[type="file"]::file-selector-button {
+  background-color: #E98F08;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.createPage input[type="file"]::file-selector-button:hover {
+  background-color: #d47f00;
+}
+
+.createPage input[type="file"]:hover {
+  border-color: #d47f00;
+}
+
 .createPage input[type="text"],
 .createPage input[type="number"] {
   height: 40px;
@@ -175,5 +207,10 @@
   .imagePreviewContainer {
     width: 300px;
     justify-content: center;
+  }
+
+  .createPage input[type="file"] {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
