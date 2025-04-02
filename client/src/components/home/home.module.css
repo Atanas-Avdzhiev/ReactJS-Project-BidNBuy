@@ -230,6 +230,7 @@
 
 .newsTickerContainer {
   display: flex;
+  flex-direction: row;
   align-items: center;
   overflow: hidden;
   background: transparent;
@@ -238,12 +239,13 @@
   margin-top: 3.5em;
   min-height: 75px;
   position: relative;
+  gap: 0.5em;
 }
 
 .newsHeading {
   font-weight: bold;
-  margin-right: 10px;
   color: #6A4E23;
+  white-space: pre-line;
 }
 
 .newsTicker {

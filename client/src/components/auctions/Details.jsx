@@ -341,7 +341,10 @@ export default function DetailsAuction() {
 
                             {showPhone || isOwner
                                 ? <p className={styles.auctionOwnerPhone} >{auctionOwner?.phone}</p>
-                                : <button onClick={() => setShowPhone(true)} className={styles.auctionOwnerPhoneReveal} >Show Number</button>
+                                : <button onClick={() => {
+                                    if (!isAuthenticated) return navigate('/login');
+                                    setShowPhone(true);
+                                }} className={styles.auctionOwnerPhoneReveal} >Show Number</button>
                             }
                         </div>
 

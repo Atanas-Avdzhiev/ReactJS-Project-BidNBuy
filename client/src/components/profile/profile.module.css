@@ -9,6 +9,11 @@
     min-width: 1100px;
 }
 
+.profileContainer h2{
+    font-size: 1.75em;
+    color: #6A4E23;
+}
+
 .auctionsSection {
     margin-top: 3em;
 }
@@ -476,5 +481,21 @@
 
     .memberSince {
         margin-top: 1em;
+    }
+
+    .emailText {
+        max-width: 350px;
+    }
+
+    .phoneText {
+        max-width: 350px;
+    }
+
+    .phoneTextEdit {
+        max-width: 350px;
+    }
+
+    .memberSinceText {
+        max-width: 350px;
     }
 }

@@ -31,7 +31,6 @@ function App() {
         <Route path='/auctions/catalog' element={<CatalogAuction />} />
         <Route path='/auctions/closed' element={<CatalogAuction />} />
         <Route path='/auctions/search' element={<SearchAuctions />} />
-        <Route path='/profile/:email' element={<Profile />} />
 
         <Route element={<PublicRoute />}>
           <Route path='/login' element={<Login />} />
@@ -40,6 +39,7 @@ function App() {
 
         <Route element={<PrivateRoute />}>
           <Route path='/auctions/create' element={<CreateAuction />} />
+          <Route path='/profile/:email' element={<Profile />} />
           <Route path='/logout' element={<Logout />} />
         </Route>
 

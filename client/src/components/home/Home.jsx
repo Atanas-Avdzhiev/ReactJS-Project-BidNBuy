@@ -31,7 +31,7 @@ export default function Home() {
             <section className={styles.welcomeWorld}>
 
                 <div className={styles.newsTickerContainer}>
-                    <span className={styles.newsHeading}>&#128240; Auction News:</span>
+                    <span className={styles.newsHeading}>Auction News:</span>
                     <div className={styles.newsTicker}>
                         <div className={styles.newsTickerContent}>
                             {news.map((article, index) => (
