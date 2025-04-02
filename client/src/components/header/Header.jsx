@@ -20,9 +20,11 @@ export default function Header() {
         };
 
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('click', closeMenu);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('click', closeMenu);
         };
     }, []);
 
@@ -39,7 +41,7 @@ export default function Header() {
     }
 
     return (
-        <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`} onClick={closeMenu}>
+        <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <h1 className={styles.logo}>
                 <Link className={styles.home} to="/">BidNBuy</Link>
             </h1>
@@ -47,7 +49,7 @@ export default function Header() {
                 toggleMenu();
                 e.stopPropagation();
             }} >&#9776;</div>
-            <nav className={`${styles.nav} ${menuOpen ? styles.active : ''}`}>
+            <nav className={`${styles.nav} ${menuOpen ? styles.active : ''}`} onClick={(e) => e.stopPropagation()}>
                 <ul className={styles.navList}>
                     <div className={styles.guest}
                         onMouseEnter={() => setShowAuctionDropdown(true)}
