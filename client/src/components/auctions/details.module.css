@@ -753,7 +753,7 @@ p {
   .descriptionContainer {
     display: flex;
     flex-direction: column;
-    padding: 2em;
+    padding-left: 1em;
   }
 
   .descriptionTitle {
@@ -768,7 +768,7 @@ p {
   .ownerEmailTimestampWrapper {
     display: flex;
     flex-direction: column;
-    padding-left: 2em;
+    padding-left: 1em;
     gap: 0.5em;
     margin: 2em 0 2em 0;
   }
