@@ -39,18 +39,24 @@ export default function Header() {
     }
 
     return (
-        <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+        <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`} onClick={closeMenu}>
             <h1 className={styles.logo}>
                 <Link className={styles.home} to="/">BidNBuy</Link>
             </h1>
-            <div className={styles.menuToggle} onClick={toggleMenu}>&#9776;</div>
+            <div className={styles.menuToggle} onClick={(e) => {
+                toggleMenu();
+                e.stopPropagation();
+            }} >&#9776;</div>
             <nav className={`${styles.nav} ${menuOpen ? styles.active : ''}`}>
                 <ul className={styles.navList}>
                     <div className={styles.guest}
                         onMouseEnter={() => setShowAuctionDropdown(true)}
                         onMouseLeave={() => setShowAuctionDropdown(false)}
                     >
-                        <li><Link to="#" onClick={(e) => e.preventDefault()} className={styles.navLink}>Auctions</Link></li>
+                        <li><Link to="#" onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }} className={styles.navLink}>Auctions</Link></li>
                         {showAuctionDropdown && (
                             <div className={styles.dropdownMenu}>
                                 <Link to="/auctions/catalog" className={styles.dropdownItem} onClick={closeMenu}>Open Auctions</Link>

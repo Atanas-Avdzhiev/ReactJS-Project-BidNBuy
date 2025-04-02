@@ -325,6 +325,15 @@
     padding: 0 0.2em;
   }
 
+  .welcomeMessage h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #6A4E23;
+    margin-bottom: 20px;
+    margin-top: 1em;
+    letter-spacing: 2px;
+  }
+
   .videoSection {
     padding: 0;
     flex-direction: column;

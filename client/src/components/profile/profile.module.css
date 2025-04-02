@@ -469,7 +469,7 @@
     }
 
     .profileError {
-        max-width: 75%;
+        width: 90%;
         text-align: center;
         margin: auto;
     }
