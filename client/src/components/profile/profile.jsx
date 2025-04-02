@@ -193,9 +193,9 @@ export default function Profile() {
                                 ><strong>Phone: </strong>
                                     {email === myEmail
                                         ? <span>{phone}</span>
-                                        : showPhone === false
-                                            ? <span>{'*'.repeat(phone?.length || 10)}</span>
-                                            : <span>{phone}</span>}
+                                        : showPhone !== false
+                                            ? <span>{phone}</span>
+                                            : ''}
                                 </p>
 
                                 {email === myEmail
@@ -205,7 +205,7 @@ export default function Profile() {
                                             setPhonePreview(phone);
                                         }}
                                     />
-                                    : showPhone === false && <button className={styles.showPhoneButton} onClick={() => setShowPhone(true)}>Show</button>
+                                    : showPhone === false && <button className={styles.showPhoneButton} onClick={() => setShowPhone(true)}>Show Number</button>
                                 }
                             </div>
                         )}
