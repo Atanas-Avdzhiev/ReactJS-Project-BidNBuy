@@ -15,11 +15,6 @@ export default function Footer() {
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.logo} onClick={scrollToTop}>BidNBuy</div>
-                <nav className={styles.nav}>
-                    <a href="" onClick={(e) => e.preventDefault()}>About</a>
-                    <a href="" onClick={(e) => e.preventDefault()}>Contact</a>
-                    <a href="" onClick={(e) => e.preventDefault()}>Privacy Policy</a>
-                </nav>
                 <div className={styles.social}>
                     <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
                     <a href="https://x.com" aria-label="X" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
