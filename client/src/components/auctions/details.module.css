@@ -68,6 +68,7 @@
 .auctionBidInfo input {
   padding: 0.5em 1em;
   border-radius: 0.5em;
+  max-width: 150px;
 }
 
 .levels,
@@ -839,5 +840,9 @@ p {
 
   .editCommentError {
     font-size: 12px;
+  }
+
+  .auctionBidInfo input {
+    max-width: 130px;
   }
 }
