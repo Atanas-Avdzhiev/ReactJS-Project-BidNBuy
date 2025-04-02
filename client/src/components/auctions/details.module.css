@@ -688,11 +688,11 @@ p {
 }
 
 .navButton:first-of-type {
-  left: 20px;
+  left: 10px;
 }
 
 .navButton:last-of-type {
-  right: 20px;
+  right: 10px;
 }
 
 .imageWrapper {
@@ -747,8 +747,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 390px;
+    width: 390px;
     overflow: hidden;
   }
 
